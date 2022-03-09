@@ -41,7 +41,26 @@
                 class="text-skysim">SkySim</span>
         </div>
         <div class="player_socials">
-            <a href="https://auctions.craftlink.xyz/players/<%= uuidData.raw_id %>"></a>
+            <a href="https://auctions.craftlink.xyz/players/<%= uuidData.raw_id %>" target="_blank" rel="noreferrer"
+                class="additional-player-stat player-hyauction">HyAuctions</a>
+            <a href="https://plancke.io/hypixel/player/stats/<%= username %>" target="_blank" rel="noreferrer"
+                class="additional-player-stat player-plancke">Plancke</a>
+        </div>
+        <div class="skills">
+            <div class="combat-skill">
+                <div class="skill-icon-combat"
+                    style="--skill_color: <%= skills.combat.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Combat_Sword.webp" alt="" class="combat-sword">
+                </div>
+                <div class="skill-name-combat">
+                    Combat <span class="skill-level">
+                        <%= skills.combat.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-combat"
+                    style="--progress_bar_color: <%= skills.combat.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.combat.skill_progression_percentage %>%;">
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

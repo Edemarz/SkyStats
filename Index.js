@@ -31,7 +31,7 @@ App.get("/", (req, res) => {
 
 App.get("/usernotfound/:username/:type", (req, res) => {
     const object = {
-        error: `${req.params.type == "invalid" ? `Invalid username: ${req.params.username}` : `Failed to resolve username, Please make sure the player exist with the username: ${req.params.username}`}`
+        error: `${req.params.type == "invalid" ? `Invalid username: ${req.params.username}` : req.params.type == "neverjoined" ? `That player has never joined SkySim!` : `Failed to resolve username, Please make sure the player exist with the username: ${req.params.username}`}`
     };
 
     res.status(200).send(object);
@@ -55,6 +55,8 @@ App.post("/", async (req, res) => {
             method: 'get',
             url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_INFO&param=${UUID.data?.data?.player?.id}`
         }).catch((err) => null);
+
+        if (SkySimData.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`);
 
         //Combat Skill Section
 

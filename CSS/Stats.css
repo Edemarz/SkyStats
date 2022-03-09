@@ -98,3 +98,111 @@ body {
   vertical-align: middle;
   font-size: 30px;
 }
+
+.player-hyauction {
+  appearance: none;
+  position: relative;
+  padding: 0px 12px;
+  border: none;
+  margin-right: 7px;
+  margin-top: 15px;
+  height: 29px;
+  line-height: 29px;
+  box-sizing: border-box;
+  background-color: rgba(11, 202, 81, 0.9);
+  display: inline-block;
+  border-radius: 99999px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color .1s;
+  vertical-align: top;
+  text-shadow: 0px 0px 3px rgb(0 0 0 / 50%);
+}
+
+.player-hyauction:hover {
+  color: #fff;
+}
+
+.player-plancke {
+  appearance: none;
+  position: relative;
+  padding: 0px 12px;
+  border: none;
+  margin-right: 7px;
+  margin-top: 15px;
+  height: 29px;
+  line-height: 29px;
+  box-sizing: border-box;
+  background-color: rgba(11, 202, 81, 0.9);
+  display: inline-block;
+  border-radius: 99999px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color .1s;
+  vertical-align: top;
+  text-shadow: 0px 0px 3px rgb(0 0 0 / 50%);
+}
+
+.player-plancke:hover {
+  color: #fff;
+}
+
+.skills {
+  display: grid;
+  gap: 24px;
+  padding: 30px;
+  margin-left: calc(-1*30px);
+  margin-right: calc(-1*30px);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.skill-icon-combat {
+  height: 40px;
+  width: 40px;
+  background-color: var(--skill_color);
+  position: relative;
+  border-radius: 50%;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 10;
+}
+
+.combat-sword {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  top: 7px;
+  left: 7px;
+  transform: scale(0.2);
+  transform-origin: top left;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+.skill-name-combat {
+  position: relative;
+  left: 46px;
+  color: white;
+  bottom: 44px;
+  font-weight: 600;
+  font-size: 18px;
+  height: 22px;
+  line-height: 22px;
+}
+
+.skill-level-combat {
+  color: rgba(255, 255, 255, 0.8);
+  user-select: text !important;
+}
+
+.skill-progress-bar-combat {
+  width: var(--progress);
+  position: relative;
+  height: 14px;
+  left: 22.5px;
+  bottom: 35.4px;
+  background: var(--progress_bar_color);
+  border-radius: 100px;
+}
