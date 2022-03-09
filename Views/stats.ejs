@@ -64,9 +64,31 @@
                     style="--progress_bar_color: <%= skills.combat.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.combat.skill_progression_percentage %>%;">
                 </div>
                 <div class="skill-progress-text-combat"
-                    style="--left_side: <%= skills.combat.skill_progression_percentage / 2%>%;">
+                    style="--left_side: <%= (skills.combat.skill_progression_percentage + 0.3) / 2 %>%;">
                     <%= skills.combat.level>= 60 ? `${skills.combat.abbrev}` :
                         `${skills.combat.abbrev}/${skills.combat.nextLevelXP}` %>
+                </div>
+            </div>
+            <div class="mining-skill">
+                <div class="skill-icon-mining"
+                    style="--skill_color: <%= skills.mining.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Stone_Pickaxe.png" alt="" class="mining-sword">
+                </div>
+                <div class="skill-name-mining">
+                    Mining <span class="skill-level">
+                        <%= skills.mining.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-mining"
+                    style="--left_side_bar: <%= skills.mining.skill_progression_percentage + 1.1 %>%; --width_bar: <%= skills.mining.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-mining"
+                    style="--progress_bar_color: <%= skills.mining.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.mining.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-mining"
+                    style="--left_side: <%= (skills.mining.skill_progression_percentage + 0.3) / 2 %>%;">
+                    <%= skills.mining.level>= 60 ? `${skills.mining.abbrev}` :
+                        `${skills.mining.abbrev}/${skills.mining.nextLevelXP}` %>
                 </div>
             </div>
         </div>

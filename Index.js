@@ -133,6 +133,58 @@ App.post("/", async (req, res) => {
         //Setting hypermaxed settings;
         if (combData.level >= 50) combData.hypermaxed = true;
 
+        //Mining Skill
+        const MiningXPGoals = [0, 50, 175, 375, 675, 1175, 1925, 2925, 4425, 6425, 9925, 14925, 22425,
+            32425, 47425, 67425, 97425, 147425, 222425, 322425, 522425, 822425, 1222425, 1722425, 2322425,
+            3022425, 3822425, 4722425, 5722425, 6822425, 8022425, 9322425, 10722425, 12222425, 13822425,
+            15522425, 17322425, 19222425, 21222425, 23322425, 25522425, 27822425, 30222425, 32722425,
+            35322425, 38072425, 40972425, 44072425, 47472425, 51172425, 55172425, 59472425, 64072425,
+            68972425, 74172425, 79672425, 85472425, 91572425, 97972425, 104672425, 111672425];
+        let miningData = {
+            xp: null,
+            level: null,
+            abbrev: null,
+            skill_progression_percentage: null,
+            hypermaxed: false,
+            greyPercentage: null,
+            nextLevelXP: null
+        };
+
+        miningData.xp = SkySimData.data.miningXP;
+
+        MiningXPGoals.forEach((miningXP) => {
+            if ((SkySimData.data.miningXP - miningXP) >= 1) miningData.level = MiningXPGoals.findIndex((xp) => xp === miningXP);
+        });
+
+        //Changing XP Format;
+        miningData.abbrev = abbreviateNumber(miningData.xp);
+
+        //Setting the next level xp;
+        const miningNextXP = miningData.level === 60 ? 'maxed' : miningData.level === 59 ? MiningXPGoals[miningData.level + 1] : MiningXPGoals[miningData.level + 1];
+
+        miningData.nextLevelXP = miningNextXP == "maxed" ? 'maxed' : abbreviateNumber(miningNextXP);
+
+        //Calculating progress bar percentage.
+        let raw_data_1 = miningNextXP == "maxed" ? 100 : SkySimData.data.miningXP / MiningXPGoals[miningData.level + 1] * 100;
+
+        if (raw_data_1 >= 100) raw_data_1 = 100;
+        else if (raw_data_1 >= 1) {
+            raw_data_1 = raw_data_1;
+        };
+
+        //Getting 30% of the bar percentage above;
+
+        const div1_1 = 30 / 100;
+
+        const percent_of_percentage_1 = div1_1 * raw_data_1;
+
+        miningData.skill_progression_percentage = percent_of_percentage_1;
+
+        miningData.greyPercentage = 30 - percent_of_percentage_1;
+
+        //Setting hypermaxed settings;
+        if (miningData.level >= 50) miningData.hypermaxed = true;
+
         //Rendering page.
 
         console.log(combData);
@@ -142,7 +194,8 @@ App.post("/", async (req, res) => {
             username: req.body.SkySim_Username,
             uuidData: UUID.data?.data?.player,
             skills: {
-                combat: combData
+                combat: combData,
+                mining: miningData
             }
         });
     };
