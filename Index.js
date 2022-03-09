@@ -56,7 +56,12 @@ App.post("/", async (req, res) => {
             url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_INFO&param=${UUID.data?.data?.player?.id}`
         }).catch((err) => null);
 
-        if (SkySimData.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`);
+        const PlayerInventory = await axios({
+            method: 'get',
+            url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_ITEMS&param=${UUID.data?.data?.player?.id}`
+        }).catch((err) => null);
+
+        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`);
 
         //Combat Skill Section
 
@@ -240,7 +245,7 @@ App.post("/", async (req, res) => {
 
         //Rendering page.
 
-        console.log(enchantingData, SkySimData.data);
+        console.log(enchantingData, SkySimData.data, PlayerInventory.data);
 
         res.render('stats', {
             data: SkySimData.data,
@@ -250,6 +255,9 @@ App.post("/", async (req, res) => {
                 combat: combData,
                 mining: miningData,
                 enchanting: enchantingData
+            },
+            constants: {
+                colorCodes: require("./Constants/ColorCodes")
             }
         });
     };
