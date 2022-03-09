@@ -151,6 +151,8 @@ body {
   color: #fff;
 }
 
+/*Skill Section*/
+
 .skills {
   display: grid;
   gap: 24px;
@@ -159,6 +161,8 @@ body {
   margin-right: calc(-1*30px);
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+/*Combat Section*/
 
 .skill-icon-combat {
   height: 40px;
@@ -234,7 +238,7 @@ body {
   width: 40px;
   background-color: var(--skill_color);
   position: relative;
-  bottom: 70px;
+  bottom: 80px;
   border-radius: 50%;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
   z-index: 10;
@@ -245,7 +249,7 @@ body {
   width: 128px;
   height: 128px;
   top: 7px;
-  bottom: 70px;
+  bottom: 80px;
   left: 7px;
   transform: scale(0.2);
   transform-origin: top left;
@@ -256,7 +260,7 @@ body {
   position: relative;
   left: 46px;
   color: white;
-  bottom: 109px;
+  bottom: 119px;
   font-weight: 600;
   font-size: 18px;
   height: 22px;
@@ -273,7 +277,7 @@ body {
   position: relative;
   height: 14px;
   left: var(--left_side_bar);
-  bottom: /* 63.5px */106px;
+  bottom: /* 63.5px */116px;
   background: rgba(127,127,127,0.6);
   border-radius: 100px;
 }
@@ -283,7 +287,7 @@ body {
   position: relative;
   height: 14px;
   left: 22.5px;
-  bottom: /*35.4px*/120px;
+  bottom: /*35.4px*/130px;
   background: var(--progress_bar_color);
   border-radius: 100px;
 }
@@ -291,7 +295,79 @@ body {
 .skill-progress-text-mining {
   position: relative;
   left: var(--left_side);
-  bottom: 134px; /*14px*/
+  bottom: 144px; /*14px*/
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
+}
+
+/*Enchanting Skill*/
+
+.skill-icon-enchanting {
+  height: 40px;
+  width: 40px;
+  background-color: var(--skill_color);
+  position: relative;
+  bottom: 160px;
+  border-radius: 50%;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 10;
+}
+
+.enchanting-sword {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  top: 7px;
+  bottom: 160px;
+  left: 7px;
+  transform: scale(0.2);
+  transform-origin: top left;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+.skill-name-enchanting {
+  position: relative;
+  left: 46px;
+  color: white;
+  bottom: 199px;
+  font-weight: 600;
+  font-size: 18px;
+  height: 22px;
+  line-height: 22px;
+}
+
+.skill-level-enchanting {
+  color: rgba(255, 255, 255, 0.8);
+  user-select: text !important;
+}
+
+.skill-progress-bar-grey-enchanting {
+  width: var(--width_bar);
+  position: relative;
+  height: 14px;
+  left: var(--left_side_bar);
+  bottom: /* 63.5px */196px;
+  background: rgba(127,127,127,0.6);
+  border-radius: 100px;
+}
+
+.skill-progress-bar-enchanting {
+  width: var(--progress);
+  position: relative;
+  height: 14px;
+  left: 22.5px;
+  bottom: /*35.4px*/210px;
+  background: var(--progress_bar_color);
+  border-radius: 100px;
+}
+
+.skill-progress-text-enchanting {
+  position: relative;
+  left: var(--left_side);
+  bottom: 224px; /*14px*/
   color: white;
   font-weight: 600;
   font-size: 12px;

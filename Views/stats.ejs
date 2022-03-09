@@ -46,7 +46,9 @@
             <a href="https://plancke.io/hypixel/player/stats/<%= username %>" target="_blank" rel="noreferrer"
                 class="additional-player-stat player-plancke">Plancke</a>
         </div>
+        <!--Skill Section-->
         <div class="skills">
+            <!--Combat Section-->
             <div class="combat-skill">
                 <div class="skill-icon-combat"
                     style="--skill_color: <%= skills.combat.hypermaxed ? '#dd980e' : '#0bca51' %>;">
@@ -69,6 +71,7 @@
                         `${skills.combat.abbrev}/${skills.combat.nextLevelXP}` %>
                 </div>
             </div>
+            <!--Mining Section-->
             <div class="mining-skill">
                 <div class="skill-icon-mining"
                     style="--skill_color: <%= skills.mining.hypermaxed ? '#dd980e' : '#0bca51' %>;">
@@ -89,6 +92,29 @@
                     style="--left_side: <%= (skills.mining.skill_progression_percentage + 0.3) / 2 %>%;">
                     <%= skills.mining.level>= 60 ? `${skills.mining.abbrev}` :
                         `${skills.mining.abbrev}/${skills.mining.nextLevelXP}` %>
+                </div>
+            </div>
+            <!--Enchanting Skill-->
+            <div class="enchanting-skill">
+                <div class="skill-icon-enchanting"
+                    style="--skill_color: <%= skills.enchanting.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Stone_Pickaxe.png" alt="" class="enchanting-sword">
+                </div>
+                <div class="skill-name-enchanting">
+                    Enchanting <span class="skill-enchanting">
+                        <%= skills.enchanting.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-enchanting"
+                    style="--left_side_bar: <%= skills.enchanting.skill_progression_percentage + 1.1 %>%; --width_bar: <%= skills.enchanting.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-enchanting"
+                    style="--progress_bar_color: <%= skills.enchanting.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.enchanting.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-enchanting"
+                    style="--left_side: <%= (skills.enchanting.skill_progression_percentage + 0.3) / 2 %>%;">
+                    <%= skills.enchanting.level>= 60 ? `${skills.enchanting.abbrev}` :
+                        `${skills.enchanting.abbrev}/${skills.enchanting.nextLevelXP}` %>
                 </div>
             </div>
         </div>
