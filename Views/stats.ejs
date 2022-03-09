@@ -57,8 +57,16 @@
                         <%= skills.combat.level %>
                     </span>
                 </div>
+                <div class="skill-progress-bar-grey-combat"
+                    style="--left_side_bar: <%= skills.combat.skill_progression_percentage + 1.1 %>%; --width_bar: <%= skills.combat.greyPercentage + 0.3 %>%;">
+                </div>
                 <div class="skill-progress-bar-combat"
                     style="--progress_bar_color: <%= skills.combat.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.combat.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-combat"
+                    style="--left_side: <%= skills.combat.skill_progression_percentage / 2%>%;">
+                    <%= skills.combat.level>= 60 ? `${skills.combat.abbrev}` :
+                        `${skills.combat.abbrev}/${skills.combat.nextLevelXP}` %>
                 </div>
             </div>
         </div>

@@ -73,7 +73,7 @@ App.post("/", async (req, res) => {
             abbrev: null,
             skill_progression_percentage: null,
             hypermaxed: false,
-            blackPercentage: null,
+            greyPercentage: null,
             nextLevelXP: null
         };
 
@@ -108,14 +108,12 @@ App.post("/", async (req, res) => {
         combData.abbrev = abbreviateNumber(combData.xp);
 
         //Setting the next level xp;
-        const nextXP = combData.level === 60 ? 'maxed' : combData.level === 59 ? abbreviateNumber(CombatXPArray[combData.level + 1]) : abbreviateNumber(CombatXPArray[combData.level + 1]);
+        const nextXP = combData.level === 60 ? 'maxed' : combData.level === 59 ? CombatXPArray[combData.level + 1] : CombatXPArray[combData.level + 1];
 
-        combData.nextLevelXP = nextXP;
-
-        console.log(nextXP, combData.level, combData.xp)
+        combData.nextLevelXP = nextXP == "maxed" ? 'maxed' : abbreviateNumber(nextXP);
 
         //Calculating progress bar percentage.
-        let raw_data = SkySimData.data.combatXP / CombatXPArray[CombatXPArray.length - 1] * 100;
+        let raw_data = nextXP == "maxed" ? 100 : SkySimData.data.combatXP / CombatXPArray[combData.level + 1] * 100;
 
         if (raw_data >= 100) raw_data = 100;
         else if (raw_data >= 1) {
@@ -130,12 +128,14 @@ App.post("/", async (req, res) => {
 
         combData.skill_progression_percentage = percent_of_percentage;
 
-        combData.blackPercentage = 30 - percent_of_percentage;
+        combData.greyPercentage = 30 - percent_of_percentage;
 
         //Setting hypermaxed settings;
         if (combData.level >= 50) combData.hypermaxed = true;
 
         //Rendering page.
+
+        console.log(combData);
 
         res.render('stats', {
             data: SkySimData.data,
@@ -145,8 +145,6 @@ App.post("/", async (req, res) => {
                 combat: combData
             }
         });
-
-        console.log(SkySimData.data)
     };
 });
 //Listening to a specific port;

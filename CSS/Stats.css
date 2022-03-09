@@ -197,12 +197,33 @@ body {
   user-select: text !important;
 }
 
+.skill-progress-bar-grey-combat {
+  width: var(--width_bar);
+  position: relative;
+  height: 14px;
+  left: var(--left_side_bar);
+  bottom: /* 63.5px */36px;
+  background: rgba(127,127,127,0.6);
+  border-radius: 100px;
+}
+
 .skill-progress-bar-combat {
   width: var(--progress);
   position: relative;
   height: 14px;
   left: 22.5px;
-  bottom: 35.4px;
+  bottom: /*35.4px*/50px;
   background: var(--progress_bar_color);
   border-radius: 100px;
+}
+
+.skill-progress-text-combat {
+  position: relative;
+  left: var(--left_side);
+  bottom: 64px; /*14px*/
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
 }
