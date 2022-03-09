@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Open+Sans&family=PT+Sans&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "PT Sans", sans-serif;
+  text-size-adjust: none;
+}
+
+body {
+  background: url(/Resources/bg.webp);
+}
+
+.skystats-img {
+  border-radius: 10px;
+  width: 4%;
+}
+
+.info-button {
+  appearance: none;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  text-transform: uppercase;
+  box-sizing: unset;
+  height: 16px;
+  font-weight: 600;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 9999px;
+  line-height: normal;
+  transition: background-color .1s;
+  border: none;
+}
+
+.info-button {
+  cursor: pointer;
+  background-color: rgba(216, 198, 198, 0.7);
+}
+
+.blur-box {
+  position: relative;
+  margin-left: 30vw;
+  --padding: 30px;
+  padding: var(--padding);
+  padding-top: calc(48px + env(safe-area-inset-top, 0));
+  padding-bottom: calc(var(--padding) + env(safe-area-inset-bottom));
+  min-height: 100%;
+  box-sizing: border-box;
+  user-select: none;
+  backdrop-filter: blur(16px) brightness(0.5);
+}
+
+.text-stats-for {
+  font-size: 36px;
+  user-select: none;
+  color: white;
+}
+
+.stats_for_player {
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-weight: 600;
+  cursor: context-menu;
+  background-color: rgba(127, 127, 127, .2);
+  border-radius: 100px;
+  padding: 0 15px;
+  height: 54px;
+  line-height: 54px;
+  bottom: 4px;
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+.text-on {
+  font-size: 36px;
+  user-select: none;
+  color: white;
+}
+
+.text-skysim {
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-weight: 600;
+  cursor: context-menu;
+  background-color: rgba(127, 127, 127, .2);
+  border-radius: 100px;
+  padding: 0 15px;
+  height: 54px;
+  line-height: 54px;
+  bottom: 4px;
+  vertical-align: middle;
+  font-size: 30px;
+}

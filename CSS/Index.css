@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Open+Sans&family=PT+Sans&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "PT Sans", sans-serif;
+  text-size-adjust: none;
+}
+
+body {
+  background: url(/Resources/skysim-bg-new.png);
+}
+
+.skystats-img {
+  border-radius: 10px;
+  width: 4%;
+}
+
+.join-discord-button {
+  position: relative;
+  background: hsl(235, 86%, 65%);
+  border-radius: 10px;
+  padding: 1px 2px;
+  border: 6px solid #5865F2;
+  font-weight: 600;
+  padding: 0;
+  font-size: 18px;
+  left: 1525px;
+  color: white;
+  transform: scale(1);
+  transition: transform 0.15s ease-in-out, background-color 0.15s;
+  will-change: transform;
+}
+
+.join-discord-button:hover {
+  cursor: pointer;
+  background: #4a55d3;
+  border-color: #4a55d3;
+  transform: scale(1.01);
+}
+
+.blur-box {
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 40%;
+  bottom: 250px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  border-radius: 6px;
+  padding: 40px 25px;
+  text-align: center;
+}
+
+.skysim-viewer {
+  position: relative;
+  color: white;
+  text-align: center;
+  top: 150px;
+}
+
+.input-username {
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  border-radius: 6px;
+  width: 100%;
+  border: 3px solid;
+  /* border-color: rgb(0, 0, 0);
+  border-color: rgba(0, 0, 0, 0.4); */
+  color: white;
+  text-align: center;
+  z-index: 2;
+  padding: 10px 5px;
+  font-size: xx-large;
+}
+
+.submit-username {
+  position: relative;
+  z-index: 2;
+  color: white;
+  border: 3px solid #0bca51;
+  border-radius: 26px;
+  width: 15%;
+  padding: 10px 6px;
+  color: #fff;
+  background-color: #0bca51;
+  top: 10px;
+  text-shadow: 0px 0px 3px rgb(0 0 0 / 50%);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  transform: scale(1);
+  transition: transform 0.15s ease-in-out, background-color 0.15s;
+  will-change: transform;
+}
+
+.submit-username:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  background-color: #0bea51;
+  border: 3px solid #0bea51;
+}
+
+/* .info-button {
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 9999px;
+  transition: background-color 0.1s;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  top: 7px;
+  text-transform: uppercase;
+  box-sizing: unset;
+  display: inline-block;
+  line-height: normal;
+  padding-left: 10px;
+  padding-right: 10px;
+} */
+
+.info-button {
+  appearance: none;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  text-transform: uppercase;
+  box-sizing: unset;
+  height: 16px;
+  font-weight: 600;
+  top: 7px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 9999px;
+  line-height: normal;
+  transition: background-color .1s;
+  border: none;
+}
