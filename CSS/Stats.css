@@ -374,3 +374,147 @@ body {
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
 }
+
+/*Farming Section*/
+
+.skill-icon-farming {
+  height: 40px;
+  width: 40px;
+  background-color: var(--skill_color);
+  position: relative;
+  bottom: 240px;
+  border-radius: 50%;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 10;
+}
+
+.farming-sword {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  top: 7px;
+  bottom: 240px;
+  left: 7px;
+  transform: scale(0.2);
+  transform-origin: top left;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+.skill-name-farming {
+  position: relative;
+  left: 46px;
+  color: white;
+  bottom: 279px;
+  font-weight: 600;
+  font-size: 18px;
+  height: 22px;
+  line-height: 22px;
+}
+
+.skill-level-farming {
+  color: rgba(255, 255, 255, 0.8);
+  user-select: text !important;
+}
+
+.skill-progress-bar-grey-farming {
+  width: var(--width_bar);
+  position: relative;
+  height: 14px;
+  left: var(--left_side_bar);
+  bottom: /* 63.5px */276px;
+  background: rgba(127,127,127,0.6);
+  border-radius: 100px;
+}
+
+.skill-progress-bar-farming {
+  width: var(--progress);
+  position: relative;
+  height: 14px;
+  left: 22.5px;
+  bottom: /*35.4px*/290px;
+  background: var(--progress_bar_color);
+  border-radius: 100px;
+}
+
+.skill-progress-text-farming {
+  position: relative;
+  left: var(--left_side);
+  bottom: 304px; /*14px*/
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
+}
+
+/*Foraging Section*/
+
+.skill-icon-foraging {
+  height: 40px;
+  width: 40px;
+  background-color: var(--skill_color);
+  position: relative;
+  bottom: 320px;
+  border-radius: 50%;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 10;
+}
+
+.foraging-sword {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  top: 7px;
+  bottom: 320px;
+  left: 7px;
+  transform: scale(0.2);
+  transform-origin: top left;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+.skill-name-foraging {
+  position: relative;
+  left: 46px;
+  color: white;
+  bottom: 359px;
+  font-weight: 600;
+  font-size: 18px;
+  height: 22px;
+  line-height: 22px;
+}
+
+.skill-level-foraging {
+  color: rgba(255, 255, 255, 0.8);
+  user-select: text !important;
+}
+
+.skill-progress-bar-grey-foraging {
+  width: var(--width_bar);
+  position: relative;
+  height: 14px;
+  left: var(--left_side_bar);
+  bottom: /* 63.5px */356px;
+  background: rgba(127,127,127,0.6);
+  border-radius: 100px;
+}
+
+.skill-progress-bar-foraging {
+  width: var(--progress);
+  position: relative;
+  height: 14px;
+  left: 22.5px;
+  bottom: /*35.4px*/370px;
+  background: var(--progress_bar_color);
+  border-radius: 100px;
+}
+
+.skill-progress-text-foraging {
+  position: relative;
+  left: var(--left_side);
+  bottom: 384px; /*14px*/
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
+}

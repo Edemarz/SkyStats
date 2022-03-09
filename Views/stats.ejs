@@ -66,7 +66,7 @@
                     style="--progress_bar_color: <%= skills.combat.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.combat.skill_progression_percentage %>%;">
                 </div>
                 <div class="skill-progress-text-combat"
-                    style="--left_side: <%= (skills.combat.skill_progression_percentage + 0.3) / 2 %>%;">
+                    style="--left_side: <%= ((skills.combat.skill_progression_percentage + skills.combat.greyPercentage) + 0.3) / 2 %>%;">
                     <%= skills.combat.level>= 60 ? `${skills.combat.abbrev}` :
                         `${skills.combat.abbrev}/${skills.combat.nextLevelXP}` %>
                 </div>
@@ -89,7 +89,7 @@
                     style="--progress_bar_color: <%= skills.mining.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.mining.skill_progression_percentage %>%;">
                 </div>
                 <div class="skill-progress-text-mining"
-                    style="--left_side: <%= (skills.mining.skill_progression_percentage + 0.3) / 2 %>%;">
+                    style="--left_side: <%= ((skills.mining.skill_progression_percentage + skills.mining.greyPercentage) + 0.3) / 2 %>%;">
                     <%= skills.mining.level>= 60 ? `${skills.mining.abbrev}` :
                         `${skills.mining.abbrev}/${skills.mining.nextLevelXP}` %>
                 </div>
@@ -98,7 +98,7 @@
             <div class="enchanting-skill">
                 <div class="skill-icon-enchanting"
                     style="--skill_color: <%= skills.enchanting.hypermaxed ? '#dd980e' : '#0bca51' %>;">
-                    <img src="/Resources/Stone_Pickaxe.png" alt="" class="enchanting-sword">
+                    <img src="/Resources/Enchanting_Table.png" alt="" class="enchanting-sword">
                 </div>
                 <div class="skill-name-enchanting">
                     Enchanting <span class="skill-enchanting">
@@ -112,9 +112,60 @@
                     style="--progress_bar_color: <%= skills.enchanting.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.enchanting.skill_progression_percentage %>%;">
                 </div>
                 <div class="skill-progress-text-enchanting"
-                    style="--left_side: <%= (skills.enchanting.skill_progression_percentage + 0.3) / 2 %>%;">
+                    style="--left_side: <%= ((skills.enchanting.skill_progression_percentage + skills.enchanting.greyPercentage) + 0.3) / 2 %>%;">
                     <%= skills.enchanting.level>= 60 ? `${skills.enchanting.abbrev}` :
                         `${skills.enchanting.abbrev}/${skills.enchanting.nextLevelXP}` %>
+                </div>
+            </div>
+            <!--Farming Skill-->
+            <div class="farming-skill">
+                <div class="skill-icon-farming"
+                    style="--skill_color: <%= skills.farming.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Stone_Hoe.png" alt="" class="farming-sword">
+                </div>
+                <div class="skill-name-farming">
+                    Farming <span class="skill-farming">
+                        <%= skills.farming.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-farming"
+                    style="--left_side_bar: <%= skills.farming.skill_progression_percentage + 1.1 %>%; --width_bar: <%= skills.farming.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-farming"
+                    style="--progress_bar_color: <%= skills.farming.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.farming.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-farming"
+                    style="--left_side: <%= ((skills.farming.skill_progression_percentage + skills.farming.greyPercentage) + 0.3) / 2 %>%;">
+                    <%= skills.farming.level>= 60 ? `${skills.farming.abbrev}` :
+                        `${skills.farming.abbrev}/${skills.farming.nextLevelXP}` %>
+                </div>
+            </div>
+            <!--Foraging Section-->
+            <div class="foraging-skill">
+                <div class="skill-icon-foraging"
+                    style="--skill_color: <%= skills.foraging.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Stone_Hoe.png" alt="" class="foraging-sword">
+                </div>
+                <div class="skill-name-foraging">
+                    Foraging <span class="skill-foraging">
+                        <%= skills.foraging.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-foraging"
+                    style="--left_side_bar: <%= skills.foraging.skill_progression_percentage + 1.1 %>%; --width_bar: <%= skills.foraging.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-foraging"
+                    style="--progress_bar_color: <%= skills.foraging.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= skills.foraging.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-foraging"
+                    style="--left_side: <%= ((skills.foraging.skill_progression_percentage + skills.foraging.greyPercentage) + 0.3) / 2 %>%;">
+                    <%= skills.foraging.level>= 60 ? `${skills.foraging.abbrev}` :
+                        `${skills.foraging.abbrev}/${skills.foraging.nextLevelXP}` %>
+                </div>
+            </div>
+            <div class="player-stats">
+                <div class="health-stat">
+                    <!--I realized the api didn't provide it so UPCOMING STAT-->
                 </div>
             </div>
         </div>

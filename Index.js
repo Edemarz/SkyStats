@@ -61,7 +61,7 @@ App.post("/", async (req, res) => {
             url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_ITEMS&param=${UUID.data?.data?.player?.id}`
         }).catch((err) => null);
 
-        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`);
+        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`), console.log(SkySimData.data.error, PlayerInventory.data.errors);
 
         //Combat Skill Section
 
@@ -243,9 +243,115 @@ App.post("/", async (req, res) => {
         //Setting hypermaxed settings;
         if (enchantingData.level >= 50) enchantingData.hypermaxed = true;
 
+        //Farming Section
+
+        const FarmingXPGoals = [0, 50, 175, 375, 675, 1175, 1925, 2925, 4425, 6425, 9925, 14925, 22425,
+            32425, 47425, 67425, 97425, 147425, 222425, 322425, 522425, 822425, 1222425, 1722425, 2322425,
+            3022425, 3822425, 4722425, 5722425, 6822425, 8022425, 9322425, 10722425, 12222425, 13822425,
+            15522425, 17322425, 19222425, 21222425, 23322425, 25522425, 27822425, 30222425, 32722425,
+            35322425, 38072425, 40972425, 44072425, 47472425, 51172425, 55172425, 59472425, 64072425,
+            68972425, 74172425, 79672425, 85472425, 91572425, 97972425, 104672425, 111672425];
+        let farmingData = {
+            xp: null,
+            level: null,
+            abbrev: null,
+            skill_progression_percentage: null,
+            hypermaxed: false,
+            greyPercentage: null,
+            nextLevelXP: null
+        };
+
+        farmingData.xp = SkySimData.data.farmingXP;
+
+        FarmingXPGoals.forEach((farmingXP) => {
+            if ((SkySimData.data.farmingXP - farmingXP) >= 1) farmingData.level = FarmingXPGoals.findIndex((xp) => xp === farmingXP);
+        });
+
+        //Changing XP Format;
+        farmingData.abbrev = abbreviateNumber(farmingData.xp);
+
+        //Setting the next level xp;
+        const farmingNextXP = farmingData.level === 60 ? 'maxed' : farmingData.level === 59 ? FarmingXPGoals[farmingData.level + 1] : FarmingXPGoals[farmingData.level + 1];
+
+        farmingData.nextLevelXP = farmingNextXP == "maxed" ? 'maxed' : abbreviateNumber(farmingNextXP);
+
+        //Calculating progress bar percentage.
+        let raw_data_3 = farmingNextXP == "maxed" ? 100 : SkySimData.data.farmingXP / FarmingXPGoals[farmingData.level + 1] * 100;
+
+        if (raw_data_3 >= 100) raw_data_3 = 100;
+        else if (raw_data_3 >= 1) {
+            raw_data_3 = raw_data_3;
+        };
+
+        //Getting 30% of the bar percentage above;
+
+        const div1_3 = 30 / 100;
+
+        const percent_of_percentage_3 = div1_3 * raw_data_3;
+
+        farmingData.skill_progression_percentage = percent_of_percentage_3;
+
+        farmingData.greyPercentage = 30 - percent_of_percentage_3;
+
+        //Setting hypermaxed settings;
+        if (farmingData.level >= 50) farmingData.hypermaxed = true;
+
+        //Foraging Section;
+
+        const ForagingXPGoals = [0, 50, 175, 375, 675, 1175, 1925, 2925, 4425, 6425, 9925, 14925, 22425,
+            32425, 47425, 67425, 97425, 147425, 222425, 322425, 522425, 822425, 1222425, 1722425, 2322425,
+            3022425, 3822425, 4722425, 5722425, 6822425, 8022425, 9322425, 10722425, 12222425, 13822425,
+            15522425, 17322425, 19222425, 21222425, 23322425, 25522425, 27822425, 30222425, 32722425,
+            35322425, 38072425, 40972425, 44072425, 47472425, 51172425, 55172425, 59472425, 64072425,
+            68972425, 74172425, 79672425, 85472425, 91572425, 97972425, 104672425, 111672425];
+        let foragingData = {
+            xp: null,
+            level: null,
+            abbrev: null,
+            skill_progression_percentage: null,
+            hypermaxed: false,
+            greyPercentage: null,
+            nextLevelXP: null
+        };
+
+        foragingData.xp = SkySimData.data.foragingXP;
+
+        ForagingXPGoals.forEach((foragingXP) => {
+            if ((SkySimData.data.foragingXP - foragingXP) >= 1) foragingData.level = ForagingXPGoals.findIndex((xp) => xp === foragingXP);
+        });
+
+        //Changing XP Format;
+        foragingData.abbrev = abbreviateNumber(foragingData.xp);
+
+        //Setting the next level xp;
+        const foragingNextXP = foragingData.level === 60 ? 'maxed' : foragingData.level === 59 ? ForagingXPGoals[foragingData.level + 1] : ForagingXPGoals[foragingData.level + 1];
+
+        foragingData.nextLevelXP = foragingNextXP == "maxed" ? 'maxed' : abbreviateNumber(foragingNextXP);
+
+        //Calculating progress bar percentage.
+        let raw_data_4 = foragingNextXP == "maxed" ? 100 : SkySimData.data.foragingXP / ForagingXPGoals[foragingData.level + 1] * 100;
+
+        if (raw_data_4 >= 100) raw_data_4 = 100;
+        else if (raw_data_4 >= 1) {
+            raw_data_4 = raw_data_4;
+        };
+
+        //Getting 30% of the bar percentage above;
+
+        const div1_4 = 30 / 100;
+
+        const percent_of_percentage_4 = div1_4 * raw_data_4;
+
+        foragingData.skill_progression_percentage = percent_of_percentage_4;
+
+        foragingData.greyPercentage = 30 - percent_of_percentage_4;
+
+        //Setting hypermaxed settings;
+        if (foragingData.level >= 50) foragingData.hypermaxed = true;
+
         //Rendering page.
 
-        console.log(enchantingData, SkySimData.data, PlayerInventory.data);
+        console.log(SkySimData.data);
 
         res.render('stats', {
             data: SkySimData.data,
@@ -254,7 +360,9 @@ App.post("/", async (req, res) => {
             skills: {
                 combat: combData,
                 mining: miningData,
-                enchanting: enchantingData
+                enchanting: enchantingData,
+                farming: farmingData,
+                foraging: foragingData
             },
             constants: {
                 colorCodes: require("./Constants/ColorCodes")
