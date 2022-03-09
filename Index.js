@@ -349,6 +349,22 @@ App.post("/", async (req, res) => {
         //Setting hypermaxed settings;
         if (foragingData.level >= 50) foragingData.hypermaxed = true;
 
+        //Setting User Data
+        let userData = {
+            coins: {
+                raw: SkySimData.data.coins,
+                abbrev: abbreviateNumber(SkySimData.data.coins),
+                bank: {
+                    raw: SkySimData.data.bankCoins,
+                    abbrev: abbreviateNumber(SkySimData.data.bankCoins)
+                }
+            },
+            bits: {
+                raw: SkySimData.data.bits,
+                abbrev: abbreviateNumber(SkySimData.data.bits)
+            }
+        };
+
         //Rendering page.
 
         console.log(SkySimData.data);
@@ -366,7 +382,8 @@ App.post("/", async (req, res) => {
             },
             constants: {
                 colorCodes: require("./Constants/ColorCodes")
-            }
+            },
+            userData: userData
         });
     };
 });

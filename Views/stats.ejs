@@ -168,6 +168,21 @@
                     <!--I realized the api didn't provide it so UPCOMING STAT-->
                 </div>
             </div>
+            <!--Purse, Bank, Bits Section etc-->
+            <div class="player-statistics-misc">
+                <span class="text-purse">Purse:</span>
+                <span class="purse-value">
+                    <%= userData.coins.abbrev %> Coins
+                </span>
+                <span class="text-bank">Bank:</span>
+                <span class="bank-value">
+                    <%= userData.coins.bank.abbrev %> Coins
+                </span>
+                <span class="text-bits">Bits:</span>
+                <span class="bits-value">
+                    <%= userData.bits.abbrev %> Bits
+                </span>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

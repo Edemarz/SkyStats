@@ -518,3 +518,74 @@ body {
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
 }
+/*User Misc Statistics Section*/
+
+/*User's Purse*/
+
+.text-purse {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: capitalize;
+  line-height: 1.5;
+  user-select: text !important;
+  position: relative;
+  bottom: 400px;
+}
+
+.purse-value {
+  position: relative;
+  font-weight: 700;
+  margin-left: 2px;
+  line-height: 1.5;
+  user-select: text !important;
+  color: white;
+  bottom: 400px;
+}
+
+/*User's Bank*/
+
+.text-bank {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: capitalize;
+  line-height: 1.5;
+  user-select: text !important;
+  position: relative;
+  bottom: 400px;
+  left: 5px;
+}
+
+.bank-value {
+  position: relative;
+  font-weight: 700;
+  margin-left: 2px;
+  line-height: 1.5;
+  user-select: text !important;
+  color: white;
+  bottom: 400px;
+  left: 5px;
+}
+
+/*User's Bits*/
+
+.text-bits {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: capitalize;
+  line-height: 1.5;
+  user-select: text !important;
+  position: relative;
+  bottom: 400px;
+  left: 10px;
+}
+
+.bits-value {
+  position: relative;
+  font-weight: 700;
+  margin-left: 2px;
+  line-height: 1.5;
+  user-select: text !important;
+  color: white;
+  bottom: 400px;
+  left: 10px;
+}
