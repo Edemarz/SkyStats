@@ -614,8 +614,9 @@ body {
   font-weight: 600;
   text-transform: capitalize;
   line-height: 1.5;
+  left: 22px;
   user-select: text !important;
-  bottom: 190px;
+  bottom: 213px;
 }
 
 .health-value {
@@ -624,15 +625,19 @@ body {
   color: white;
   font-weight: 700;
   margin-left: 2px;
+  left: 22px;
   line-height: 1.5;
   user-select: 1.5;
   user-select: text !important;
-  bottom: 190px;
+  bottom: 213px;
 }
 
 .heart-icon {
   position: relative;
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   bottom: 190px;
+  mask-image: url(../Resources/heart.svg);
+  -webkit-mask-image: url(../Resources/heart.svg);
+  background-color: #fb5858;
 }
