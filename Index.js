@@ -374,8 +374,10 @@ App.post("/", async (req, res) => {
 
         //Debug Section
 
-        //Inventory Modified Items;
+        //Modifying Equipped Armor;
+        const reforges = require("./Constants/Reforges");
         let items = [];
+        let itemsWithoutReforge = [];
 
         const colorCodes = require("./Constants/ColorCodes").colorCodes;
 
@@ -400,6 +402,10 @@ App.post("/", async (req, res) => {
             });
         });
 
+        items.forEach((item) => {
+
+        })
+
         items = [items[3], items[2], items[1], items[0]];
 
         //Rendering page.
@@ -422,7 +428,10 @@ App.post("/", async (req, res) => {
             },
             userData: userData,
             playerInventory: PlayerInventory.data,
-            playerArmor: items
+            playerArmor: {
+                withReforge: items,
+                noReforge: null
+            }
         });
 
         const fetchingPlayer = await PlayerDB.findOne({
