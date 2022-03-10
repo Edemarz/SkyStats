@@ -395,8 +395,6 @@ App.post("/", async (req, res) => {
                         const replacedArmor = armor.name.replace(regex, '');
 
                         items.push(`${replacedArmor}-${colorAttribute}`);
-
-                        console.log(replacedArmor, regex)
                     }
                 };
             });
@@ -412,8 +410,24 @@ App.post("/", async (req, res) => {
 
                     const replacedText = item.replace(regexToSearch, '');
 
-                    itemsWithoutReforge.push(replacedText);
-                }
+                    let actualItem = replacedText.split('-')[0];
+
+                    const regex = /'/gim;
+
+                    if (actualItem.match(regex)) actualItem = actualItem.replace(regex, '');
+
+
+                    const substringing = actualItem.substring(0, 1);
+
+                    if (substringing === ' ') actualItem = actualItem.slice(1);
+
+                    actualItem = actualItem.split(' ').join('_')?.toLowerCase();
+
+                    itemsWithoutReforge.push({
+                        itemName: replacedText,
+                        itemAttribute: actualItem
+                    });
+                };
             });
         });
 
@@ -423,13 +437,9 @@ App.post("/", async (req, res) => {
 
         itemsWithoutReforge = [itemsWithoutReforge[3], itemsWithoutReforge[2], itemsWithoutReforge[1], itemsWithoutReforge[0]];
 
-        //Finding item attribute
-
-        const itemAttributes = require("./Constants/ArmorTextures");
-
         //Rendering page.
 
-        console.log(items)
+        console.log(itemsWithoutReforge)
 
         res.render('stats', {
             data: SkySimData.data,

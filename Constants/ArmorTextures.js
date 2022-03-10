@@ -7,6 +7,6 @@ const attributes = {
     storms_chestplate: null,
     storms_leggings: null,
     storms_boots: null,
-    wardens_helmet: null
+    warden_helmet: null
 };
 module.exports = attributes;
