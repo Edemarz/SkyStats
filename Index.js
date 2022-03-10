@@ -4,6 +4,8 @@ const Express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const axios = require("axios");
+//Databases;
+const PlayerDB = require("./MongoDB/PlayerDB");
 //Instantiating an express client;
 
 const App = Express();
@@ -326,6 +328,10 @@ App.post("/", async (req, res) => {
 
         //Setting User Data
         let userData = {
+            profile: {
+                username: req.body.SkySim_Username,
+                uuid: UUID.data?.data?.player
+            },
             coins: {
                 raw: SkySimData.data.coins,
                 abbrev: abbreviateNumber(SkySimData.data.coins),
@@ -352,6 +358,13 @@ App.post("/", async (req, res) => {
                 magicFind: SkySimData.data.magicFind,
                 ferocity: SkySimData.data.ferocity,
                 abilityDamage: SkySimData.data.abilityDamage
+            },
+            skills: {
+                combat: combData,
+                mining: miningData,
+                enchanting: enchantingData,
+                farming: farmingData,
+                foraging: foragingData
             }
         };
 
@@ -381,6 +394,20 @@ App.post("/", async (req, res) => {
             },
             userData: userData
         });
+
+        const fetchingPlayer = await PlayerDB.findOne({
+            UUID: UUID.data?.data?.player?.id
+        }).catch((err) => null);
+
+        if (fetchingPlayer) fetchingPlayer.updateOne({
+            UUID: fetchingPlayer.UUID,
+            PlayerData: userData
+        });
+
+        if (!fetchingPlayer) new PlayerDB({
+            UUID: UUID.data?.data?.player?.id,
+            PlayerData: userData
+        }).save();
     };
 });
 //Listening to a specific port;
