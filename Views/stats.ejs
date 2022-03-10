@@ -203,7 +203,20 @@
         <div class="armors" id="Armor">
             <div class="text-armor">Armor</div>
             <div class="armor-inventory" style="color: white;">
-                <%= playerArmor.join(', ') %>
+                <% if (playerArmor.equippedItems===false) { %>
+                    <span class="text-not-equip-armor">
+                        <%= username %> doesn't have any armor equipped.
+                    </span>
+                    <% }; %>
+
+                        <% if (playerArmor.equippedItems===true) { %>
+                            <% let index=1; %>
+                                <% playerArmor.withReforge.map((item)=> { %>
+                                    <div tabindex="0" class="piece-<%= index %>"
+                                        style="--background-color: <%= item.split('-')[1] %>;"></div>
+                                    <% index++; %>
+                                        <% }); %>
+                                            <% }; %>
             </div>
         </div>
         <!--Slayer Section-->

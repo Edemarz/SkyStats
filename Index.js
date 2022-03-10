@@ -402,11 +402,30 @@ App.post("/", async (req, res) => {
             });
         });
 
-        items.forEach((item) => {
+        //Reforge remover
 
-        })
+        items.forEach((item) => {
+            reforges.forEach((reforge) => {
+                const regexToSearch = new RegExp(reforge, 'gim');
+
+                if (item?.toLowerCase().match(reforge)) {
+
+                    const replacedText = item.replace(regexToSearch, '');
+
+                    itemsWithoutReforge.push(replacedText);
+                }
+            });
+        });
+
+        //Organizing items
 
         items = [items[3], items[2], items[1], items[0]];
+
+        itemsWithoutReforge = [itemsWithoutReforge[3], itemsWithoutReforge[2], itemsWithoutReforge[1], itemsWithoutReforge[0]];
+
+        //Finding item attribute
+
+        const itemAttributes = require("./Constants/ArmorTextures");
 
         //Rendering page.
 
@@ -429,8 +448,9 @@ App.post("/", async (req, res) => {
             userData: userData,
             playerInventory: PlayerInventory.data,
             playerArmor: {
+                equippedItems: items.filter((item) => item !== null).length > 0 ? true : false,
                 withReforge: items,
-                noReforge: null
+                noReforge: itemsWithoutReforge
             }
         });
 

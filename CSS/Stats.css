@@ -747,3 +747,87 @@ body {
   text-underline-position: under;
   color: #fff;
 }
+
+.text-not-equip-armor {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  bottom: 90px;
+}
+
+.piece-1 {
+  display: inline-block;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  vertical-align: top;
+  margin-right: 8px;
+  margin-top: 12px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  user-select: none;
+  cursor: context-menu;
+  transition: box-shadow .2s ease-in-out;
+  box-shadow: rgba(var(--text-rgb), 0) 0 0 0 0px inset;
+  content-visibility: auto;
+  background-color: var(--background-color);
+  bottom: 100px;
+}
+
+.piece-2 {
+  display: inline-block;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  vertical-align: top;
+  margin-right: 8px;
+  margin-top: 12px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  user-select: none;
+  cursor: context-menu;
+  transition: box-shadow .2s ease-in-out;
+  box-shadow: rgba(var(--text-rgb), 0) 0 0 0 0px inset;
+  content-visibility: auto;
+  background-color: var(--background-color);
+  bottom: 100px;
+}
+
+.piece-3 {
+  display: inline-block;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  vertical-align: top;
+  margin-right: 8px;
+  margin-top: 12px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  user-select: none;
+  cursor: context-menu;
+  transition: box-shadow .2s ease-in-out;
+  box-shadow: rgba(var(--text-rgb), 0) 0 0 0 0px inset;
+  content-visibility: auto;
+  background-color: var(--background-color);
+  bottom: 100px;
+}
+
+.piece-4 {
+  display: inline-block;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  vertical-align: top;
+  margin-right: 8px;
+  margin-top: 12px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  user-select: none;
+  cursor: context-menu;
+  transition: box-shadow .2s ease-in-out;
+  box-shadow: rgba(var(--text-rgb), 0) 0 0 0 0px inset;
+  content-visibility: auto;
+  background-color: var(--background-color);
+  bottom: 100px;
+}
