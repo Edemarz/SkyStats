@@ -699,3 +699,51 @@ body {
 .nav-item:hover {
   color: rgba(255, 255, 255, 0.8);
 }
+
+/*Armor Section*/
+.armors {
+  display: block;
+  position: relative;
+  top: calc(-120px - env(safe-area-inset-top, 0));
+}
+
+.text-armor {
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: left;
+  font-size: 24px;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding: 5px;
+  margin-bottom: 15px;
+  text-decoration: underline 4px #0bca51;
+  text-underline-position: under;
+  color: #fff;
+  bottom: 100px;
+}
+
+/*Slayer Section*/
+
+.slayers {
+  display: block;
+  position: relative;
+  top: calc(-120px - env(safe-area-inset-top, 0));
+}
+
+.text-slayer {
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: left;
+  font-size: 24px;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding: 5px;
+  margin-bottom: 15px;
+  text-decoration: underline 4px #0bca51;
+  text-underline-position: under;
+  color: #fff;
+}
