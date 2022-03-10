@@ -228,3 +228,44 @@ body {
   font-weight: 600;
   font-size: 18px;
 }
+
+/*Renegade450's Credits*/
+.rene-credit {
+  background: none;
+  backdrop-filter: blur(16px) brightness(0.35);
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  left: 350px;
+  top: 500px;
+}
+
+.rene-avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  image-rendering: pixelated; 
+}
+
+.rene-credits {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.rene-name {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  position: absolute;
+  left: 100px;
+  top: 32px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}

@@ -45,11 +45,11 @@ body {
 .blur-box {
   position: relative;
   margin-left: 30vw;
+  height: 550px;
   --padding: 30px;
   padding: var(--padding);
   padding-top: calc(48px + env(safe-area-inset-top, 0));
   padding-bottom: calc(var(--padding) + env(safe-area-inset-bottom));
-  min-height: 100%;
   box-sizing: border-box;
   user-select: none;
   backdrop-filter: blur(16px) brightness(0.5);
@@ -589,3 +589,5 @@ body {
   bottom: 400px;
   left: 10px;
 }
+
+/*Navbar Container Selector*/
