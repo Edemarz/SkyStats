@@ -21,6 +21,9 @@ App.use(Express.urlencoded({
 }));
 App.use(Express.static(path.join(__dirname, "./CSS")));
 App.use(Express.static(path.join(__dirname, '/'), { dotfiles: 'allow' }));
+//Instantiating Handlers;
+["Database_Handler"].forEach((handler) => require(`./Handlers/${handler}`)());
+
 //Instantiating Express Getter
 App.get("/", (req, res) => {
     res.status(200).render('index')
