@@ -374,9 +374,37 @@ App.post("/", async (req, res) => {
 
         //Debug Section
 
-        console.log(SkySimData.data);
+        //Inventory Modified Items;
+        let items = [];
+
+        const colorCodes = require("./Constants/ColorCodes").colorCodes;
+
+        await PlayerInventory.data.armor.forEach((armor) => {
+            colorCodes.forEach((colorCode) => {
+                const regex = new RegExp(colorCode, 'gim');
+
+                if (armor === null) items.push(null);
+                if (armor !== null) {
+                    if (armor.name.match(regex)) {
+                        const index = colorCodes.findIndex((code) => code === colorCode);
+
+                        const colorAttribute = require("./Constants/ColorCodes").colorAttribute[index];
+
+                        const replacedArmor = armor.name.replace(regex, '');
+
+                        items.push(`${replacedArmor}-${colorAttribute}`);
+
+                        console.log(replacedArmor, regex)
+                    }
+                };
+            });
+        });
+
+        items = [items[3], items[2], items[1], items[0]];
 
         //Rendering page.
+
+        console.log(items)
 
         res.render('stats', {
             data: SkySimData.data,
@@ -390,9 +418,11 @@ App.post("/", async (req, res) => {
                 foraging: foragingData
             },
             constants: {
-                colorCodes: require("./Constants/ColorCodes")
+                colorCodes: colorCodes
             },
-            userData: userData
+            userData: userData,
+            playerInventory: PlayerInventory.data,
+            playerArmor: items
         });
 
         const fetchingPlayer = await PlayerDB.findOne({
