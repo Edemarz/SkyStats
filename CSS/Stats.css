@@ -45,7 +45,7 @@ body {
 .blur-box {
   position: relative;
   margin-left: 30vw;
-  height: 550px;
+  height: 600px;
   --padding: 30px;
   padding: var(--padding);
   padding-top: calc(48px + env(safe-area-inset-top, 0));
@@ -227,6 +227,7 @@ body {
   bottom: 64px; /*14px*/
   color: white;
   font-weight: 600;
+  width: 5%;
   font-size: 12px;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
@@ -299,6 +300,7 @@ body {
   color: white;
   font-weight: 600;
   font-size: 12px;
+  width: 5%;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
 }
@@ -370,6 +372,7 @@ body {
   bottom: 224px; /*14px*/
   color: white;
   font-weight: 600;
+  width: 5%;
   font-size: 12px;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
@@ -442,6 +445,7 @@ body {
   bottom: 304px; /*14px*/
   color: white;
   font-weight: 600;
+  width: 5%;
   font-size: 12px;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
@@ -513,6 +517,7 @@ body {
   left: var(--left_side);
   bottom: 384px; /*14px*/
   color: white;
+  width: 5%;
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
@@ -529,7 +534,7 @@ body {
   line-height: 1.5;
   user-select: text !important;
   position: relative;
-  bottom: 400px;
+  bottom: 330px;
 }
 
 .purse-value {
@@ -539,7 +544,7 @@ body {
   line-height: 1.5;
   user-select: text !important;
   color: white;
-  bottom: 400px;
+  bottom: 330px;
 }
 
 /*User's Bank*/
@@ -551,7 +556,7 @@ body {
   line-height: 1.5;
   user-select: text !important;
   position: relative;
-  bottom: 400px;
+  bottom: 330px;
   left: 5px;
 }
 
@@ -562,7 +567,7 @@ body {
   line-height: 1.5;
   user-select: text !important;
   color: white;
-  bottom: 400px;
+  bottom: 330px;
   left: 5px;
 }
 
@@ -575,7 +580,7 @@ body {
   line-height: 1.5;
   user-select: text !important;
   position: relative;
-  bottom: 400px;
+  bottom: 330px;
   left: 10px;
 }
 
@@ -586,8 +591,48 @@ body {
   line-height: 1.5;
   user-select: text !important;
   color: white;
-  bottom: 400px;
+  bottom: 330px;
   left: 10px;
 }
 
-/*Navbar Container Selector*/
+/*Health Stats*/
+
+.health-stat {
+  position: relative;
+  margin-top: 0;
+  color: #fb5858;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 190px;
+}
+
+.health-text {
+  position: relative;
+  font-size: 16px;
+  color: #fb5858;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  user-select: text !important;
+  bottom: 190px;
+}
+
+.health-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 190px;
+}
+
+.heart-icon {
+  position: relative;
+  height: 18px;
+  width: 18px;
+  bottom: 190px;
+}

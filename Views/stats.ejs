@@ -144,7 +144,7 @@
             <div class="foraging-skill">
                 <div class="skill-icon-foraging"
                     style="--skill_color: <%= skills.foraging.hypermaxed ? '#dd980e' : '#0bca51' %>;">
-                    <img src="/Resources/Stone_Hoe.png" alt="" class="foraging-sword">
+                    <img src="/Resources/Stone_Axe.webp" alt="" class="foraging-sword">
                 </div>
                 <div class="skill-name-foraging">
                     Foraging <span class="skill-foraging">
@@ -165,7 +165,11 @@
             </div>
             <div class="player-stats">
                 <div class="health-stat">
-                    <!--I realized the api didn't provide it so UPCOMING STAT-->
+                    <img src="/Resources/Heart_Icon.webp" alt="" class="heart-icon">
+                    <span class="health-text">Health</span>
+                    <span class="health-value">
+                        <%= userData.stats.health?.toLocaleString() %>
+                    </span>
                 </div>
             </div>
             <!--Purse, Bank, Bits Section etc-->

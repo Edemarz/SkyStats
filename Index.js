@@ -127,15 +127,15 @@ App.post("/", async (req, res) => {
             raw_data = raw_data;
         };
 
-        //Getting 30% of the bar percentage above;
+        //Getting 45% of the bar percentage above;
 
-        const div1 = 30 / 100;
+        const div1 = 45 / 100;
 
         const percent_of_percentage = div1 * raw_data;
 
         combData.skill_progression_percentage = percent_of_percentage;
 
-        combData.greyPercentage = 30 - percent_of_percentage;
+        combData.greyPercentage = 45 - percent_of_percentage;
 
         //Setting hypermaxed settings;
         if (combData.level >= 50) combData.hypermaxed = true;
@@ -173,15 +173,15 @@ App.post("/", async (req, res) => {
             raw_data_1 = raw_data_1;
         };
 
-        //Getting 30% of the bar percentage above;
+        //Getting 45% of the bar percentage above;
 
-        const div1_1 = 30 / 100;
+        const div1_1 = 45 / 100;
 
         const percent_of_percentage_1 = div1_1 * raw_data_1;
 
         miningData.skill_progression_percentage = percent_of_percentage_1;
 
-        miningData.greyPercentage = 30 - percent_of_percentage_1;
+        miningData.greyPercentage = 45 - percent_of_percentage_1;
 
         //Setting hypermaxed settings;
         if (miningData.level >= 50) miningData.hypermaxed = true;
@@ -219,15 +219,15 @@ App.post("/", async (req, res) => {
             raw_data_2 = raw_data_2;
         };
 
-        //Getting 30% of the bar percentage above;
+        //Getting 45% of the bar percentage above;
 
-        const div1_2 = 30 / 100;
+        const div1_2 = 45 / 100;
 
         const percent_of_percentage_2 = div1_2 * raw_data_2;
 
         enchantingData.skill_progression_percentage = percent_of_percentage_2;
 
-        enchantingData.greyPercentage = 30 - percent_of_percentage_2;
+        enchantingData.greyPercentage = 45 - percent_of_percentage_2;
 
         //Setting hypermaxed settings;
         if (enchantingData.level >= 50) enchantingData.hypermaxed = true;
@@ -265,15 +265,15 @@ App.post("/", async (req, res) => {
             raw_data_3 = raw_data_3;
         };
 
-        //Getting 30% of the bar percentage above;
+        //Getting 45% of the bar percentage above;
 
-        const div1_3 = 30 / 100;
+        const div1_3 = 45 / 100;
 
         const percent_of_percentage_3 = div1_3 * raw_data_3;
 
         farmingData.skill_progression_percentage = percent_of_percentage_3;
 
-        farmingData.greyPercentage = 30 - percent_of_percentage_3;
+        farmingData.greyPercentage = 45 - percent_of_percentage_3;
 
         //Setting hypermaxed settings;
         if (farmingData.level >= 50) farmingData.hypermaxed = true;
@@ -311,15 +311,15 @@ App.post("/", async (req, res) => {
             raw_data_4 = raw_data_4;
         };
 
-        //Getting 30% of the bar percentage above;
+        //Getting 45% of the bar percentage above;
 
-        const div1_4 = 30 / 100;
+        const div1_4 = 45 / 100;
 
         const percent_of_percentage_4 = div1_4 * raw_data_4;
 
         foragingData.skill_progression_percentage = percent_of_percentage_4;
 
-        foragingData.greyPercentage = 30 - percent_of_percentage_4;
+        foragingData.greyPercentage = 45 - percent_of_percentage_4;
 
         //Setting hypermaxed settings;
         if (foragingData.level >= 50) foragingData.hypermaxed = true;
@@ -337,12 +337,31 @@ App.post("/", async (req, res) => {
             bits: {
                 raw: SkySimData.data.bits,
                 abbrev: abbreviateNumber(SkySimData.data.bits)
+            },
+            stats: {
+                health: SkySimData.data.health,
+                defense: SkySimData.data.defense,
+                strength: SkySimData.data.strength,
+                crit: {
+                    chance: SkySimData.data.critChance,
+                    damage: SkySimData.data.critDamage
+                },
+                speed: SkySimData.data.speed,
+                mana: SkySimData.data.intelligence,
+                attackSpeed: SkySimData.data.attackSpeed,
+                magicFind: SkySimData.data.magicFind,
+                ferocity: SkySimData.data.ferocity,
+                abilityDamage: SkySimData.data.abilityDamage
             }
         };
 
         //Weight System
 
         //UPCOMING
+
+        //Debug Section
+
+        console.log(SkySimData.data);
 
         //Rendering page.
 
