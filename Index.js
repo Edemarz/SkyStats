@@ -3,10 +3,7 @@ require("dotenv").config();
 const Express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const ejs = require("ejs");
-const MojangAPI = require("mojang-minecraft-api");
 const axios = require("axios");
-const ProgressBar = require("progress");
 //Instantiating an express client;
 
 const App = Express();

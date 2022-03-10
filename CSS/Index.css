@@ -146,9 +146,11 @@ body {
   border: none;
 }
 
+/*KP56's Credit*/
+
 .kp56-credit {
   background: none;
-  backdrop-filter: blur(16px) brightness(0.5);
+  backdrop-filter: blur(16px) brightness(0.35);
   border-radius: 10px;
   position: relative;
   display: inline-block;
@@ -170,11 +172,53 @@ body {
   opacity: .85;
   transition: opacity .15s ease-in-out;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
+  position: relative;
   color: rgba(255, 255, 255, 0.8);
 }
 
 .kp56-name {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  position: absolute;
+  left: 100px;
+  top: 32px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/*GiaKhanhVN's Credit*/
+.gia-credit {
+  background: none;
+  backdrop-filter: blur(16px) brightness(0.35);
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  left: 310px;
+  top: 500px;
+}
+
+.gia-avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  image-rendering: pixelated; 
+}
+
+.gia-credits {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.gia-name {
   opacity: .85;
   transition: opacity .15s ease-in-out;
   position: absolute;
