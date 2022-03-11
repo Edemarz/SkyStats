@@ -392,80 +392,52 @@ App.post("/", async (req, res) => {
 
                         const replacedArmor = armor.name.replace(regex, '');
 
-                        items.push(`${replacedArmor}-${colorAttribute}`);
+                        return items.push(`${replacedArmor}-${colorAttribute}`);
                     }
                 };
             });
         });
 
+        items = [items[3], items[2], items[1], items[0]];
+
         //Reforge remover
 
         const Textures = require("./Constants/ArmorTextures");
 
-        await items.forEach(async (item) => {
-            await reforges.forEach(async (reforge) => {
+        items.forEach((item) => {
+            reforges.forEach((reforge) => {
+                if (itemsWithoutReforge.length === 4) return;
                 const regexToSearch = new RegExp(reforge, 'gim');
 
-                if (item?.toLowerCase().match(regexToSearch)) {
+                let pItem = item;
 
-                    const replacedText = item.replace(regexToSearch, '');
+                if (item?.toLowerCase().match(regexToSearch) || item?.toLowerCase().includes(reforge)) pItem = item.split(' ').splice(1);
 
-                    let actualItem = replacedText.split('-')[0];
+                let actualItem = pItem.split('-')[0];
 
-                    // const checkingIfExist = await itemsWithoutReforge.findIndex((item) => item.itemName === replacedText);
+                const regex = /'/gim;
 
-                    // if (checkingIfExist !== -1) return;
+                if (actualItem.match(regex)) actualItem = actualItem.replace(regex, '');
 
-                    const regex = /'/gim;
+                const substringing = actualItem.substring(0, 1);
 
-                    if (actualItem.match(regex)) actualItem = actualItem.replace(regex, '');
+                if (substringing === ' ') actualItem = actualItem.slice(1);
 
+                const substringing1 = pItem.substring(0, 1);
 
-                    const substringing = actualItem.substring(0, 1);
+                if (substringing1 === ' ') pItem = pItem.slice(1);
 
-                    if (substringing === ' ') actualItem = actualItem.slice(1);
+                actualItem = actualItem.split(' ').join('_')?.toLowerCase();
 
-                    actualItem = actualItem.split(' ').join('_')?.toLowerCase();
+                const indexFound = itemsWithoutReforge.findIndex((av) => av.itemName === pItem);
 
-                    itemsWithoutReforge.push({
-                        itemName: replacedText,
-                        itemAttribute: actualItem,
-                        itemTexture: Textures[actualItem]
-                    });
-                } else {
-                    let actualItem = item.split('-')[0];
-
-                    // const checkingIfExist = await itemsWithoutReforge.findIndex((item) => item.itemName === replacedText);
-
-                    // if (checkingIfExist !== -1) return;
-
-                    const regex = /'/gim;
-
-                    if (actualItem.match(regex)) actualItem = actualItem.replace(regex, '');
-
-
-                    const substringing = actualItem.substring(0, 1);
-
-                    if (substringing === ' ') actualItem = actualItem.slice(1);
-
-                    actualItem = actualItem.split(' ').join('_')?.toLowerCase();
-
-                    const indexFound = itemsWithoutReforge.findIndex((av) => av.itemName === item);
-
-                    if (indexFound === -1) itemsWithoutReforge.push({
-                        itemName: item,
-                        itemAttribute: actualItem,
-                        itemTexture: Textures[actualItem]
-                    });
-                }
+                if (indexFound === -1) return itemsWithoutReforge.push({
+                    itemName: pItem,
+                    itemAttribute: actualItem,
+                    itemTexture: Textures[actualItem]
+                });
             });
         });
-
-        //Organizing items
-
-        items = [items[3], items[2], items[1], items[0]];
-
-        itemsWithoutReforge = [itemsWithoutReforge[3], itemsWithoutReforge[2], itemsWithoutReforge[1], itemsWithoutReforge[0]];
 
         //Rendering page.
 
