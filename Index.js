@@ -441,6 +441,8 @@ App.post("/", async (req, res) => {
 
         //Rendering page.
 
+        console.log(userData)
+
         res.render('stats', {
             data: SkySimData.data,
             username: req.body.SkySim_Username,

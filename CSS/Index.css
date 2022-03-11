@@ -308,3 +308,72 @@ body {
   font-weight: 600;
   font-size: 18px;
 }
+
+@media only screen and (max-width: 1000px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: env(safe-area-inset-top, 0);
+    padding-left: max(8px,env(safe-area-inset-left));
+    padding-right: max(8px,env(safe-area-inset-right));
+    z-index: 1000;
+    line-height: 48px;
+    overflow: hidden;
+    overflow: clip;
+  }
+
+  .blur-box {
+    gap: 15px;
+    padding: 15px 0;
+    font-size: 20px;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    -webkit-backdrop-filter: blur(16px) brightness(0.5px);
+    backdrop-filter: blur(16px) brightness(0.5px);
+    border-radius: 10px;
+    margin-top: 0em;
+  }
+
+  .skystats-img {
+    border-radius: 10px;
+    width: 15%;
+  }
+
+  .submit-username {
+    display: flex;
+    height: 32px;
+    border-radius: 24px;
+    padding: 0 16px;
+    font-size: 12px;
+    align-items: center;
+    border: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #0bca51;
+    color: #fff;
+    text-shadow: 0px 0px 3px rgb(0 0 0 / 50%);
+    text-transform: uppercase;
+    font-weight: 700;
+    transform: scale(1);
+    transition: transform .15s ease-in-out,background-color .15s;
+    will-change: transform;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .submit-username:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    background-color: #0bea51;
+    border: 3px solid #0bea51;
+  }
+}
