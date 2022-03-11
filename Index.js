@@ -402,6 +402,8 @@ App.post("/", async (req, res) => {
 
         //Reforge remover
 
+        const Textures = require("./Constants/ArmorTextures");
+
         items.forEach((item) => {
             reforges.forEach((reforge) => {
                 const regexToSearch = new RegExp(reforge, 'gim');
@@ -425,7 +427,8 @@ App.post("/", async (req, res) => {
 
                     itemsWithoutReforge.push({
                         itemName: replacedText,
-                        itemAttribute: actualItem
+                        itemAttribute: actualItem,
+                        itemTexture: Textures[actualItem]
                     });
                 };
             });

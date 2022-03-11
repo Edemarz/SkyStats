@@ -213,7 +213,8 @@
                             <% let index=1; %>
                                 <% playerArmor.withReforge.map((item)=> { %>
                                     <div tabindex="0" class="piece-<%= index %>"
-                                        style="--background-color: <%= item.split('-')[1] %>;"></div>
+                                        style="--background-color: <%= item.split('-')[1] %>; --item-icon: <%= playerArmor.noReforge[index].itemTexture %>;">
+                                    </div>
                                     <% index++; %>
                                         <% }); %>
                                             <% }; %>
