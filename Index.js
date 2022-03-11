@@ -41,9 +41,7 @@ App.get("/usernotfound/:username/:type", (req, res) => {
 
 //Instantiating Express Post
 App.post("/", async (req, res) => {
-    if (!req.body.SkySim_Username || typeof req.body.SkySim_Username !== 'string' || req.body.SkySim_Username.length > 16 || req.body.SkySim_Username.length < 3) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/invalid`), console.log("A");
-
-    console.log(`https://playerdb.co/api/player/minecraft/${req.body.SkySim_Username}`)
+    if (!req.body.SkySim_Username || typeof req.body.SkySim_Username !== 'string' || req.body.SkySim_Username.length > 16 || req.body.SkySim_Username.length < 3) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/invalid`);
 
     const UUID = await axios({
         method: 'get',
@@ -430,7 +428,7 @@ App.post("/", async (req, res) => {
                         itemAttribute: actualItem,
                         itemTexture: Textures[actualItem]
                     });
-                };
+                }
             });
         });
 
@@ -441,6 +439,8 @@ App.post("/", async (req, res) => {
         itemsWithoutReforge = [itemsWithoutReforge[3], itemsWithoutReforge[2], itemsWithoutReforge[1], itemsWithoutReforge[0]];
 
         //Rendering page.
+
+        console.log(items, itemsWithoutReforge)
 
         res.render('stats', {
             data: SkySimData.data,
