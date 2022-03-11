@@ -748,6 +748,7 @@ body {
   color: #fff;
 }
 
+/*Armor Section*/
 .text-not-equip-armor {
   color: #fff;
   font-size: 20px;
@@ -794,6 +795,30 @@ body {
   bottom: 100px;
 }
 
+.piece-2-icon {
+  width: 128px;
+  height: 128px;
+  background-size: 128px auto;
+  background-repeat: no-repeat;
+  background-position: center center !important;
+  mask-size: 128px 128px;
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  -webkit-mask-size: 128px 128px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  position: absolute;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 15px;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transform-origin: center center;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
 .piece-3 {
   display: inline-block;
   position: relative;
@@ -813,6 +838,30 @@ body {
   bottom: 100px;
 }
 
+.piece-3-icon {
+  width: 128px;
+  height: 128px;
+  background-size: 128px auto;
+  background-repeat: no-repeat;
+  background-position: center center !important;
+  mask-size: 128px 128px;
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  -webkit-mask-size: 128px 128px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  position: absolute;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 15px;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transform-origin: center center;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
 .piece-4 {
   display: inline-block;
   position: relative;
@@ -830,4 +879,28 @@ body {
   content-visibility: auto;
   background-color: var(--background-color);
   bottom: 100px;
+}
+
+.piece-4-icon {
+  width: 128px;
+  height: 128px;
+  background-size: 128px auto;
+  background-repeat: no-repeat;
+  background-position: center center !important;
+  mask-size: 128px 128px;
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  -webkit-mask-size: 128px 128px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  position: absolute;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  z-index: 15px;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transform-origin: center center;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
