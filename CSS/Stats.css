@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;1,400&family=Open+Sans&family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
 
 * {
   font-family: 'Montserrat', sans-serif;
-font-family: 'Open Sans', sans-serif;
-font-family: 'PT Sans', sans-serif;
   text-size-adjust: none;
 }
 
@@ -13,6 +11,14 @@ html {
 
 body {
   background: url(/Resources/bg.webp);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/montserrat/v23/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 .skystats-img {
@@ -49,7 +55,7 @@ body {
 .blur-box {
   position: relative;
   margin-left: 30vw;
-  height: 600px;
+  height: 750px;
   --padding: 30px;
   padding: var(--padding);
   padding-top: calc(48px + env(safe-area-inset-top, 0));
@@ -227,11 +233,11 @@ body {
 
 .skill-progress-text-combat {
   position: relative;
-  left: var(--left_side);
+  left: calc(var(--left_side) - var(--min-text));
   bottom: 64px; /*14px*/
   color: white;
   font-weight: 600;
-  width: 5%;
+  width: 15%;
   font-size: 12px;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
@@ -299,12 +305,12 @@ body {
 
 .skill-progress-text-mining {
   position: relative;
-  left: var(--left_side);
+  left: calc(var(--left_side) - var(--min-text));
   bottom: 144px; /*14px*/
   color: white;
   font-weight: 600;
   font-size: 12px;
-  width: 5%;
+  width: 15%;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
 }
@@ -372,11 +378,11 @@ body {
 
 .skill-progress-text-enchanting {
   position: relative;
-  left: var(--left_side);
+  left: calc(var(--left_side) - var(--min-text));
   bottom: 224px; /*14px*/
   color: white;
   font-weight: 600;
-  width: 5%;
+  width: 15%;
   font-size: 12px;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
@@ -445,11 +451,11 @@ body {
 
 .skill-progress-text-farming {
   position: relative;
-  left: var(--left_side);
+  left: calc(var(--left_side) - var(--min-text));
   bottom: 304px; /*14px*/
   color: white;
   font-weight: 600;
-  width: 5%;
+  width: 15%;
   font-size: 12px;
   line-height: 14px;
   text-shadow: 0px 0px 3px rgba(var(--background-rgb), 0.5);
@@ -518,10 +524,10 @@ body {
 
 .skill-progress-text-foraging {
   position: relative;
-  left: var(--left_side);
+  left: calc(var(--left_side) - var(--min-text));
   bottom: 384px; /*14px*/
   color: white;
-  width: 5%;
+  width: 15%;
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
@@ -599,7 +605,7 @@ body {
   left: 10px;
 }
 
-/*Health Stats*/
+/* Stats*/
 
 .health-stat {
   position: relative;
@@ -644,6 +650,53 @@ body {
   mask-image: url(../Resources/heart.svg);
   -webkit-mask-image: url(../Resources/heart.svg);
   background-color: #fb5858;
+}
+
+/*a*/
+
+.defense-stat {
+  position: relative;
+  margin-top: 0;
+  color: #5bda5b;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 190px;
+}
+
+.defense-text {
+  position: relative;
+  font-size: 16px;
+  color: #5bda5b;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 22px;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.defense-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 22px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.defense-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  bottom: 190px;
+  mask-image: url(../Resources/shield.svg);
+  -webkit-mask-image: url(../Resources/shield.svg);
+  background-color: #5bda5b;
 }
 
 /*Nav Bar*/
