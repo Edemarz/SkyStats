@@ -215,7 +215,7 @@
                                     <div tabindex="0" class="piece-<%= index %>"
                                         style="--background-color: <%= item.split('-')[1] %>;">
                                         <div class="piece-<%= index %>-icon"
-                                            style="--background-image-url: <%= playerArmor.noReforge[index - 1]?.itemTexture === null ? 'url()' : `url('${playerArmor.noReforge[index - 1]?.itemTexture}')` %>;">
+                                            style="--item-icon: <%= playerArmor.noReforge[index - 1]?.itemTexture === null ? 'url()' : `url('${playerArmor.noReforge[index - 1]?.itemTexture}')` %>;">
                                         </div>
                                     </div>
                                     <% index++; %>

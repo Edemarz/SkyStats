@@ -817,6 +817,7 @@ body {
   transform-origin: center center;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
+  background-image: var(--item-icon);
 }
 
 .piece-3 {
@@ -860,6 +861,7 @@ body {
   transform-origin: center center;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
+  background-image: var(--item-icon);
 }
 
 .piece-4 {
@@ -903,4 +905,5 @@ body {
   transform-origin: center center;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
+  background-image: var(--item-icon);
 }
