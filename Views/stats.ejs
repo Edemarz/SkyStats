@@ -71,7 +71,7 @@
                     --min-text: <%= (skills.combat.level>= 60 ? `${skills.combat.abbrev} XP`.length :
                     `${skills.combat.abbrev}/${skills.combat.nextLevelXP} XP`.length) %>px;">
                     <%= skills.combat.level>= 60 ? `${skills.combat.abbrev} XP` :
-                        `${skills.combat.abbrev}/${skills.combat.nextLevelXP} XP` %>
+                        `${skills.combat.currentSkillXP.abbrev}/${skills.combat.currentSkillXP.nextXPAbbrev} XP` %>
                 </div>
             </div>
             <!--Mining Section-->

@@ -61,7 +61,7 @@ App.post("/", async (req, res) => {
             url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_ITEMS&param=${UUID.data?.data?.player?.id}`
         }).catch((err) => null);
 
-        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`), console.log(SkySimData.data.error, PlayerInventory.data.errors);
+        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`), console.log(SkySimData.data.error || PlayerInventory.data.error);
 
         //Skills Section
         const SkillXPArray = [0, 50, 175, 375, 675, 1175, 1925, 2925, 4425, 6425, 9925, 14925, 22425,
@@ -103,7 +103,11 @@ App.post("/", async (req, res) => {
             hypermaxed: false,
             greyPercentage: null,
             nextLevelXP: null,
-            currentSkillXP: null
+            currentSkillXP: {
+                xp: null,
+                abbrev: null,
+                nextXPAbbrev: null
+            }
         };
 
         combData.xp = SkySimData.data.combatXP
@@ -112,10 +116,8 @@ App.post("/", async (req, res) => {
             if ((SkySimData.data.combatXP - combatXP) >= 1) combData.level = SkillXPArray.findIndex((xp) => xp === combatXP);
         });
 
-        combData.currentSkillXP = {
-            xp: combData.xp - SkillXPArray[combData.level - 1],
-            abbrev: abbreviateNumber(combData.xp - SkillXPArray[combData.level - 1])
-        }
+        combData.currentSkillXP.xp = combData.xp - SkillXPArray[combData.level - 1];
+        combData.currentSkillXP.abbrev = abbreviateNumber(combData.xp - SkillXPArray[combData.level - 1]);
 
         //Changing XP Format;
 
@@ -125,9 +127,10 @@ App.post("/", async (req, res) => {
         const nextXP = combData.level === 60 ? 'maxed' : combData.level === 59 ? SkillXPArray[combData.level + 1] : SkillXPArray[combData.level + 1];
 
         combData.nextLevelXP = nextXP == "maxed" ? 'maxed' : abbreviateNumber(nextXP);
+        combData.currentSkillXP.nextXPAbbrev = abbreviateNumber(nextXP - SkillXPArray[combData.level - 1]);
 
         //Calculating progress bar percentage.
-        let raw_data = nextXP == "maxed" ? 100 : SkySimData.data.combatXP / SkillXPArray[combData.level + 1] * 100;
+        let raw_data = nextXP == "maxed" ? 100 : combData.currentSkillXP.xp / (SkillXPArray[combData.level + 1] - SkillXPArray[combData.level - 1]) * 100;
 
         if (raw_data >= 100) raw_data = 100;
         else if (raw_data >= 1) {
