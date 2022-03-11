@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Open+Sans&family=PT+Sans&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
 </head>
 
 <body>
@@ -25,7 +26,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <button class="header-button expander info-button" id="info-box" aria-expanded="false">
+                    <button class="header-button expander info-button" id="info-box" aria-expanded="false"
+                        data-tippy-content=''>
                         About
                     </button>
                     <button class="join-discord-button" onclick="redirectDiscord()">Join our Discord</button>
@@ -78,6 +80,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
+    <!-- Tippy.JS Development-->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 </body>
 
 <script>
@@ -88,6 +94,26 @@
     function redirectDiscord() {
         location.href = "https://discord.gg/cDM48xCPPq";
     };
+
+    tippy('[data-tippy-content]', {
+        allowHTML: true,
+        animation: 'scale',
+        interactive: true,
+        arrow: false,
+        delay: [200, 100],
+        placement: 'left',
+        popperOptions: {
+            modifiers: [
+                {
+                    name: 'flip',
+                    options: {
+                        fallbackPlacements: ['right', 'bottom']
+                    }
+                }
+            ]
+        },
+        role: 'tooltip'
+    });
 </script>
 
 </html>
