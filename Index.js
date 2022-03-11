@@ -402,15 +402,19 @@ App.post("/", async (req, res) => {
 
         const Textures = require("./Constants/ArmorTextures");
 
-        items.forEach((item) => {
-            reforges.forEach((reforge) => {
+        await items.forEach(async (item) => {
+            await reforges.forEach(async (reforge) => {
                 const regexToSearch = new RegExp(reforge, 'gim');
 
-                if (item?.toLowerCase().match(reforge)) {
+                if (item?.toLowerCase().match(regexToSearch)) {
 
                     const replacedText = item.replace(regexToSearch, '');
 
                     let actualItem = replacedText.split('-')[0];
+
+                    // const checkingIfExist = await itemsWithoutReforge.findIndex((item) => item.itemName === replacedText);
+
+                    // if (checkingIfExist !== -1) return;
 
                     const regex = /'/gim;
 
@@ -425,6 +429,31 @@ App.post("/", async (req, res) => {
 
                     itemsWithoutReforge.push({
                         itemName: replacedText,
+                        itemAttribute: actualItem,
+                        itemTexture: Textures[actualItem]
+                    });
+                } else {
+                    let actualItem = item.split('-')[0];
+
+                    // const checkingIfExist = await itemsWithoutReforge.findIndex((item) => item.itemName === replacedText);
+
+                    // if (checkingIfExist !== -1) return;
+
+                    const regex = /'/gim;
+
+                    if (actualItem.match(regex)) actualItem = actualItem.replace(regex, '');
+
+
+                    const substringing = actualItem.substring(0, 1);
+
+                    if (substringing === ' ') actualItem = actualItem.slice(1);
+
+                    actualItem = actualItem.split(' ').join('_')?.toLowerCase();
+
+                    const indexFound = itemsWithoutReforge.findIndex((av) => av.itemName === item);
+
+                    if (indexFound === -1) itemsWithoutReforge.push({
+                        itemName: item,
                         itemAttribute: actualItem,
                         itemTexture: Textures[actualItem]
                     });
