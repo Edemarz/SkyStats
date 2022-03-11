@@ -309,7 +309,7 @@ body {
   font-size: 18px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 600px) {
   .navbar {
     position: fixed;
     top: 0;
@@ -330,17 +330,16 @@ body {
   }
 
   .blur-box {
-    gap: 15px;
-    padding: 15px 0;
-    font-size: 20px;
+    background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
     grid-column: 1/-1;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
-    -webkit-backdrop-filter: blur(16px) brightness(0.5px);
-    backdrop-filter: blur(16px) brightness(0.5px);
+    gap: 25px;
+    padding: 30px 0;
+    font-size: 30px;
     border-radius: 10px;
-    margin-top: 0em;
   }
 
   .skystats-img {
@@ -349,25 +348,23 @@ body {
   }
 
   .submit-username {
-    display: flex;
-    height: 32px;
-    border-radius: 24px;
-    padding: 0 16px;
-    font-size: 12px;
-    align-items: center;
-    border: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: #0bca51;
+    position: relative;
+    z-index: 2;
+    color: white;
+    border: 3px solid #0bca51;
+    border-radius: 26px;
+    width: 35%;
+    padding: 10px 6px;
     color: #fff;
+    background-color: #0bca51;
+    top: 10px;
     text-shadow: 0px 0px 3px rgb(0 0 0 / 50%);
-    text-transform: uppercase;
     font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
     transform: scale(1);
-    transition: transform .15s ease-in-out,background-color .15s;
+    transition: transform 0.15s ease-in-out, background-color 0.15s;
     will-change: transform;
-    width: 12px;
-    height: 12px;
   }
   
   .submit-username:hover {
@@ -376,4 +373,168 @@ body {
     background-color: #0bea51;
     border: 3px solid #0bea51;
   }
+
+  .kp56-credit {
+    background: none;
+    backdrop-filter: blur(16px) brightness(0.35);
+    border-radius: 10px;
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    left: 145px;
+    top: 550px;
+  }
+  
+  .kp56-avatar {
+    display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 5px;
+    image-rendering: pixelated; 
+  }
+  
+  .kp56-credits {
+    opacity: .85;
+    transition: opacity .15s ease-in-out;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .kp56-name {
+    opacity: .85;
+    transition: opacity .15s ease-in-out;
+    position: absolute;
+    left: 100px;
+    top: 32px;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  /*GiaKhanhVN's Credit*/
+.gia-credit {
+  background: none;
+  backdrop-filter: blur(16px) brightness(0.35);
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  left: 135px;
+  top: 575px;
+}
+
+.gia-avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  image-rendering: pixelated; 
+}
+
+.gia-credits {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.gia-name {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  position: absolute;
+  left: 100px;
+  top: 32px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/*Renegade450's Credits*/
+.rene-credit {
+  background: none;
+  backdrop-filter: blur(16px) brightness(0.35);
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  left: 145px;
+  width: 65%;
+  top: 600px;
+}
+
+.rene-avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  image-rendering: pixelated; 
+}
+
+.rene-credits {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.rene-name {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  position: absolute;
+  left: 100px;
+  top: 32px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/*Aragorn's Credits*/
+.aragorn-credit {
+  background: none;
+  backdrop-filter: blur(16px) brightness(0.35);
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  left: 145px;
+  top: 625px;
+}
+
+.aragorn-avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  image-rendering: pixelated; 
+}
+
+.aragorn-credits {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.aragorn-name {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  position: absolute;
+  left: 100px;
+  top: 32px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
 }

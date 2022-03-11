@@ -699,6 +699,98 @@ body {
   background-color: #5bda5b;
 }
 
+/*Strength Stat Section*/
+.strength-stat {
+  position: relative;
+  margin-top: 0;
+  color: #fb5858;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 190px;
+}
+
+.strength-text {
+  position: relative;
+  font-size: 16px;
+  color: #fb5858;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 22px;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.strength-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 22px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.strength-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  bottom: 190px;
+  mask-image: url(../Resources/Strenght_Icon.svg);
+  -webkit-mask-image: url(../Resources/Strenght_Icon.svg);
+  background-color: #fb5858;
+}
+
+/*Speed Stat Section*/
+.speed-stat {
+  position: relative;
+  margin-top: 0;
+  color: #ffffff;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 190px;
+}
+
+.speed-text {
+  position: relative;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 22px;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.speed-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 22px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.speed-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  bottom: 190px;
+  mask-image: url(../Resources/Speed_Icon.svg);
+  -webkit-mask-image: url(../Resources/Speed_Icon.svg);
+  background-color: #ffffff;
+}
+
 /*Nav Bar*/
 
 .nav_bar {
@@ -959,4 +1051,30 @@ body {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
   background-image: var(--item-icon);
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: env(safe-area-inset-top, 0);
+    padding-left: max(8px,env(safe-area-inset-left));
+    padding-right: max(8px,env(safe-area-inset-right));
+    z-index: 1000;
+    line-height: 48px;
+    overflow: hidden;
+    overflow: clip;
+  }
+
+  .skystats-img {
+    border-radius: 10px;
+    width: 15%;
+  }
 }

@@ -71,27 +71,7 @@ App.post("/", async (req, res) => {
             35322425, 38072425, 40972425, 44072425, 47472425, 51172425, 55172425, 59472425, 64072425,
             68972425, 74172425, 79672425, 85472425, 91572425, 97972425, 104672425, 111672425];
 
-        //Combat Skill Section
-
-        //Calculating Skills XP & Level;
-        let combData = {
-            xp: null,
-            level: null,
-            abbrev: null,
-            skill_progression_percentage: null,
-            hypermaxed: false,
-            greyPercentage: null,
-            nextLevelXP: null
-        };
-
-        combData.xp = SkySimData.data.combatXP
-
-        SkillXPArray.forEach((combatXP) => {
-            if ((SkySimData.data.combatXP - combatXP) >= 1) combData.level = SkillXPArray.findIndex((xp) => xp === combatXP);
-        });
-
-        //Changing XP Format;
-        const SI_SYMBOL = ["", "K", "M", "G", "T", "P", "E"];
+        const SI_SYMBOL = ["", "K", "M", "B", "T", "P", "E"];
 
         function abbreviateNumber(number) {
 
@@ -111,6 +91,33 @@ App.post("/", async (req, res) => {
             // format number and add suffix
             return scaled.toFixed(1) + suffix;
         };
+
+        //Combat Skill Section
+
+        //Calculating Skills XP & Level;
+        let combData = {
+            xp: null,
+            level: null,
+            abbrev: null,
+            skill_progression_percentage: null,
+            hypermaxed: false,
+            greyPercentage: null,
+            nextLevelXP: null,
+            currentSkillXP: null
+        };
+
+        combData.xp = SkySimData.data.combatXP
+
+        SkillXPArray.forEach((combatXP) => {
+            if ((SkySimData.data.combatXP - combatXP) >= 1) combData.level = SkillXPArray.findIndex((xp) => xp === combatXP);
+        });
+
+        combData.currentSkillXP = {
+            xp: combData.xp - SkillXPArray[combData.level - 1],
+            abbrev: abbreviateNumber(combData.xp - SkillXPArray[combData.level - 1])
+        }
+
+        //Changing XP Format;
 
         combData.abbrev = abbreviateNumber(combData.xp);
 
