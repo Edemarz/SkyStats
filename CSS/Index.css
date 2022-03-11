@@ -23,7 +23,7 @@ body {
   font-weight: 600;
   padding: 0;
   font-size: 18px;
-  left: 1525px;
+  left: 1465px;
   color: white;
   transform: scale(1);
   transition: transform 0.15s ease-in-out, background-color 0.15s;
@@ -154,7 +154,7 @@ body {
   display: inline-block;
   padding: 20px;
   text-decoration: none;
-  left: 270px;
+  left: 140px;
   top: 500px;
 }
 
@@ -195,7 +195,7 @@ body {
   display: inline-block;
   padding: 20px;
   text-decoration: none;
-  left: 310px;
+  left: 180px;
   top: 500px;
 }
 
@@ -236,7 +236,7 @@ body {
   display: inline-block;
   padding: 20px;
   text-decoration: none;
-  left: 350px;
+  left: 220px;
   top: 500px;
 }
 
@@ -277,7 +277,7 @@ body {
   display: inline-block;
   padding: 20px;
   text-decoration: none;
-  left: 390px;
+  left: 260px;
   top: 500px;
 }
 

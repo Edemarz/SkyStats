@@ -13,13 +13,13 @@ body {
   background: url(/Resources/bg.webp);
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/montserrat/v23/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
+} */
 
 .skystats-img {
   border-radius: 10px;
@@ -200,14 +200,14 @@ body {
   left: 46px;
   color: white;
   bottom: 39px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   height: 22px;
   line-height: 22px;
 }
 
 .skill-level-combat {
-  color: rgba(255, 255, 255, 0.8);
+  color: #dbd7cd;
   user-select: text !important;
 }
 
@@ -272,14 +272,14 @@ body {
   left: 46px;
   color: white;
   bottom: 119px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   height: 22px;
   line-height: 22px;
 }
 
 .skill-level-mining {
-  color: rgba(255, 255, 255, 0.8);
+  color: #dbd7cd;
   user-select: text !important;
 }
 
@@ -345,14 +345,14 @@ body {
   left: 46px;
   color: white;
   bottom: 199px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   height: 22px;
   line-height: 22px;
 }
 
 .skill-level-enchanting {
-  color: rgba(255, 255, 255, 0.8);
+  color: #dbd7cd;
   user-select: text !important;
 }
 
@@ -418,14 +418,14 @@ body {
   left: 46px;
   color: white;
   bottom: 279px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   height: 22px;
   line-height: 22px;
 }
 
 .skill-level-farming {
-  color: rgba(255, 255, 255, 0.8);
+  color: #dbd7cd;
   user-select: text !important;
 }
 
@@ -491,14 +491,14 @@ body {
   left: 46px;
   color: white;
   bottom: 359px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   height: 22px;
   line-height: 22px;
 }
 
 .skill-level-foraging {
-  color: rgba(255, 255, 255, 0.8);
+  color: #dbd7cd;
   user-select: text !important;
 }
 

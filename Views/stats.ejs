@@ -24,7 +24,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <button class="header-button expander info-button" id="info-box" aria-expanded="false">
+                    <button class="header-button expander info-button" id="info-box" aria-expanded="false"
+                        data-tippy-content="">
                         About
                     </button>
                 </ul>
@@ -261,7 +262,25 @@
     //     document.getElementById("post_method_form").onsubmit = function () { return false };
     // };
 
-    tippy('[data-tippy-content]');
+    tippy('[data-tippy-content]', {
+        allowHTML: true,
+        animation: 'scale',
+        interactive: true,
+        arrow: false,
+        delay: [200, 100],
+        placement: 'left',
+        popperOptions: {
+            modifiers: [
+                {
+                    name: 'flip',
+                    options: {
+                        fallbackPlacements: ['right', 'bottom']
+                    }
+                }
+            ]
+        },
+        role: 'tooltip'
+    });
 </script>
 
 </html>
