@@ -97,7 +97,7 @@
                     --min-text: <%= (skills.mining.level>= 60 ? `${skills.mining.abbrev} XP`.length :
                     `${skills.mining.abbrev}/${skills.mining.nextLevelXP} XP`.length) %>px;">
                     <%= skills.mining.level>= 60 ? `${skills.mining.abbrev} XP` :
-                        `${skills.mining.abbrev}/${skills.mining.nextLevelXP} XP` %>
+                        `${skills.mining.currentSkillXP.abbrev}/${skills.mining.currentSkillXP.nextXPAbbrev} XP` %>
                 </div>
             </div>
             <!--Enchanting Skill-->
@@ -123,7 +123,7 @@
                     --min-text: <%= (skills.enchanting.level>= 60 ? `${skills.enchanting.abbrev} XP`.length :
                     `${skills.enchanting.abbrev}/${skills.enchanting.nextLevelXP} XP`.length) %>px;">
                     <%= skills.enchanting.level>= 60 ? `${skills.enchanting.abbrev} XP` :
-                        `${skills.enchanting.abbrev}/${skills.enchanting.nextLevelXP} XP`
+                        `${skills.enchanting.currentSkillXP.abbrev}/${skills.enchanting.currentSkillXP.nextXPAbbrev} XP`
                         %>
                 </div>
             </div>
@@ -149,7 +149,7 @@
                 <div class="skill-progress-text-farming" style="--left_side: <%= ((skills.farming.skill_progression_percentage + skills.farming.greyPercentage) + 0.3) / 2 %>%; --min-text: <%= (skills.farming.level>= 60 ? `${skills.farming.abbrev} XP`.length :
                     `${skills.farming.abbrev}/${skills.farming.nextLevelXP} XP`.length) %>px;">
                     <%= skills.farming.level>= 60 ? `${skills.farming.abbrev} XP` :
-                        `${skills.farming.abbrev}/${skills.farming.nextLevelXP} XP` %>
+                        `${skills.farming.currentSkillXP.abbrev}/${skills.farming.currentSkillXP.nextXPAbbrev} XP` %>
                 </div>
             </div>
             <!--Foraging Section-->
@@ -174,7 +174,7 @@
                 <div class="skill-progress-text-foraging" style="--left_side: <%= (((skills.foraging.skill_progression_percentage + skills.foraging.greyPercentage) + 0.3) / 2) %>%; --min-text: <%= (skills.foraging.level>= 60 ? `${skills.foraging.abbrev} XP`.length :
                     `${skills.foraging.abbrev}/${skills.foraging.nextLevelXP} XP`.length) %>px;">
                     <%= skills.foraging.level>= 60 ? `${skills.foraging.abbrev} XP` :
-                        `${skills.foraging.abbrev}/${skills.foraging.nextLevelXP} XP` %>
+                        `${skills.foraging.currentSkillXP.abbrev}/${skills.foraging.currentSkillXP.nextXPAbbrev} XP` %>
                 </div>
             </div>
             <!--Player Stats-->

@@ -116,8 +116,8 @@ App.post("/", async (req, res) => {
             if ((SkySimData.data.combatXP - combatXP) >= 1) combData.level = SkillXPArray.findIndex((xp) => xp === combatXP);
         });
 
-        combData.currentSkillXP.xp = combData.xp - SkillXPArray[combData.level - 1];
-        combData.currentSkillXP.abbrev = abbreviateNumber(combData.xp - SkillXPArray[combData.level - 1]);
+        combData.currentSkillXP.xp = combData.xp - SkillXPArray[combData.level];
+        combData.currentSkillXP.abbrev = abbreviateNumber(combData.xp - SkillXPArray[combData.level]);
 
         //Changing XP Format;
 
@@ -127,10 +127,10 @@ App.post("/", async (req, res) => {
         const nextXP = combData.level === 60 ? 'maxed' : combData.level === 59 ? SkillXPArray[combData.level + 1] : SkillXPArray[combData.level + 1];
 
         combData.nextLevelXP = nextXP == "maxed" ? 'maxed' : abbreviateNumber(nextXP);
-        combData.currentSkillXP.nextXPAbbrev = abbreviateNumber(nextXP - SkillXPArray[combData.level - 1]);
+        combData.currentSkillXP.nextXPAbbrev = abbreviateNumber(nextXP - SkillXPArray[combData.level]);
 
         //Calculating progress bar percentage.
-        let raw_data = nextXP == "maxed" ? 100 : combData.currentSkillXP.xp / (SkillXPArray[combData.level + 1] - SkillXPArray[combData.level - 1]) * 100;
+        let raw_data = nextXP == "maxed" ? 100 : combData.currentSkillXP.xp / (SkillXPArray[combData.level + 1] - SkillXPArray[combData.level]) * 100;
 
         if (raw_data >= 100) raw_data = 100;
         else if (raw_data >= 1) {
@@ -158,7 +158,12 @@ App.post("/", async (req, res) => {
             skill_progression_percentage: null,
             hypermaxed: false,
             greyPercentage: null,
-            nextLevelXP: null
+            nextLevelXP: null,
+            currentSkillXP: {
+                xp: null,
+                abbrev: null,
+                nextXPAbbrev: null
+            }
         };
 
         miningData.xp = SkySimData.data.miningXP;
@@ -167,6 +172,9 @@ App.post("/", async (req, res) => {
             if ((SkySimData.data.miningXP - miningXP) >= 1) miningData.level = SkillXPArray.findIndex((xp) => xp === miningXP);
         });
 
+        miningData.currentSkillXP.xp = miningData.xp - SkillXPArray[miningData.level];
+        miningData.currentSkillXP.abbrev = abbreviateNumber(miningData.xp - SkillXPArray[miningData.level]);
+
         //Changing XP Format;
         miningData.abbrev = abbreviateNumber(miningData.xp);
 
@@ -174,9 +182,10 @@ App.post("/", async (req, res) => {
         const miningNextXP = miningData.level === 60 ? 'maxed' : miningData.level === 59 ? SkillXPArray[miningData.level + 1] : SkillXPArray[miningData.level + 1];
 
         miningData.nextLevelXP = miningNextXP == "maxed" ? 'maxed' : abbreviateNumber(miningNextXP);
+        miningData.currentSkillXP.nextXPAbbrev = abbreviateNumber(miningNextXP - SkillXPArray[miningData.level]);
 
         //Calculating progress bar percentage.
-        let raw_data_1 = miningNextXP == "maxed" ? 100 : SkySimData.data.miningXP / SkillXPArray[miningData.level + 1] * 100;
+        let raw_data_1 = miningNextXP == "maxed" ? 100 : miningData.currentSkillXP.xp / (SkillXPArray[miningData.level + 1] - SkillXPArray[miningData.level]) * 100;
 
         if (raw_data_1 >= 100) raw_data_1 = 100;
         else if (raw_data_1 >= 1) {
@@ -204,7 +213,12 @@ App.post("/", async (req, res) => {
             skill_progression_percentage: null,
             hypermaxed: false,
             greyPercentage: null,
-            nextLevelXP: null
+            nextLevelXP: null,
+            currentSkillXP: {
+                xp: null,
+                abbrev: null,
+                nextXPAbbrev: null
+            }
         };
 
         enchantingData.xp = SkySimData.data.enchantXP;
@@ -213,6 +227,9 @@ App.post("/", async (req, res) => {
             if ((SkySimData.data.enchantXP - enchantingXP) >= 1) enchantingData.level = SkillXPArray.findIndex((xp) => xp === enchantingXP);
         });
 
+        enchantingData.currentSkillXP.xp = enchantingData.xp - SkillXPArray[enchantingData.level];
+        enchantingData.currentSkillXP.abbrev = abbreviateNumber(enchantingData.xp - SkillXPArray[enchantingData.level]);
+
         //Changing XP Format;
         enchantingData.abbrev = abbreviateNumber(enchantingData.xp);
 
@@ -220,9 +237,10 @@ App.post("/", async (req, res) => {
         const enchantingNextXP = enchantingData.level === 60 ? 'maxed' : enchantingData.level === 59 ? SkillXPArray[enchantingData.level + 1] : SkillXPArray[enchantingData.level + 1];
 
         enchantingData.nextLevelXP = enchantingNextXP == "maxed" ? 'maxed' : abbreviateNumber(enchantingNextXP);
+        enchantingData.currentSkillXP.nextXPAbbrev = abbreviateNumber(enchantingNextXP - SkillXPArray[enchantingData.level]);
 
         //Calculating progress bar percentage.
-        let raw_data_2 = enchantingNextXP == "maxed" ? 100 : SkySimData.data.enchantXP / SkillXPArray[enchantingData.level + 1] * 100;
+        let raw_data_2 = enchantingNextXP == "maxed" ? 100 : enchantingData.currentSkillXP.xp / (SkillXPArray[enchantingData.level + 1] - SkillXPArray[enchantingData.level]) * 100;
 
         if (raw_data_2 >= 100) raw_data_2 = 100;
         else if (raw_data_2 >= 1) {
@@ -250,7 +268,12 @@ App.post("/", async (req, res) => {
             skill_progression_percentage: null,
             hypermaxed: false,
             greyPercentage: null,
-            nextLevelXP: null
+            nextLevelXP: null,
+            currentSkillXP: {
+                xp: null,
+                abbrev: null,
+                nextXPAbbrev: null
+            }
         };
 
         farmingData.xp = SkySimData.data.farmingXP;
@@ -259,6 +282,9 @@ App.post("/", async (req, res) => {
             if ((SkySimData.data.farmingXP - farmingXP) >= 1) farmingData.level = SkillXPArray.findIndex((xp) => xp === farmingXP);
         });
 
+        farmingData.currentSkillXP.xp = farmingData.xp - SkillXPArray[farmingData.level];
+        farmingData.currentSkillXP.abbrev = abbreviateNumber(farmingData.xp - SkillXPArray[farmingData.level]);
+
         //Changing XP Format;
         farmingData.abbrev = abbreviateNumber(farmingData.xp);
 
@@ -266,9 +292,10 @@ App.post("/", async (req, res) => {
         const farmingNextXP = farmingData.level === 60 ? 'maxed' : farmingData.level === 59 ? SkillXPArray[farmingData.level + 1] : SkillXPArray[farmingData.level + 1];
 
         farmingData.nextLevelXP = farmingNextXP == "maxed" ? 'maxed' : abbreviateNumber(farmingNextXP);
+        farmingData.currentSkillXP.nextXPAbbrev = abbreviateNumber(farmingNextXP - SkillXPArray[farmingData.level]);
 
         //Calculating progress bar percentage.
-        let raw_data_3 = farmingNextXP == "maxed" ? 100 : SkySimData.data.farmingXP / SkillXPArray[farmingData.level + 1] * 100;
+        let raw_data_3 = farmingNextXP == "maxed" ? 100 : farmingData.currentSkillXP.xp / (SkillXPArray[farmingData.level + 1] - SkillXPArray[farmingData.level]) * 100;
 
         if (raw_data_3 >= 100) raw_data_3 = 100;
         else if (raw_data_3 >= 1) {
@@ -296,7 +323,12 @@ App.post("/", async (req, res) => {
             skill_progression_percentage: null,
             hypermaxed: false,
             greyPercentage: null,
-            nextLevelXP: null
+            nextLevelXP: null,
+            currentSkillXP: {
+                xp: null,
+                abbrev: null,
+                nextXPAbbrev: null
+            }
         };
 
         foragingData.xp = SkySimData.data.foragingXP;
@@ -305,6 +337,9 @@ App.post("/", async (req, res) => {
             if ((SkySimData.data.foragingXP - foragingXP) >= 1) foragingData.level = SkillXPArray.findIndex((xp) => xp === foragingXP);
         });
 
+        foragingData.currentSkillXP.xp = foragingData.xp - SkillXPArray[foragingData.level];
+        foragingData.currentSkillXP.abbrev = abbreviateNumber(foragingData.xp - SkillXPArray[foragingData.level]);
+
         //Changing XP Format;
         foragingData.abbrev = abbreviateNumber(foragingData.xp);
 
@@ -312,9 +347,10 @@ App.post("/", async (req, res) => {
         const foragingNextXP = foragingData.level === 60 ? 'maxed' : foragingData.level === 59 ? SkillXPArray[foragingData.level + 1] : SkillXPArray[foragingData.level + 1];
 
         foragingData.nextLevelXP = foragingNextXP == "maxed" ? 'maxed' : abbreviateNumber(foragingNextXP);
+        foragingData.currentSkillXP.nextXPAbbrev = abbreviateNumber(foragingNextXP - SkillXPArray[foragingData.level]);
 
         //Calculating progress bar percentage.
-        let raw_data_4 = foragingNextXP == "maxed" ? 100 : SkySimData.data.foragingXP / SkillXPArray[foragingData.level + 1] * 100;
+        let raw_data_4 = foragingNextXP == "maxed" ? 100 : foragingData.currentSkillXP.xp / (SkillXPArray[foragingData.level + 1] - SkillXPArray[foragingData.level]) * 100;
 
         if (raw_data_4 >= 100) raw_data_4 = 100;
         else if (raw_data_4 >= 1) {
@@ -450,8 +486,6 @@ App.post("/", async (req, res) => {
         // });
 
         //Rendering page.
-
-        console.log(userData)
 
         res.render('stats', {
             data: SkySimData.data,
