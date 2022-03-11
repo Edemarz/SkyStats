@@ -57,7 +57,7 @@
                 <div class="skill-name-combat">
                     <strong>Combat </strong><span class="skill-level">
                         <strong>
-                            <%= skills.combat.level %>
+                            <%= skills.combat.level===null ? 0 : skills.combat.level %>
                         </strong>
                     </span>
                 </div>
@@ -83,7 +83,7 @@
                 <div class="skill-name-mining">
                     <strong>Mining </strong><span class="skill-level">
                         <strong>
-                            <%= skills.mining.level %>
+                            <%= skills.mining.level===null ? 0 : skills.mining.level %>
                         </strong>
                     </span>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="skill-name-enchanting">
                     <strong>Enchanting </strong><span class="skill-enchanting">
                         <strong>
-                            <%= skills.enchanting.level %>
+                            <%= skills.enchanting.level===null ? 0 : skills.enchanting.level %>
                         </strong>
                     </span>
                 </div>
@@ -136,7 +136,7 @@
                 <div class="skill-name-farming">
                     <strong>Farming </strong><span class="skill-farming">
                         <strong>
-                            <%= skills.farming.level %>
+                            <%= skills.farming.level===null ? 0 : skills.farming.level %>
                         </strong>
                     </span>
                 </div>
@@ -161,7 +161,7 @@
                 <div class="skill-name-foraging">
                     <strong>Foraging </strong><span class="skill-foraging">
                         <strong>
-                            <%= skills.foraging.level %>
+                            <%= skills.foraging.level===null ? 0 : skills.foraging.level %>
                         </strong>
                     </span>
                 </div>
