@@ -302,16 +302,19 @@ App.post("/", async (req, res) => {
             raw_data_3 = raw_data_3;
         };
 
+
         //Getting 45% of the bar percentage above;
 
         const div1_3 = 45 / 100;
 
         const percent_of_percentage_3 = div1_3 * raw_data_3;
 
+
         farmingData.skill_progression_percentage = farmingData.level === null ? 0 : percent_of_percentage_3;
 
-        farmingData.greyPercentage = farmingData.level === null ? 45 : 45 - percent_of_percentage_3;
+        farmingData.greyPercentage = farmingData.level === null || (farmingData.level === 0 && farmingData.xp < 1) ? 45 : 45 - percent_of_percentage_3;
 
+        console.log(percent_of_percentage_3, farmingData)
         //Setting hypermaxed settings;
         if (farmingData.level >= 50) farmingData.hypermaxed = true;
 
@@ -409,12 +412,19 @@ App.post("/", async (req, res) => {
                 enchanting: enchantingData,
                 farming: farmingData,
                 foraging: foragingData
-            }
+            },
+            slayers: {
+                revenant: SkySimData.data.slayerXP[0],
+                tarantula: SkySimData.data.slayerXP[1],
+                sven: SkySimData.data.slayerXP[2],
+                voidgloom: SkySimData.data.slayerXP[3]
+            },
+            weight: null
         };
 
         //Weight System
 
-        //UPCOMING
+        userData.weight = await require("./Uhut/weight")(userData);
 
         //Debug Section
 
@@ -446,46 +456,11 @@ App.post("/", async (req, res) => {
 
         items = [items[3], items[2], items[1], items[0]];
 
-        console.log(userData['skills'])
+        //Slayer Sections
 
-        // //Reforge remover
-
-        // const Textures = require("./Constants/ArmorTextures");
-
-        // items.forEach((item) => {
-        //     reforges.forEach((reforge) => {
-        //         if (itemsWithoutReforge.length === 4) return;
-        //         const regexToSearch = new RegExp(reforge, 'gim');
-
-        //         let pItem = item;
-
-        //         if (item?.toLowerCase().match(regexToSearch) || item?.toLowerCase().includes(reforge)) pItem = item.split(' ').splice(1);
-
-        //         let actualItem = pItem.split('-')[0];
-
-        //         const regex = /'/gim;
-
-        //         if (actualItem.match(regex)) actualItem = actualItem.replace(regex, '');
-
-        //         const substringing = actualItem.substring(0, 1);
-
-        //         if (substringing === ' ') actualItem = actualItem.slice(1);
-
-        //         const substringing1 = pItem.substring(0, 1);
-
-        //         if (substringing1 === ' ') pItem = pItem.slice(1);
-
-        //         actualItem = actualItem.split(' ').join('_')?.toLowerCase();
-
-        //         const indexFound = itemsWithoutReforge.findIndex((av) => av.itemName === pItem);
-
-        //         if (indexFound === -1) return itemsWithoutReforge.push({
-        //             itemName: pItem,
-        //             itemAttribute: actualItem,
-        //             itemTexture: Textures[actualItem]
-        //         });
-        //     });
-        // });
+        const ZombieSlayer = [0, 5, 15, 200, 1000, 5000, 20000, 100000, 400000, 1000000];
+        const TarantulaSlayer = [5, 25, 200, 1000, 5000, 20000, 100000, 400000, 1000000]
+        const RestArray = [10, 30, 250, 1500, 5000, 20000, 100000, 400000, 1000000];
 
         //Rendering page.
 
@@ -493,13 +468,6 @@ App.post("/", async (req, res) => {
             data: SkySimData.data,
             username: req.body.SkySim_Username,
             uuidData: UUID.data?.data?.player,
-            skills: {
-                combat: combData,
-                mining: miningData,
-                enchanting: enchantingData,
-                farming: farmingData,
-                foraging: foragingData
-            },
             constants: {
                 colorCodes: colorCodes
             },

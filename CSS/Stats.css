@@ -581,6 +581,29 @@ body {
   left: 5px;
 }
 
+/*Weight by Uhut*/
+.text-weight {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: capitalize;
+  line-height: 1.5;
+  user-select: text !important;
+  position: relative;
+  bottom: 330px;
+  left: 10px;
+}
+
+.weight-value {
+  position: relative;
+  font-weight: 700;
+  margin-left: 2px;
+  line-height: 1.5;
+  user-select: text !important;
+  color: white;
+  bottom: 330px;
+  left: 10px;
+}
+
 /*User's Bits*/
 
 .text-bits {
