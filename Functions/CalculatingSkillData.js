@@ -227,11 +227,11 @@ module.exports = async (SkySimData) => {
     //Setting the next level xp;
     const farmingNextXP = farmingData.level === 60 ? 'maxed' : farmingData.level === 59 ? SkillXPArray[farmingData.level === null ? 1 : farmingData.level + 1] : SkillXPArray[farmingData.level === null ? 1 : farmingData.level + 1];
 
-    farmingData.nextLevelXP = farmingNextXP == "maxed" ? 'maxed' : abbreviateNumber(farmingNextXP);
+    farmingData.nextLevelXP = farmingNextXP === 'maxed' ? 'maxed' : abbreviateNumber(farmingNextXP);
     farmingData.currentSkillXP.nextXPAbbrev = abbreviateNumber(farmingNextXP - SkillXPArray[farmingData.level === null ? 0 : farmingData.level]);
 
     //Calculating progress bar percentage.
-    let raw_data_3 = farmingNextXP == "maxed" ? 100 : farmingData.currentSkillXP.xp / (SkillXPArray[farmingData.level === null ? 1 : farmingData.level + 1] - SkillXPArray[farmingData.level === null ? 1 : farmingData.level + 1]) * 100;
+    let raw_data_3 = farmingNextXP === 'maxed' ? 100 : farmingData.currentSkillXP.xp / (SkillXPArray[farmingData.level === null ? 1 : farmingData.level + 1] - SkillXPArray[farmingData.level === null ? 0 : farmingData.level]) * 100;
 
     if (raw_data_3 >= 100) raw_data_3 = 100;
     else if (raw_data_3 >= 1) {
@@ -248,7 +248,9 @@ module.exports = async (SkySimData) => {
 
     farmingData.skill_progression_percentage = farmingData.level === null ? 0 : percent_of_percentage_3;
 
-    farmingData.greyPercentage = farmingData.level === null || (farmingData.level === 0 && farmingData.xp < 1) ? 45 : 45 - percent_of_percentage_3;
+    farmingData.greyPercentage = farmingData.level === null ? 45 : 45 - percent_of_percentage_3;
+
+    console.log(raw_data_3, percent_of_percentage_3, farmingNextXP, farmingData.currentSkillXP)
 
     //Setting hypermaxed settings;
     if (farmingData.level >= 50) farmingData.hypermaxed = true;
@@ -288,7 +290,7 @@ module.exports = async (SkySimData) => {
     foragingData.currentSkillXP.nextXPAbbrev = abbreviateNumber(foragingNextXP - SkillXPArray[foragingData.level === null ? 0 : foragingData.level]);
 
     //Calculating progress bar percentage.
-    let raw_data_4 = foragingNextXP == "maxed" ? 100 : foragingData.currentSkillXP.xp / (SkillXPArray[foragingData.level === null ? 1 : foragingData.level + 1] - SkillXPArray[foragingData.level === null ? 1 : foragingData.level + 1]) * 100;
+    let raw_data_4 = foragingNextXP == "maxed" ? 100 : foragingData.currentSkillXP.xp / (SkillXPArray[foragingData.level === null ? 1 : foragingData.level + 1] - SkillXPArray[foragingData.level === null ? 0 : foragingData.level]) * 100;
 
     if (raw_data_4 >= 100) raw_data_4 = 100;
     else if (raw_data_4 >= 1) {

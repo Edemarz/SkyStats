@@ -34,15 +34,17 @@ module.exports = async (userData, type) => {
 
             if (raw_data >= 100) raw_data = 100;
 
-            //Getting 65% of the bar percentage above;
+            //Getting 22.5% of the bar percentage above;
 
-            const div1 = 70 / 100;
+            const div1 = 22.5 / 100;
 
             const percent_of_percentage = div1 * raw_data;
 
             slayerData['completetion'] = userData['slayers']['revenant']['slayerLevel'] === null ? 0 : percent_of_percentage;
 
-            slayerData['greyProgress'] = userData['slayers']['revenant']['slayerLevel'] === null ? 70 : 70 - percent_of_percentage;
+            slayerData['greyProgress'] = userData['slayers']['revenant']['slayerLevel'] === null ? 22.5 : 22.5 - percent_of_percentage;
+
+            console.log(userData['slayers']['revenant'], slayerData)
         };
 
         return slayerData;

@@ -16,6 +16,22 @@ body {
     scroll-behavior: smooth;
 }
 
+body::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background-color: #282828;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: #0bca51;
+}
+
+body::-webkit-scrollbar-track { 
+  border-radius: 12px;
+  background-color: rgba(127, 127, 127, .12);
+}
+
 /* @font-face {
   font-family: 'Montserrat';
   font-style: normal;
@@ -44,10 +60,12 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  height: 48px;
   display: flex;
   flex-direction: row;
   z-index: 1000;
   overflow: clip;
+  line-height: 48px;
 }
 
 .skystats-img {
@@ -74,11 +92,6 @@ body {
   line-height: normal;
   transition: background-color .1s;
   border: none;
-}
-
-.info-button {
-  cursor: pointer;
-  background-color: rgba(216, 198, 198, 0.7);
 }
 
 .blur-box {
@@ -862,7 +875,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 378.5px;
+  bottom: 800px;
   height: 2px;
   background-color: #0bca51;
   z-index: 2;
@@ -1110,12 +1123,11 @@ body {
   flex-direction: column;
   position: relative;
   box-sizing: border-box;
-  min-width: min(330px, 100vw);
   padding: 20px;
   padding-top: 50px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  width: 25%;
+  width: 22.5%;
   height: 175px;
   overflow: hidden;
   flex: 0 0;
@@ -1168,27 +1180,6 @@ body {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.revenant-green-bar {
-  width: 100%;
-  padding-left: 0px;
-  background: #0baa51;
-  position: relative;
-  top: 65px;
-  height: 14px;
-  border-bottom-left-radius: 12px;
-}
-
-.revenant-grey-bar {
-  width: 0px;
-  padding-left: 0px;
-  background: rgba(127,127,127,0.6);
-  position: relative;
-  left: var(--left-side);
-  bottom: 14.5px;
-  height: 14px;
-  border-bottom-right-radius: 12px;
-}
-
 .revenant-slayer-skill-text {
   position: relative;
   top: 10px;
@@ -1201,7 +1192,7 @@ body {
   color: #fff;
 }
 
-@media only screen and (max-width: 600px) {
+@media all and (max-width: 768px) and (min-height: 400px) {
   .navbar {
     position: fixed;
     top: 0;
