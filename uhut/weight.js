@@ -8,9 +8,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const userData = '';
-module.exports = function (uhutweight) {
+module.exports = (userData = {}) => {
     return __awaiter(this, void 0, void 0, function* () {
+        const SI_SYMBOL = ["", "K", "M", "B", "T", "P", "E"];
+
+        function abbreviateNumber(number) {
+
+            // what tier? (determines SI symbol)
+            var tier = Math.log10(Math.abs(number)) / 3 | 0;
+
+            // if zero, we don't need a suffix
+            if (tier == 0) return number;
+
+            // get suffix and determine scale
+            var suffix = SI_SYMBOL[tier];
+            var scale = Math.pow(10, tier * 3);
+
+            // scale the number
+            var scaled = number / scale;
+
+            // format number and add suffix
+            return scaled.toFixed(1) + suffix;
+        };
+
         function zomb() {
             if (userData['slayers'].revenant > 2500000) {
                 const zombie1 = 750;
@@ -57,14 +77,23 @@ module.exports = function (uhutweight) {
         }
         function combatxp() {
             if (userData['skills'].combData > 55172425) {
-                let combat2 = ((userData['slayers'].combData - 55172425) / 125000) + (55172425 / 110000) * 1.35;
+                let combat2 = ((userData['skills'].combat.xp - 55172425) / 125000) + (55172425 / 110000) * 1.35;
                 return combat2;
             }
             else {
-                let combat2 = (userData['slayers'].combData / 150000) * 1.21;
+                let combat2 = (userData['skills'].combat.xp / 150000) * 1.21;
                 return combat2;
             }
         }
-        return combatxp() + enderman() + wolf() + tar() + zomb();
+
+        return {
+            combatWeight: combatxp().toPrecision(3),
+            VoidgloomWeight: enderman().toPrecision(3),
+            TarantulaWeight: tar().toPrecision(3),
+            SvenWeight: wolf().toPrecision(3),
+            RevenantWeight: zomb().toPrecision(3),
+            totalWeight: combatxp() + enderman() + tar() + wolf() + zomb(),
+            weightAbbrev: abbreviateNumber(combatxp() + enderman() + tar() + wolf() + zomb())
+        };
     });
 };
