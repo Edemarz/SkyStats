@@ -186,7 +186,8 @@
                 </div>
                 <div class="defense-stat">
                     <div class="defense-icon"></div>
-                    <span class="defense-text">Defense</span>
+                    <span class="defense-text"
+                        data-tippy-content="Effective Health: <%= Math.round(userData['stats'].effectiveHP.hp)?.toLocaleString() %>">Defense</span>
                     <span class="defense-value">
                         <%= userData['stats'].defense?.toLocaleString() %>
                     </span>
@@ -288,7 +289,7 @@
         interactive: true,
         arrow: false,
         delay: [200, 100],
-        placement: 'left',
+        placement: 'top',
         popperOptions: {
             modifiers: [
                 {

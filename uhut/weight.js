@@ -93,7 +93,7 @@ module.exports = (userData = {}) => {
             SvenWeight: wolf().toPrecision(3),
             RevenantWeight: zomb().toPrecision(3),
             totalWeight: combatxp() + enderman() + tar() + wolf() + zomb(),
-            weightAbbrev: abbreviateNumber(combatxp() + enderman() + tar() + wolf() + zomb())
+            weightAbbrev: (combatxp() + enderman() + tar() + wolf() + zomb() >= 1000) ? abbreviateNumber(combatxp() + enderman() + tar() + wolf() + zomb()) : Math.round(combatxp() + enderman() + tar() + wolf() + zomb())
         };
     });
 };
