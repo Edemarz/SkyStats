@@ -11,12 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 module.exports = (userData) => __awaiter(void 0, void 0, void 0, function* () {
     const zombiearray = [0, 5, 15, 200, 1000, 5000, 20000, 100000, 400000, 1000000];
     const spiderarray = [5, 25, 200, 1000, 5000, 20000, 100000, 400000, 1000000];
-    const restarray = [10, 30, 250, 1500, 5000, 20000, 100000, 400000, 1000000];
-    var slayers = {
-        voidgloomlvl: 0,
-        svenlvl: 0,
-        tarantulalvl: 0,
-        zombielvl: 0,
+    const restarray = [0, 10, 30, 250, 1500, 5000, 20000, 100000, 400000, 1000000];
+    let slayers = {
+        voidgloomlvl: null,
+        svenlvl: null,
+        tarantulalvl: null,
+        zombielvl: null,
     };
     zombiearray.forEach((revxp) => {
         if ((userData['slayers'].revenant - revxp) >= 1)
