@@ -1,7 +1,7 @@
 module.exports = async (userData, type) => {
     let slayerData = {
         completetion: 0,
-        greyProgress: 70,
+        greyProgress: 22.5,
         nextLevelXP: 0,
         currentXP: 0
     };
