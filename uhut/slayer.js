@@ -19,19 +19,19 @@ module.exports = (userData) => __awaiter(void 0, void 0, void 0, function* () {
         zombielvl: null,
     };
     zombiearray.forEach((revxp) => {
-        if ((userData['slayers'].revenant - revxp) >= 1)
+        if ((userData['slayers']['revenant']['slayerXP'] - revxp) >= 1)
             slayers.zombielvl = zombiearray.findIndex((level) => level === revxp);
     });
     spiderarray.forEach((taraxp) => {
-        if ((userData['slayers'].tarantula - taraxp) >= 1)
+        if ((userData['slayers']['tarantula']['slayerXP'] - taraxp) >= 1)
             slayers.tarantulalvl = spiderarray.findIndex((level) => level === taraxp);
     });
     restarray.forEach((svenxp) => {
-        if ((userData['slayers'].sven - svenxp) >= 1)
+        if ((userData['slayers']['sven']['slayerXP'] - svenxp) >= 1)
             slayers.svenlvl = restarray.findIndex((level) => level === svenxp);
     });
     restarray.forEach((emanxp) => {
-        if ((userData['slayers'].voidgloom - emanxp) >= 1)
+        if ((userData['slayers']['voidgloom']['slayerXP'] - emanxp) >= 1)
             slayers.voidgloomlvl = restarray.findIndex((level) => level === emanxp);
     });
     return slayers;
