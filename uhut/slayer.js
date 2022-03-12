@@ -34,7 +34,5 @@ module.exports = (userData) => __awaiter(void 0, void 0, void 0, function* () {
         if ((userData['slayers'].voidgloom - emanxp) >= 1)
             slayers.voidgloomlvl = restarray.findIndex((level) => level === emanxp);
     });
-    return {
-        slayers
-    };
+    return slayers;
 });
