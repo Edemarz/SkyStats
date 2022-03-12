@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="style-scrollbar">
 
 <head>
     <title>SkyStats</title>
@@ -33,7 +33,8 @@
             </div>
         </div>
     </nav>
-    <div class="blur-box">
+    <!-- <main class="wrapper"> -->
+    <div class="blur-box" data-sticky>
         <div class="player_profile">
             <span class="text-stats-for">Stats for</span>&ThickSpace;&ThickSpace;<span tabindex="0"
                 class="stats_for_player">
@@ -66,9 +67,10 @@
                 <div class="skill-progress-bar-combat"
                     style="--progress_bar_color: <%= userData['skills'].combat.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].combat.skill_progression_percentage %>%;">
                 </div>
-                <div class="skill-progress-text-combat" style="--left_side: <%= ((userData['skills'].combat.skill_progression_percentage + userData['skills'].combat.greyPercentage) + 0.3) / 2 %>%;
-                    --min-text: <%= (userData['skills'].combat.level>= 60 ? `${userData['skills'].combat.abbrev} XP`.length :
-                    `${userData['skills'].combat.abbrev}/${userData['skills'].combat.nextLevelXP} XP`.length) %>px;">
+                <div class="skill-progress-text-combat"
+                    style="--left_side: <%= ((userData['skills'].combat.skill_progression_percentage + userData['skills'].combat.greyPercentage) + 0.3) / 2 %>%;
+                        --min-text: <%= (userData['skills'].combat.level>= 60 ? `${userData['skills'].combat.abbrev} XP`.length :
+                        `${userData['skills'].combat.abbrev}/${userData['skills'].combat.nextLevelXP} XP`.length) %>px;">
                     <%= userData['skills'].combat.level>= 60 ? `${userData['skills'].combat.abbrev} XP` :
                         `${userData['skills'].combat.currentSkillXP.abbrev}/${userData['skills'].combat.currentSkillXP.nextXPAbbrev}
                         XP` %>
@@ -91,9 +93,10 @@
                 <div class="skill-progress-bar-mining"
                     style="--progress_bar_color: <%= userData['skills'].mining.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].mining.skill_progression_percentage %>%;">
                 </div>
-                <div class="skill-progress-text-mining" style="--left_side: <%= ((userData['skills'].mining.skill_progression_percentage + userData['skills'].mining.greyPercentage) + 0.3) / 2 %>%;
-                    --min-text: <%= (userData['skills'].mining.level>= 60 ? `${userData['skills'].mining.abbrev} XP`.length :
-                    `${userData['skills'].mining.abbrev}/${userData['skills'].mining.nextLevelXP} XP`.length) %>px;">
+                <div class="skill-progress-text-mining"
+                    style="--left_side: <%= ((userData['skills'].mining.skill_progression_percentage + userData['skills'].mining.greyPercentage) + 0.3) / 2 %>%;
+                        --min-text: <%= (userData['skills'].mining.level>= 60 ? `${userData['skills'].mining.abbrev} XP`.length :
+                        `${userData['skills'].mining.abbrev}/${userData['skills'].mining.nextLevelXP} XP`.length) %>px;">
                     <%= userData['skills'].mining.level>= 60 ? `${userData['skills'].mining.abbrev} XP` :
                         `${userData['skills'].mining.currentSkillXP.abbrev}/${userData['skills'].mining.currentSkillXP.nextXPAbbrev}
                         XP` %>
@@ -118,8 +121,8 @@
                 </div>
                 <div class="skill-progress-text-enchanting"
                     style="--left_side: <%= ((userData['skills'].enchanting.skill_progression_percentage + userData['skills'].enchanting.greyPercentage) + 0.3) / 2 %>%;
-                    --min-text: <%= (userData['skills'].enchanting.level>= 60 ? `${userData['skills'].enchanting.abbrev} XP`.length :
-                    `${userData['skills'].enchanting.abbrev}/${userData['skills'].enchanting.nextLevelXP} XP`.length) %>px;">
+                        --min-text: <%= (userData['skills'].enchanting.level>= 60 ? `${userData['skills'].enchanting.abbrev} XP`.length :
+                        `${userData['skills'].enchanting.abbrev}/${userData['skills'].enchanting.nextLevelXP} XP`.length) %>px;">
                     <%= userData['skills'].enchanting.level>= 60 ? `${userData['skills'].enchanting.abbrev} XP` :
                         `${userData['skills'].enchanting.currentSkillXP.abbrev}/${userData['skills'].enchanting.currentSkillXP.nextXPAbbrev}
                         XP`
@@ -143,8 +146,9 @@
                 <div class="skill-progress-bar-farming"
                     style="--progress_bar_color: <%= userData['skills'].farming.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].farming.skill_progression_percentage %>%;">
                 </div>
-                <div class="skill-progress-text-farming" style="--left_side: <%= ((userData['skills'].farming.skill_progression_percentage + userData['skills'].farming.greyPercentage) + 0.3) / 2 %>%; --min-text: <%= (userData['skills'].farming.level>= 60 ? `${userData['skills'].farming.abbrev} XP`.length :
-                    `${userData['skills'].farming.abbrev}/${userData['skills'].farming.nextLevelXP} XP`.length) %>px;">
+                <div class="skill-progress-text-farming"
+                    style="--left_side: <%= ((userData['skills'].farming.skill_progression_percentage + userData['skills'].farming.greyPercentage) + 0.3) / 2 %>%; --min-text: <%= (userData['skills'].farming.level>= 60 ? `${userData['skills'].farming.abbrev} XP`.length :
+                        `${userData['skills'].farming.abbrev}/${userData['skills'].farming.nextLevelXP} XP`.length) %>px;">
                     <%= userData['skills'].farming.level>= 60 ? `${userData['skills'].farming.abbrev} XP` :
                         `${userData['skills'].farming.currentSkillXP.abbrev}/${userData['skills'].farming.currentSkillXP.nextXPAbbrev}
                         XP` %>
@@ -169,7 +173,7 @@
                 </div>
                 <div class="skill-progress-text-foraging"
                     style="--left_side: <%= (((userData['skills'].foraging.skill_progression_percentage + userData['skills'].foraging.greyPercentage) + 0.3) / 2) %>%; --min-text: <%= (userData['skills'].foraging.level>= 60 ? `${userData['skills'].foraging.abbrev} XP`.length :
-                    `${userData['skills'].foraging.abbrev}/${userData['skills'].foraging.nextLevelXP} XP`.length) %>px;">
+                        `${userData['skills'].foraging.abbrev}/${userData['skills'].foraging.nextLevelXP} XP`.length) %>px;">
                     <%= userData['skills'].foraging.level>= 60 ? `${userData['skills'].foraging.abbrev} XP` :
                         `${userData['skills'].foraging.currentSkillXP.abbrev}/${userData['skills'].foraging.currentSkillXP.nextXPAbbrev}
                         XP` %>
@@ -233,9 +237,9 @@
             <div class="nav_bar_line">
                 <div class="nav_bar_background">
                     <!-- <div class="nav_items_container">
-                        <a class="nav-item" href="#Slayers">Slayers</a>
-                        <a class="nav-item" href="#Armor">Armor</a>
-                    </div> -->
+                            <a class="nav-item" href="#Slayers">Slayers</a>
+                            <a class="nav-item" href="#Armor">Armor</a>
+                        </div> -->
                 </div>
             </div>
         </div>
@@ -271,13 +275,24 @@
                     <div class="revenant-icon"></div>
                     <span class="revenant-header-text">Revenant Horror</span>
                 </div>
-                <div class="text-revenant">Revenant Level</div>
-                <span class="revenant-value">
-                    <%= userData['slayers']['revenant']['slayerLevel'] %>
-                </span>
+                <div class="text-revenant">Revenant Level <span class="revenant-value">
+                        <%= userData['slayers']['revenant']['slayerLevel'] %>
+                    </span>
+                </div>
+                <div class="revenant-green-bar"
+                    style="--progression: <%= userData['slayers']['revenant']['progression'] %>%;"></div>
+                <div class="revenant-grey-bar"
+                    style="--progression: <%= userData['slayers']['revenant']['greyProgression'] %>%;
+                    --left-side: <%= (((userData['slayers']['revenant']['progression'] + userData['slayers']['revenant']['greyProgression']) + 48.5) / 2) %>%;">
+                </div>
+                <div class="revenant-slayer-skill-text">
+                    <%= userData['slayers']['revenant']['xp']['current']?.toLocaleString() %> / <%=
+                            userData['slayers']['revenant']['xp']['next']?.toLocaleString() %>
+                </div>
             </div>
         </div>
     </div>
+    <!-- </main> -->
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>

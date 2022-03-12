@@ -130,22 +130,46 @@ App.post("/", async (req, res) => {
                 revenant: {
                     slayerXP: SkySimData.data.slayerXP[0],
                     slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[0]),
-                    slayerLevel: null
+                    slayerLevel: null,
+                    progression: 0,
+                    greyProgression: 45,
+                    xp: {
+                        current: 0,
+                        next: 0
+                    }
                 },
                 tarantula: {
                     slayerXP: SkySimData.data.slayerXP[1],
                     slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[1]),
-                    slayerLevel: null
+                    slayerLevel: null,
+                    progression: 0,
+                    greyProgression: 45,
+                    xp: {
+                        current: 0,
+                        next: 0
+                    }
                 },
                 sven: {
                     slayerXP: SkySimData.data.slayerXP[2],
                     slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[2]),
-                    slayerLevel: null
+                    slayerLevel: null,
+                    progression: 0,
+                    greyProgression: 45,
+                    xp: {
+                        current: 0,
+                        next: 0
+                    }
                 },
                 voidgloom: {
                     slayerXP: SkySimData.data.slayerXP[3],
                     slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[3]),
-                    slayerLevel: null
+                    slayerLevel: null,
+                    progression: 0,
+                    greyProgression: 45,
+                    xp: {
+                        current: 0,
+                        next: 0
+                    }
                 }
             },
             weight: null,
@@ -184,7 +208,7 @@ App.post("/", async (req, res) => {
         };
 
         //Skill System
-        const SkillData = await require("./Functions/GetSkillLevel")(SkySimData);
+        const SkillData = await require("./Functions/CalculatingSkillData")(SkySimData);
 
         if (typeof SkillData != "object") return res.status(502);
 
@@ -244,9 +268,16 @@ App.post("/", async (req, res) => {
         userData['slayers']['voidgloom']['slayerLevel'] = SlayerData['voidgloomlvl'] === null ? 0 : SlayerData['voidgloomlvl'];
         userData['slayers']['tarantula']['slayerLevel'] = SlayerData['tarantulalvl'] === null ? 0 : SlayerData['tarantulalvl'];
 
-        console.log(SkySimData.data);
+        const RevenantSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 1);
+
+        userData['slayers']['revenant']['progression'] = RevenantSlayerProgression['completetion'];
+        userData['slayers']['revenant']['greyProgression'] = RevenantSlayerProgression['greyProgress'];
+        userData['slayers']['revenant']['xp']['current'] = RevenantSlayerProgression['currentXP'];
+        userData['slayers']['revenant']['xp']['next'] = RevenantSlayerProgression['nextLevelXP'];
 
         //Rendering page.
+
+        console.log(userData['slayers'])
 
         res.render('stats', {
             data: SkySimData.data,

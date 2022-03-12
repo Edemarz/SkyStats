@@ -10,7 +10,10 @@ html {
 }
 
 body {
-  background: url(/Resources/bg.webp);
+    background: url(/Resources/bg.webp) no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 /* @font-face {
@@ -20,6 +23,32 @@ body {
   src: url(https://fonts.gstatic.com/s/montserrat/v23/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 } */
+
+/* .wrapper {
+  position: relative;
+  margin-left: 30vw;
+  --padding: 30px;
+  padding: var(--padding);
+  padding-top: calc(48px + env(safe-area-inset-top, 0));
+  padding-bottom: calc(var(--padding) + env(safe-area-inset-bottom));
+  min-height: 100%;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color: white;
+  -webkit-user-select: none;
+  backdrop-filter: blur(16px) brightness(0.5);
+} */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  z-index: 1000;
+  overflow: clip;
+}
 
 .skystats-img {
   border-radius: 10px;
@@ -1086,7 +1115,8 @@ body {
   padding-top: 50px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  width: 50%;
+  width: 25%;
+  height: 175px;
   overflow: hidden;
   flex: 0 0;
 }
@@ -1117,7 +1147,58 @@ body {
   background-position: center;
   vertical-align: middle;
   background-image: url(/Resources/Revenant_Icon.webp);
-  flex: 0 0;
+}
+
+.text-revenant {
+  align-items: center;
+  margin-top: auto;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: capitalize;
+  line-height: 1.5;
+  text-align: center;
+  user-select: text !important;
+}
+
+.revenant-value {
+  font-weight: 700;
+  margin-left: 2px;
+  line-height: 1.5;
+  user-select: text !important;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.revenant-green-bar {
+  width: 100%;
+  padding-left: 0px;
+  background: #0baa51;
+  position: relative;
+  top: 65px;
+  height: 14px;
+  border-bottom-left-radius: 12px;
+}
+
+.revenant-grey-bar {
+  width: 0px;
+  padding-left: 0px;
+  background: rgba(127,127,127,0.6);
+  position: relative;
+  left: var(--left-side);
+  bottom: 14.5px;
+  height: 14px;
+  border-bottom-right-radius: 12px;
+}
+
+.revenant-slayer-skill-text {
+  position: relative;
+  top: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  user-select: text !important;
+  color: #fff;
 }
 
 @media only screen and (max-width: 600px) {
