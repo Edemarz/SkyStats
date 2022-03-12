@@ -1,4 +1,4 @@
 "use strict";
-module.exports = function (userData) {
+module.exports = (userData) => {
     return (userData['stats'].health * (1 + (userData['stats'].defense / 100)));
 };
