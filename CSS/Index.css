@@ -309,6 +309,49 @@ body {
   font-size: 18px;
 }
 
+/*Uhut's Credit*/
+
+.uhut-credit {
+  background: none;
+  backdrop-filter: blur(16px) brightness(0.35);
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  left: 140px;
+  top: 525px;
+}
+
+.uhut-avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  image-rendering: pixelated; 
+}
+
+.uhut-credits {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.uhut-name {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  position: absolute;
+  left: 100px;
+  top: 32px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+
 @media all and (max-width: 768px) and (min-height: 400px) {
   .navbar {
     position: fixed;
@@ -528,6 +571,47 @@ body {
 }
 
 .aragorn-name {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  position: absolute;
+  left: 100px;
+  top: 32px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.uhut-credit {
+  background: none;
+  backdrop-filter: blur(16px) brightness(0.35);
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  left: 135px;
+  width: 75%;
+  top: 645px;
+}
+
+.uhut-avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  image-rendering: pixelated; 
+}
+
+.uhut-credits {
+  opacity: .85;
+  transition: opacity .15s ease-in-out;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.uhut-name {
   opacity: .85;
   transition: opacity .15s ease-in-out;
   position: absolute;

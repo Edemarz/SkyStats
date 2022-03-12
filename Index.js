@@ -127,12 +127,60 @@ App.post("/", async (req, res) => {
                 foraging: null
             },
             slayers: {
-                revenant: SkySimData.data.slayerXP[0],
-                tarantula: SkySimData.data.slayerXP[1],
-                sven: SkySimData.data.slayerXP[2],
-                voidgloom: SkySimData.data.slayerXP[3]
+                revenant: {
+                    slayerXP: SkySimData.data.slayerXP[0],
+                    slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[0]),
+                    slayerLevel: null
+                },
+                tarantula: {
+                    slayerXP: SkySimData.data.slayerXP[1],
+                    slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[1]),
+                    slayerLevel: null
+                },
+                sven: {
+                    slayerXP: SkySimData.data.slayerXP[2],
+                    slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[2]),
+                    slayerLevel: null
+                },
+                voidgloom: {
+                    slayerXP: SkySimData.data.slayerXP[3],
+                    slayerXPAbbrev: abbreviateNumber(SkySimData.data.slayerXP[3]),
+                    slayerLevel: null
+                }
             },
-            weight: null
+            weight: null,
+            catacombs: {
+                classes: {
+                    archer: {
+                        level: null,
+                        XP: null,
+                        XPAbbrev: null
+                    },
+                    berserker: {
+                        level: null,
+                        XP: null,
+                        XPAbbrev: null
+                    },
+                    healer: {
+                        level: null,
+                        XP: null,
+                        XPAbbrev: null
+                    },
+                    tank: {
+                        level: null,
+                        XP: null,
+                        XPAbbrev: null
+                    },
+                    mage: {
+                        level: null,
+                        XP: null,
+                        XPAbbrev: null
+                    }
+                },
+                catacombXP: SkySimData.data['cataXP'],
+                catacombXPAbbrev: abbreviateNumber(SkySimData.data['cataXP']),
+                catacombLevel: null
+            }
         };
 
         //Skill System
@@ -188,6 +236,15 @@ App.post("/", async (req, res) => {
         items = [items[3], items[2], items[1], items[0]];
 
         //Slayer Sections
+
+        const SlayerData = await require("./Uhut/slayer")(userData);
+
+        userData['slayers']['revenant']['slayerLevel'] = SlayerData['zombielvl'] === null ? 0 : SlayerData['zombielvl'];
+        userData['slayers']['sven']['slayerLevel'] = SlayerData['svenlvl'] === null ? 0 : SlayerData['svenlvl'];
+        userData['slayers']['voidgloom']['slayerLevel'] = SlayerData['voidgloomlvl'] === null ? 0 : SlayerData['voidgloomlvl'];
+        userData['slayers']['tarantula']['slayerLevel'] = SlayerData['tarantulalvl'] === null ? 0 : SlayerData['tarantulalvl'];
+
+        console.log(SkySimData.data);
 
         //Rendering page.
 
