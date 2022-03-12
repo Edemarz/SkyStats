@@ -32,51 +32,51 @@ module.exports = (userData = {}) => {
         };
 
         function zomb() {
-            if (userData['slayers'].revenant > 2500000) {
+            if (userData['slayers']['revenant']['slayerXP'] > 2500000) {
                 const zombie1 = 750;
                 return zombie1;
             }
-            else if (userData['slayers'].revenant > 1000000) {
-                const zombie1 = ((userData['slayers'].revenant - 1000000) / 10000) + (userData['slayers'].revenant / 6000) * 1.36;
+            else if (userData['slayers']['revenant']['slayerXP'] > 1000000) {
+                const zombie1 = ((userData['slayers']['revenant']['slayerXP'] - 1000000) / 10000) + (userData['slayers']['revenant']['slayerXP'] / 6000) * 1.36;
                 return zombie1;
             }
             else {
-                const zombie1 = (userData['slayers'].revenant / 6000) * 1.21;
+                const zombie1 = (userData['slayers']['revenant']['slayerXP'] / 6000) * 1.21;
                 return zombie1;
             }
         }
         function tar() {
-            if (userData['slayers'].tarantula > 1000000) {
-                const tara1 = ((userData['slayers'].tarantula - 1000000) / 1650) + (userData['slayers'].tarantula / 1150) * 1.23;
+            if (userData['slayers']['tarantula']['slayerXP'] > 1000000) {
+                const tara1 = ((userData['slayers']['tarantula']['slayerXP'] - 1000000) / 1650) + (userData['slayers']['tarantula']['slayerXP'] / 1150) * 1.23;
                 return tara1;
             }
             else {
-                const tara1 = (userData['slayers'].tarantula / 1150) * 1.17;
+                const tara1 = (userData['slayers']['tarantula']['slayerXP'] / 1150) * 1.17;
                 return tara1;
             }
         }
         function wolf() {
-            if (userData['slayers'].sven > 1000000) {
-                const sven1 = ((userData['slayers'].sven - 1000000) / 1500) + (userData['slayers'].sven / 1200) * 1.26;
+            if (userData['slayers']['sven']['slayerXP'] > 1000000) {
+                const sven1 = ((userData['slayers']['sven']['slayerXP'] - 1000000) / 1500) + (userData['slayers']['sven']['slayerXP'] / 1200) * 1.26;
                 return sven1;
             }
             else {
-                const sven1 = (userData['slayers'].sven / 1200) * 1.16;
+                const sven1 = (userData['slayers']['sven']['slayerXP'] / 1200) * 1.16;
                 return sven1;
             }
         }
         function enderman() {
-            if (userData['slayers'].voidgloom > 1000000) {
-                const eman1 = ((userData['slayers'].voidgloom - 1000000) / 1500) + (userData['slayers'].voidgloom / 1000) * 1.42;
+            if (userData['slayers']['voidgloom']['slayerXP'] > 1000000) {
+                const eman1 = ((userData['slayers']['voidgloom']['slayerXP'] - 1000000) / 1500) + (userData['slayers']['voidgloom']['slayerXP'] / 1000) * 1.42;
                 return eman1;
             }
             else {
-                const eman1 = (userData['slayers'].voidgloom / 1000) * 1.27;
+                const eman1 = (userData['slayers']['voidgloom']['slayerXP'] / 1000) * 1.27;
                 return eman1;
             }
         }
         function combatxp() {
-            if (userData['skills'].combData > 55172425) {
+            if (userData['skills'].combat.xp > 55172425) {
                 let combat2 = ((userData['skills'].combat.xp - 55172425) / 125000) + (55172425 / 110000) * 1.35;
                 return combat2;
             }
