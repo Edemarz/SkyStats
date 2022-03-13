@@ -133,6 +133,7 @@ App.post("/", async (req, res) => {
                     slayerLevel: null,
                     progression: 0,
                     greyProgression: 45,
+                    offset: null,
                     xp: {
                         current: 0,
                         next: 0
@@ -272,13 +273,16 @@ App.post("/", async (req, res) => {
 
         userData['slayers']['revenant']['progression'] = RevenantSlayerProgression['completetion'];
         userData['slayers']['revenant']['greyProgression'] = RevenantSlayerProgression['greyProgress'];
+        userData['slayers']['revenant']['offset'] = RevenantSlayerProgression['offset']
         userData['slayers']['revenant']['xp']['current'] = RevenantSlayerProgression['currentXP'];
         userData['slayers']['revenant']['xp']['next'] = RevenantSlayerProgression['nextLevelXP'];
 
         //Rendering page.
 
-        console.log(userData['slayers'])
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ef2e920f0abf6441009e2330abfec164be23047
         res.render('stats', {
             data: SkySimData.data,
             username: req.body.SkySim_Username,

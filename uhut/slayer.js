@@ -13,10 +13,10 @@ module.exports = (userData) => __awaiter(void 0, void 0, void 0, function* () {
     const spiderarray = [5, 25, 200, 1000, 5000, 20000, 100000, 400000, 1000000];
     const restarray = [0, 10, 30, 250, 1500, 5000, 20000, 100000, 400000, 1000000];
     let slayers = {
-        voidgloomlvl: null,
-        svenlvl: null,
-        tarantulalvl: null,
-        zombielvl: null,
+        voidgloomlvl: 0,
+        svenlvl: 0,
+        tarantulalvl: 0,
+        zombielvl: 0,
     };
     zombiearray.forEach((revxp) => {
         if ((userData['slayers']['revenant']['slayerXP'] - revxp) >= 1)

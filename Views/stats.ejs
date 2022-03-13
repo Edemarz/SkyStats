@@ -25,8 +25,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <button class="header-button expander info-button" id="info-box" aria-expanded="false"
-                        data-tippy-content="">
+                    <button class="header-button expander info-button" id="info-button" aria-expanded="false">
                         About
                     </button>
                 </ul>
@@ -231,6 +230,49 @@
                             Math.round(userData['weight'].totalWeight)?.toLocaleString() %>)
                 </span>
             </div>
+
+            <!--Armor Section-->
+            <div class="armors" id="Armor">
+                <div class="text-armor">Armor</div>
+                <div class="armor-inventory" style="color: white;">
+                    <% if (playerArmor.equippedItems===false) { %>
+                        <span class="text-not-equip-armor">
+                            <%= username %> doesn't have any armor equipped.
+                        </span>
+                        <% }; %>
+
+                            <% if (playerArmor.equippedItems===true) { %>
+                                <% let index=1; %>
+                                    <% playerArmor.withReforge.map((item)=> { %>
+                                        <div tabindex="0" class="piece-<%= index %>"
+                                            style="--background-color: <%= item === null ? '' : item.split('-')[1] %>;">
+                                            <div class="piece-<%= index %>-icon"
+                                                style="--item-icon: <%= playerArmor.noReforge[index - 1] === undefined ? 'url()' : `url('${playerArmor.noReforge[index - 1]?.itemTexture}')` %>;">
+                                            </div>
+                                        </div>
+                                        <% index++; %>
+                                            <% }); %>
+                                                <% }; %>
+                </div>
+            </div>
+            <!--Slayer Section-->
+            <div id="Slayers" class="slayers">
+                <div class="text-slayer">Slayer</div>
+                <div class="revenant-slayer-boxing">
+                    <div class="revenant-header">
+                        <div class="revenant-icon"></div>
+                        <span class="revenant-header-text">Revenant Horror</span>
+                    </div>
+                    <div class="text-revenant">Revenant Level <span class="revenant-value">
+                            <%= userData['slayers']['revenant']['slayerLevel'] %>
+                        </span>
+                    </div>
+                    <div class="revenant-slayer-skill-text">
+                        <%= userData['slayers']['revenant']['xp']['current']?.toLocaleString() %> / <%=
+                                userData['slayers']['revenant']['xp']['next']?.toLocaleString() %>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--Navbar Section-->
         <div class="nav_bar">
@@ -243,6 +285,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <!--Armor Section-->
         <div class="armors" id="Armor">
             <div class="text-armor">Armor</div>
@@ -279,39 +322,59 @@
                         <%= userData['slayers']['revenant']['slayerLevel'] %>
                     </span>
                 </div>
-                <div class="revenant-green-bar"
-                    style="--progression: <%= userData['slayers']['revenant']['progression'] %>%;"></div>
-                <div class="revenant-grey-bar"
-                    style="--progression: <%= userData['slayers']['revenant']['greyProgression'] %>%;
-                    --left-side: <%= (((userData['slayers']['revenant']['progression'] + userData['slayers']['revenant']['greyProgression']) + 48.5) / 2) %>%;">
-                </div>
-                <div class="revenant-slayer-skill-text">
-                    <%= userData['slayers']['revenant']['xp']['current']?.toLocaleString() %> / <%=
-                            userData['slayers']['revenant']['xp']['next']?.toLocaleString() %>
-                </div>
             </div>
+            <div class="revenant-green-bar"
+            style="--progression: <%= userData['slayers']['revenant']['progression'] %>%;"></div>
+        <div class="revenant-grey-bar"
+            style="--progression: <%= userData['slayers']['revenant']['greyProgression'] %>%;
+            --left-side: <%= (((userData['slayers']['revenant']['progression'] + userData['slayers']['revenant']['greyProgression']) + 48.5) / 2) %>%;
+            --offset: <%= (userData['slayers']['revenant']['offset'])%>%">
         </div>
+        <div class="revenant-slayer-skill-text">
+            <%= userData['slayers']['revenant']['slayerXP']?.toLocaleString() %> / <%=
+                    userData['slayers']['revenant']['xp']['next']?.toLocaleString() %>
+        </div>
+        </div>
+=======
+>>>>>>> 0ef2e920f0abf6441009e2330abfec164be23047
     </div>
     <!-- </main> -->
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
 
-    <!-- Tippy.JS Development-->
+    <!-- Development -->
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 </body>
 
 <script>
-    // window.onload = function () {
-    //     document.getElementById("post_method_form").onsubmit = function () { return false };
-    // };
+    tippy('.info-button', {
+        allowHTML: true,
+        animation: 'scale',
+        interactive: true,
+        arrow: true,
+        content: '<a style="color: white;" href="https://stats.skysim.sbs/">SkyStats</a> is a free stats-viewer for SkySim, a remake of Hypixel SkyBlock.<br><br>You can join the Discord <a href="https://discord.skysim.sbs/" style="color: white;">here</a> to suggest features, report bugs and issues. It will be appreciated since it will help SkyStats grow!<br><br>Credits: Uhut: Weight Calculation, EHP Calculation, and Slayer Calculation.<br>Aragorn: Icons, Armor Textures.<br>Renegade450: SkyStats Background.<br>KP56: SkySim API.<br>GiaKhanhVN: Resources, Skills Formula.',
+        delay: [200, 100],
+        placement: 'bottom',
+        popperOptions: {
+            modifiers: [
+                {
+                    name: 'flip',
+                    options: {
+                        fallbackPlacements: ['bottom']
+                    }
+                }
+            ]
+        },
+        role: 'tooltip'
+    });
 
     tippy('[data-tippy-content]', {
         allowHTML: true,
         animation: 'scale',
         interactive: true,
-        arrow: false,
+        arrow: true,
         delay: [200, 100],
         placement: 'top',
         popperOptions: {
@@ -319,7 +382,7 @@
                 {
                     name: 'flip',
                     options: {
-                        fallbackPlacements: ['right', 'bottom']
+                        fallbackPlacements: ['bottom', 'left', 'right']
                     }
                 }
             ]
