@@ -31,7 +31,6 @@ module.exports = async (userData, type) => {
 
         if (check < 9) {
             //Calculating progress bar percentage.
-<<<<<<< HEAD
             var raw_data = Math.round(((userData.slayers.revenant.slayerXP/ slayerXPs.RevenantXP[slayerRev]) * 100))
             var raw_rest = 100 - raw_data
             const percent = 3.66032210835
@@ -44,24 +43,6 @@ module.exports = async (userData, type) => {
             slayerData['completetion'] = 100 / 3.66032210835
             slayerData['offset'] = 0
         }
-=======
-            let raw_data = data['userCurrentSkillXP'] / (slayerXPs['RevenantXP'][userData['slayers']['revenant']['slayerLevel'] === null ? 1 : userData['slayers']['revenant']['slayerLevel'] + 1] - slayerXPs['RevenantXP'][userData['slayers']['revenant']['slayerLevel'] === null ? 0 : userData['slayers']['revenant']['slayerLevel']]) * 100;
-
-            if (raw_data >= 100) raw_data = 100;
-
-            //Getting 22.5% of the bar percentage above;
-
-            const div1 = 22.5 / 100;
-
-            const percent_of_percentage = div1 * raw_data;
-
-            slayerData['completetion'] = userData['slayers']['revenant']['slayerLevel'] === null ? 0 : percent_of_percentage;
-
-            slayerData['greyProgress'] = userData['slayers']['revenant']['slayerLevel'] === null ? 22.5 : 22.5 - percent_of_percentage;
-
-            console.log(userData['slayers']['revenant'], slayerData)
-        };
->>>>>>> 0ef2e920f0abf6441009e2330abfec164be23047
 
         return slayerData;
     };
