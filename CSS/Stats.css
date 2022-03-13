@@ -864,7 +864,7 @@ body::-webkit-scrollbar-track {
   height: 24px;
   line-height: 24px;
   font-weight: 600;
-  bottom: 190px;
+  bottom: 230px;
 }
 
 .crit-chance-text {
@@ -874,9 +874,9 @@ body::-webkit-scrollbar-track {
   font-weight: 600;
   text-transform: capitalize;
   line-height: 1.5;
-  left: 22px;
+  left: 262px;
   user-select: text !important;
-  bottom: 213px;
+  bottom: 273px;
 }
 
 .crit-chance-value {
@@ -885,21 +885,163 @@ body::-webkit-scrollbar-track {
   color: white;
   font-weight: 700;
   margin-left: 2px;
-  left: 22px;
+  left: 262px;
   line-height: 1.5;
   user-select: 1.5;
   user-select: text !important;
-  bottom: 213px;
+  bottom: 273px;
 }
 
 .crit-chance-icon {
   position: relative;
   height: 20px;
+  left: 240px;
   width: 20px;
-  bottom: 190px;
+  bottom: 250px;
   mask-image: url(../Resources/Crit_Chance_Icon.svg);
   -webkit-mask-image: url(../Resources/Crit_Chance_Icon.svg);
   background-color: #7486f0;
+}
+
+/*Crit Damage Section*/
+.crit-damage-stat {
+  position: relative;
+  margin-top: 0;
+  color: #7486f0;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 230px;
+}
+
+.crit-damage-text {
+  position: relative;
+  font-size: 16px;
+  color: #7486f0;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 262px;
+  user-select: text !important;
+  bottom: 273px;
+}
+
+.crit-damage-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 262px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 273px;
+}
+
+.crit-damage-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 240px;
+  bottom: 250px;
+  mask-image: url(../Resources/Crit_Damage.svg);
+  -webkit-mask-image: url(../Resources/Crit_Damage.svg);
+  background-color: #7486f0;
+}
+
+/*Attack Speed  Section*/
+.attack-speed-stat {
+  position: relative;
+  margin-top: 0;
+  color: #f2f267;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 230px;
+}
+
+.attack-speed-text {
+  position: relative;
+  font-size: 16px;
+  color: #f2f267;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 262px;
+  user-select: text !important;
+  bottom: 273px;
+}
+
+.attack-speed-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 262px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 273px;
+}
+
+.attack-speed-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 240px;
+  bottom: 250px;
+  mask-image: url(../Resources/Attack_Speed.svg);
+  -webkit-mask-image: url(../Resources/Attack_Speed.svg);
+  background-color: #f2f267;
+}
+
+/*Intelligence Section*/
+.intelligence-stat {
+  position: relative;
+  margin-top: 0;
+  color: #58d6ed;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 230px;
+}
+
+.intelligence-text {
+  position: relative;
+  font-size: 16px;
+  color: #58d6ed;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 262px;
+  user-select: text !important;
+  bottom: 273px;
+}
+
+.intelligence-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 262px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 273px;
+}
+
+.intelligence-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 240px;
+  bottom: 250px;
+  mask-image: url(../Resources/Mana.svg);
+  -webkit-mask-image: url(../Resources/Mana.svg);
+  background-color: #58d6ed;
 }
 
 /*Nav Bar*/
@@ -918,11 +1060,11 @@ body::-webkit-scrollbar-track {
 
 .nav_bar_line {
   content: "";
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
-  bottom: 780px;
   height: 2px;
+  top: -850px;
   background-color: #0bca51;
   z-index: 2;
 }
@@ -1264,7 +1406,7 @@ body::-webkit-scrollbar-track {
 
 /*Tarantula Slayer*/
 
-.tarantula-slayer-boxing {
+/* .tarantula-slayer-boxing {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1360,7 +1502,7 @@ body::-webkit-scrollbar-track {
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
   user-select: text !important;
   color: #fff;
-}
+} */
 
 @media all and (max-width: 768px) and (min-height: 400px) {
   .navbar {

@@ -277,13 +277,9 @@ App.post("/", async (req, res) => {
         userData['slayers']['revenant']['xp']['current'] = RevenantSlayerProgression['currentXP'];
         userData['slayers']['revenant']['xp']['next'] = RevenantSlayerProgression['nextLevelXP'];
 
-        const TarantulaSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 2);
-
-        console.log(TarantulaSlayerProgression);
+        // const TarantulaSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 2);
 
         //Rendering page.
-
-        console.log(userData['slayers']);
 
         res.render('stats', {
             data: SkySimData.data,

@@ -217,6 +217,30 @@
                         <%= userData['stats']['crit']['chance']?.toLocaleString() %>%
                     </span>
                 </div>
+
+                <div class="crit-damage-stat">
+                    <div class="crit-damage-icon"></div>
+                    <span class="crit-damage-text">Crit Damage</span>
+                    <span class="crit-damage-value">
+                        <%= userData['stats']['crit']['damage']?.toLocaleString() %>%
+                    </span>
+                </div>
+
+                <div class="attack-speed-stat">
+                    <div class="attack-speed-icon"></div>
+                    <span class="attack-speed-text">Attack Speed</span>
+                    <span class="attack-speed-value">
+                        <%= userData['stats']['attackSpeed']?.toLocaleString() %>%
+                    </span>
+                </div>
+
+                <div class="intelligence-stat">
+                    <div class="intelligence-icon"></div>
+                    <span class="intelligence-text">Intelligence</span>
+                    <span class="intelligence-value">
+                        <%= userData['stats']['mana']?.toLocaleString() %>%
+                    </span>
+                </div>
             </div>
             <!--Purse, Bank, Bits Section etc-->
             <div class="player-statistics-misc">
@@ -279,15 +303,18 @@
                         </span>
                     </div>
                 </div>
+                <!--Green Bar-->
                 <div class="revenant-green-bar"
                     style="--progression: <%= userData['slayers']['revenant']['progression'] %>%; --border-bottom-right: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? 10 : 0 %>px;
                     --background-bg: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? '#ce8f12' : '#0baa50' %>;">
                 </div>
+                <!--Grey Bar-->
                 <div class="revenant-grey-bar"
                     style="--progression: <%= userData['slayers']['revenant']['greyProgression'] %>%;
             --left-side: <%= (((userData['slayers']['revenant']['progression'] + userData['slayers']['revenant']['greyProgression']) + 48.5) / 2) %>%;
             --offset: <%= (userData['slayers']['revenant']['offset'])%>%; --border-bottom-left: <%= userData['slayers']['revenant']['slayerXP'] <= 0 ? 10 : 0 %>px;">
                 </div>
+                <!--Slayer Text-->
                 <div class="revenant-slayer-skill-text"
                     style="--min-text: <%= (userData['slayers']['revenant']['slayerLevel'] >= 9 ? `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()} XP`.length :
                 `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()}/${userData['slayers']['revenant']['xp']['next']?.toLocaleString()}`.length) + 470 %>px;">
@@ -297,7 +324,7 @@
                         %>
                 </div>
                 <!--Tarantula-->
-                <div class="tarantula-slayer-boxing">
+                <!-- <div class="tarantula-slayer-boxing">
                     <div class="tarantula-header">
                         <div class="tarantula-icon"></div>
                         <span class="tarantula-header-text">Tarantula Broodfather</span>
@@ -309,25 +336,29 @@
                             <%= userData['slayers']['tarantula']['slayerLevel'] %>
                         </span>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="tarantula-green-bar"
+                <!--Green bar-->
+                <!-- <div class="tarantula-green-bar"
                     style="--progression: <%= userData['slayers']['tarantula']['progression'] %>%; --border-bottom-right: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? 10 : 0 %>px;
                     --background-bg: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? '#ce8f12' : '#0baa50' %>;">
-                </div>
-                <div class="tarantula-grey-bar"
+                </div> -->
+                <!--Grey Bar-->
+                <!-- <div class="tarantula-grey-bar"
                     style="--progression: <%= userData['slayers']['tarantula']['greyProgression'] %>%;
             --left-side: <%= (((userData['slayers']['tarantula']['progression'] + userData['slayers']['tarantula']['greyProgression']) + 48.5) / 2) %>%;
             --offset: <%= (userData['slayers']['tarantula']['offset'])%>%; --border-bottom-left: <%= userData['slayers']['tarantula']['slayerXP'] <= 0 ? 10 : 0 %>px;">
-                </div>
-                <div class="tarantula-slayer-skill-text"
+                </div> -->
+                <!--Text-->
+                <!-- <div class="tarantula-slayer-skill-text"
                     style="--min-text: <%= (userData['slayers']['tarantula']['slayerLevel'] >= 9 ? `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()} XP`.length :
                 `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()}/${userData['slayers']['tarantula']['xp']['next']?.toLocaleString()}`.length) + 470 %>px;">
                     <%= (userData['slayers']['tarantula']['slayerLevel']>= 9 ?
                         `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()} XP` :
                         `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()}/${userData['slayers']['tarantula']['xp']['next']?.toLocaleString()}`)
                         %>
-                </div>
+                </div> -->
+                <!--End-->
             </div>
             <!--Navbar Section-->
             <div class="nav_bar">
