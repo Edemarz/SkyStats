@@ -206,7 +206,15 @@
                     <div class="speed-icon"></div>
                     <span class="speed-text">Speed</span>
                     <span class="speed-value">
-                        <%= userData['stats'].speed?.toLocaleString() %>
+                        <%= userData['stats'].speed?.toLocaleString() %>%
+                    </span>
+                </div>
+
+                <div class="crit-chance-stat">
+                    <div class="crit-chance-icon"></div>
+                    <span class="crit-chance-text">Crit Chance</span>
+                    <span class="crit-chance-value">
+                        <%= userData['stats']['crit']['chance']?.toLocaleString() %>%
                     </span>
                 </div>
             </div>
@@ -263,20 +271,62 @@
                         <div class="revenant-icon"></div>
                         <span class="revenant-header-text">Revenant Horror</span>
                     </div>
-                    <div class="text-revenant">Revenant Level <span class="revenant-value">
+                    <div class="text-revenant"
+                        style="--color-bg: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? '#dd980e' : 'rgba(255, 255, 255, 0.6)' %>;">
+                        Revenant Level <span class="revenant-value"
+                            style="--color-bg: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? '#fdbb3c' : 'rgba(255, 255, 255, 0.6)' %>;">
                             <%= userData['slayers']['revenant']['slayerLevel'] %>
                         </span>
                     </div>
                 </div>
                 <div class="revenant-green-bar"
-                    style="--progression: <%= userData['slayers']['revenant']['progression'] %>%;"></div>
-                <div class="revenant-grey-bar" style="--progression: <%= userData['slayers']['revenant']['greyProgression'] %>%;
-            --left-side: <%= (((userData['slayers']['revenant']['progression'] + userData['slayers']['revenant']['greyProgression']) + 48.5) / 2) %>%;
-            --offset: <%= (userData['slayers']['revenant']['offset'])%>%">
+                    style="--progression: <%= userData['slayers']['revenant']['progression'] %>%; --border-bottom-right: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? 10 : 0 %>px;
+                    --background-bg: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? '#ce8f12' : '#0baa50' %>;">
                 </div>
-                <div class="revenant-slayer-skill-text">
-                    <%= userData['slayers']['revenant']['slayerXP']?.toLocaleString() %> / <%=
-                            userData['slayers']['revenant']['xp']['next']?.toLocaleString() %>
+                <div class="revenant-grey-bar"
+                    style="--progression: <%= userData['slayers']['revenant']['greyProgression'] %>%;
+            --left-side: <%= (((userData['slayers']['revenant']['progression'] + userData['slayers']['revenant']['greyProgression']) + 48.5) / 2) %>%;
+            --offset: <%= (userData['slayers']['revenant']['offset'])%>%; --border-bottom-left: <%= userData['slayers']['revenant']['slayerXP'] <= 0 ? 10 : 0 %>px;">
+                </div>
+                <div class="revenant-slayer-skill-text"
+                    style="--min-text: <%= (userData['slayers']['revenant']['slayerLevel'] >= 9 ? `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()} XP`.length :
+                `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()}/${userData['slayers']['revenant']['xp']['next']?.toLocaleString()}`.length) + 470 %>px;">
+                    <%= (userData['slayers']['revenant']['slayerLevel']>= 9 ?
+                        `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()} XP` :
+                        `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()}/${userData['slayers']['revenant']['xp']['next']?.toLocaleString()}`)
+                        %>
+                </div>
+                <!--Tarantula-->
+                <div class="tarantula-slayer-boxing">
+                    <div class="tarantula-header">
+                        <div class="tarantula-icon"></div>
+                        <span class="tarantula-header-text">Tarantula Broodfather</span>
+                    </div>
+                    <div class="text-tarantula"
+                        style="--color-bg: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? '#dd980e' : 'rgba(255, 255, 255, 0.6)' %>;">
+                        Tarantula Level <span class="tarantula-value"
+                            style="--color-bg: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? '#fdbb3c' : 'rgba(255, 255, 255, 0.6)' %>;">
+                            <%= userData['slayers']['tarantula']['slayerLevel'] %>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="tarantula-green-bar"
+                    style="--progression: <%= userData['slayers']['tarantula']['progression'] %>%; --border-bottom-right: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? 10 : 0 %>px;
+                    --background-bg: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? '#ce8f12' : '#0baa50' %>;">
+                </div>
+                <div class="tarantula-grey-bar"
+                    style="--progression: <%= userData['slayers']['tarantula']['greyProgression'] %>%;
+            --left-side: <%= (((userData['slayers']['tarantula']['progression'] + userData['slayers']['tarantula']['greyProgression']) + 48.5) / 2) %>%;
+            --offset: <%= (userData['slayers']['tarantula']['offset'])%>%; --border-bottom-left: <%= userData['slayers']['tarantula']['slayerXP'] <= 0 ? 10 : 0 %>px;">
+                </div>
+                <div class="tarantula-slayer-skill-text"
+                    style="--min-text: <%= (userData['slayers']['tarantula']['slayerLevel'] >= 9 ? `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()} XP`.length :
+                `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()}/${userData['slayers']['tarantula']['xp']['next']?.toLocaleString()}`.length) + 470 %>px;">
+                    <%= (userData['slayers']['tarantula']['slayerLevel']>= 9 ?
+                        `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()} XP` :
+                        `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()}/${userData['slayers']['tarantula']['xp']['next']?.toLocaleString()}`)
+                        %>
                 </div>
             </div>
             <!--Navbar Section-->

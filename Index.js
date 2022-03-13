@@ -230,7 +230,7 @@ App.post("/", async (req, res) => {
             abbrev: abbreviateNumber(effHP)
         };
 
-        //Debug Section
+        //Debug Section;
 
         //Modifying Equipped Armor;
         const reforges = require("./Constants/Reforges");
@@ -277,7 +277,13 @@ App.post("/", async (req, res) => {
         userData['slayers']['revenant']['xp']['current'] = RevenantSlayerProgression['currentXP'];
         userData['slayers']['revenant']['xp']['next'] = RevenantSlayerProgression['nextLevelXP'];
 
+        const TarantulaSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 2);
+
+        console.log(TarantulaSlayerProgression);
+
         //Rendering page.
+
+        console.log(userData['slayers']);
 
         res.render('stats', {
             data: SkySimData.data,

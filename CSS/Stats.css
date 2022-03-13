@@ -856,6 +856,52 @@ body::-webkit-scrollbar-track {
   background-color: #ffffff;
 }
 
+/*Crit Chance Section*/
+.crit-chance-stat {
+  position: relative;
+  margin-top: 0;
+  color: #7486f0;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 190px;
+}
+
+.crit-chance-text {
+  position: relative;
+  font-size: 16px;
+  color: #7486f0;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 22px;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.crit-chance-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 22px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 213px;
+}
+
+.crit-chance-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  bottom: 190px;
+  mask-image: url(../Resources/Crit_Chance_Icon.svg);
+  -webkit-mask-image: url(../Resources/Crit_Chance_Icon.svg);
+  background-color: #7486f0;
+}
+
 /*Nav Bar*/
 
 .nav_bar {
@@ -875,7 +921,7 @@ body::-webkit-scrollbar-track {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 800px;
+  bottom: 780px;
   height: 2px;
   background-color: #0bca51;
   z-index: 2;
@@ -1165,7 +1211,7 @@ body::-webkit-scrollbar-track {
   align-items: center;
   margin-top: auto;
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-bg);
   text-transform: capitalize;
   line-height: 1.5;
   text-align: center;
@@ -1177,18 +1223,19 @@ body::-webkit-scrollbar-track {
   margin-left: 2px;
   line-height: 1.5;
   user-select: text !important;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-bg);
 }
 
 .revenant-green-bar {
   width: var(--progression);
   padding-left: 0px;
-  background: #0baa50;
+  background: var(--background-bg);
   right: 0px;
   position: relative;
   top: -14px;
   height: 14px;
   border-bottom-left-radius: 12px;
+  border-bottom-right-radius: var(--border-bottom-right);
 }
 .revenant-grey-bar {
   width: var(--progression);
@@ -1199,12 +1246,113 @@ body::-webkit-scrollbar-track {
   bottom: 28px;
   height: 14px;
   border-bottom-right-radius: 12px;
+  border-bottom-left-radius: var(--border-bottom-left);
 }
 
 .revenant-slayer-skill-text {
   position: relative;
-  right: 430px;
   top: -42px;
+  right: var(--min-text);
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  user-select: text !important;
+  color: #fff;
+}
+
+/*Tarantula Slayer*/
+
+.tarantula-slayer-boxing {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  padding-top: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 22.5%;
+  height: 175px;
+  overflow: hidden;
+  flex: 0 0;
+}
+
+.tarantula-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #0bca51;
+  background-color: rgba(0, 0, 0, 0.2);
+  flex: 0 0;
+  color: #fff;
+}
+
+.tarantula-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 4px;
+  display: inline-block;
+  background-size: 28px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  background-image: url(/Resources/Tarantula_Icon.webp);
+}
+
+.text-tarantula {
+  align-items: center;
+  margin-top: auto;
+  font-weight: bold;
+  color: var(--color-bg);
+  text-transform: capitalize;
+  line-height: 1.5;
+  text-align: center;
+  user-select: text !important;
+}
+
+.tarantula-value {
+  font-weight: 700;
+  margin-left: 2px;
+  line-height: 1.5;
+  user-select: text !important;
+  color: var(--color-bg);
+}
+
+.tarantula-green-bar {
+  width: var(--progression);
+  padding-left: 0px;
+  background: var(--background-bg);
+  right: 0px;
+  position: relative;
+  top: -14px;
+  height: 14px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: var(--border-bottom-right);
+}
+.tarantula-grey-bar {
+  width: var(--progression);
+  padding-left: 0px;
+  background: rgba(127,127,127,0.8);
+  position: relative;
+  left: var(--offset);
+  bottom: 28px;
+  height: 14px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: var(--border-bottom-left);
+}
+
+.tarantula-slayer-skill-text {
+  position: relative;
+  top: -42px;
+  right: var(--min-text);
   text-align: center;
   font-weight: 600;
   font-size: 12px;
