@@ -33,14 +33,14 @@ module.exports = async (userData, type) => {
             //Calculating progress bar percentage.
             var raw_data = Math.round(((userData.slayers.revenant.slayerXP / slayerXPs.RevenantXP[slayerRev]) * 100))
             var raw_rest = 100 - raw_data
-            const percent = 3.66032210835;
+            const percent = 4.44;
             slayerData['completetion'] = (raw_data / percent);
 
             slayerData['greyProgress'] = (raw_rest / percent);
-            slayerData['offset'] = (raw_data / 3.677);
+            slayerData['offset'] = (raw_data / 4.44);
         } else {
             slayerData['greyProgess'] = 0;
-            slayerData['completetion'] = 100 / 3.66032210835;
+            slayerData['completetion'] = 100 / 4.44;
             slayerData['offset'] = 0;
         }
 
