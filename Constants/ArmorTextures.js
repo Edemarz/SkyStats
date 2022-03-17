@@ -1,12 +1,12 @@
 const attributes = {
-    necrons_helmet: null,
-    necrons_chestplate: "../Resources/Textures/Armor/Necrons_Armor/necron_chestplate.png",
-    necrons_leggings: "../Resources/Textures/Armor/Necrons_Armor/necron_leggings.png",
-    necrons_boots: "../Resources/Textures/Armor/Necrons_Armor/necron_boots.png",
-    storms_helmet: null,
-    storms_chestplate: null,
-    storms_leggings: null,
-    storms_boots: null,
+    necron_helmet: null,
+    necron_chestplate: "../Resources/Textures/Armor/Necrons_Armor/necron_chestplate.png",
+    necron_leggings: "../Resources/Textures/Armor/Necrons_Armor/necron_leggings.png",
+    necron_boots: "../Resources/Textures/Armor/Necrons_Armor/necron_boots.png",
+    storm_helmet: null,
+    storm_chestplate: "../Resources/Textures/Armor/Storm_Armor/storm_chestplate.png",
+    storm_leggings: "../Resources/Textures/Armor/Storm_Armor/storm_leggings.png",
+    storm_boots: "../Resources/Textures/Armor/Storm_Armor/storm_boots.png",
     warden_helmet: null,
     sorrow_boot: null
 };

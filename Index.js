@@ -26,6 +26,7 @@ const Express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const axios = require("axios");
+const fs = require("fs");
 //Databases;
 const PlayerDB = require("./MongoDB/PlayerDB");
 //Instantiating an express client;
@@ -233,7 +234,7 @@ App.post("/", async (req, res) => {
         //Debug Section;
 
         //Modifying Equipped Armor;
-        const reforges = require("./Constants/Reforges");
+        const ArmorAttribute = require("./Constants/ArmorTextures");
         let items = [];
         let itemsWithoutReforge = [];
 
@@ -260,6 +261,56 @@ App.post("/", async (req, res) => {
 
         items = [items[3], items[2], items[1], items[0]];
 
+        PlayerInventory.data.armor.forEach(async (armor) => {
+            if (armor.material?.toLowerCase() != "skull_item") {
+
+                if (armor === null) items.push(null);
+                if (armor !== null) {
+                    const attr = armor.type?.toLowerCase()
+
+                    const actualTextures = ArmorAttribute[attr];
+
+                    itemsWithoutReforge.push({
+                        name: armor.name,
+                        itemType: armor.type?.toLowerCase(),
+                        itemTexture: actualTextures
+                    });
+                };
+            } else if (armor.material?.toLowerCase() == "skull_item") {
+
+                if (armor === null) items.push(null);
+                if (armor !== null) {
+                    const raw_texture = armor.texture?.split('/')[4];
+
+                    const apiLink = `https://mc-heads.net/head/${raw_texture}`;
+
+                    //downloading texture
+                    var fs = require('fs'),
+                        request = require('request');
+
+                    var download = function (uri, filename, callback) {
+                        request.head(uri, function (err, res, body) {
+                            console.log('content-type:', res.headers['content-type']);
+
+                            request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+                        });
+                    };
+
+                    await download(apiLink, `texture-${armor.type}.png`, function () {
+                        console.log('done');
+                    });
+
+                    itemsWithoutReforge.push({
+                        name: armor.name,
+                        itemType: armor.type?.toLowerCase(),
+                        itemTexture: path.join(__dirname, `./texture-${armor.type}.png`)
+                    });
+                };
+            };
+        });
+
+        itemsWithoutReforge = [itemsWithoutReforge[3], itemsWithoutReforge[2], itemsWithoutReforge[1], itemsWithoutReforge[0]];
+
         //Slayer Sections
 
         const SlayerData = await require("./Uhut/slayer")(userData);
@@ -280,6 +331,8 @@ App.post("/", async (req, res) => {
         // const TarantulaSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 2);
 
         //Rendering page.
+
+        console.log(items, itemsWithoutReforge);
 
         res.render('stats', {
             data: SkySimData.data,
