@@ -26,7 +26,7 @@ const Express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const axios = require("axios");
-const fs = require("fs");
+const colors = require("colors");
 //Databases;
 const PlayerDB = require("./MongoDB/PlayerDB");
 //Instantiating an express client;
@@ -262,9 +262,8 @@ App.post("/", async (req, res) => {
         items = [items[3], items[2], items[1], items[0]];
 
         PlayerInventory.data.armor.forEach(async (armor) => {
+            if (armor === null) return itemsWithoutReforge.push(null);
             if (armor.material?.toLowerCase() != "skull_item") {
-
-                if (armor === null) items.push(null);
                 if (armor !== null) {
                     const attr = armor.type?.toLowerCase()
 
@@ -277,33 +276,31 @@ App.post("/", async (req, res) => {
                     });
                 };
             } else if (armor.material?.toLowerCase() == "skull_item") {
-
-                if (armor === null) items.push(null);
                 if (armor !== null) {
                     const raw_texture = armor.texture?.split('/')[4];
 
                     const apiLink = `https://mc-heads.net/head/${raw_texture}`;
 
                     //downloading texture
-                    var fs = require('fs'),
-                        request = require('request');
+                    // var fs = require('fs'),
+                    //     request = require('request');
 
-                    var download = function (uri, filename, callback) {
-                        request.head(uri, function (err, res, body) {
-                            console.log('content-type:', res.headers['content-type']);
+                    // var download = function (uri, filename, callback) {
+                    //     request.head(uri, function (err, res, body) {
+                    //         console.log('content-type:', res.headers['content-type']);
 
-                            request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-                        });
-                    };
+                    //         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+                    //     });
+                    // };
 
-                    await download(apiLink, `texture-${armor.type}.png`, function () {
-                        console.log('done');
-                    });
+                    // await download(apiLink, `texture-${armor.type}.png`, function () {
+                    //     console.log('done');
+                    // });
 
                     itemsWithoutReforge.push({
                         name: armor.name,
                         itemType: armor.type?.toLowerCase(),
-                        itemTexture: path.join(__dirname, `./texture-${armor.type}.png`)
+                        itemTexture: apiLink
                     });
                 };
             };
@@ -332,7 +329,7 @@ App.post("/", async (req, res) => {
 
         //Rendering page.
 
-        console.log(items, itemsWithoutReforge);
+        console.log(PlayerInventory.data.armor);
 
         res.render('stats', {
             data: SkySimData.data,
@@ -366,4 +363,4 @@ App.post("/", async (req, res) => {
     };
 });
 //Listening to a specific port;
-App.listen(3001, () => console.log("SkyStats is now running!"));
+App.listen(3001, () => console.log(colors.green("SkyStats is now running!")));

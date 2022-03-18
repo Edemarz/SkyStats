@@ -586,7 +586,8 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   position: relative;
-  bottom: 330px;
+  bottom: 560px;
+  font-size: 14px;
 }
 
 .purse-value {
@@ -596,7 +597,8 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   color: white;
-  bottom: 330px;
+  bottom: 560px;
+  font-size: 14px;
 }
 
 /*User's Bank*/
@@ -608,8 +610,9 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   position: relative;
-  bottom: 330px;
+  bottom: 560px;
   left: 5px;
+  font-size: 14px;
 }
 
 .bank-value {
@@ -619,8 +622,9 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   color: white;
-  bottom: 330px;
+  bottom: 560px;
   left: 5px;
+  font-size: 14px;
 }
 
 /*Weight by Uhut*/
@@ -631,8 +635,9 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   position: relative;
-  bottom: 330px;
+  bottom: 560px;
   left: 10px;
+  font-size: 14px;
 }
 
 .weight-value {
@@ -642,8 +647,9 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   color: white;
-  bottom: 330px;
+  bottom: 560px;
   left: 10px;
+  font-size: 14px;
 }
 
 /*User's Bits*/
@@ -655,8 +661,9 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   position: relative;
-  bottom: 330px;
+  bottom: 560px;
   left: 10px;
+  font-size: 14px;
 }
 
 .bits-value {
@@ -666,8 +673,9 @@ body::-webkit-scrollbar-track {
   line-height: 1.5;
   user-select: text !important;
   color: white;
-  bottom: 330px;
+  bottom: 560px;
   left: 10px;
+  font-size: 14px;
 }
 
 /* Stats*/
@@ -1044,6 +1052,147 @@ body::-webkit-scrollbar-track {
   background-color: #58d6ed;
 }
 
+/*Magic Find Section*/
+.mf-stat {
+  position: relative;
+  margin-top: 0;
+  color: #58d6ed;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 270px;
+}
+
+.mf-text {
+  position: relative;
+  font-size: 16px;
+  color: #58d6ed;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 502px;
+  user-select: text !important;
+  bottom: 333px;
+}
+
+.mf-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 502px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 333px;
+}
+
+.mf-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 480px;
+  bottom: 310px;
+  mask-image: url(../Resources/Magic_Find_Icon.svg);
+  -webkit-mask-image: url(../Resources/Magic_Find_Icon.svg);
+  background-color: #58d6ed;
+}
+
+/*Ferocity Section*/
+.ferocity-stat {
+  position: relative;
+  margin-top: 0;
+  color: #58d6ed;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 270px;
+}
+
+.ferocity-text {
+  position: relative;
+  font-size: 16px;
+  color: #fb5858;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 502px;
+  user-select: text !important;
+  bottom: 333px;
+}
+
+.ferocity-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 502px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 333px;
+}
+
+.ferocity-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 480px;
+  bottom: 310px;
+  mask-image: url(../Resources/Ferocity_Icon.svg);
+  -webkit-mask-image: url(../Resources/Ferocity_Icon.svg);
+  background-color: #fb5858;
+}
+
+/*Ferocity Section*/
+.ability-damage-stat {
+  position: relative;
+  margin-top: 0;
+  color: #58d6ed;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 600;
+  bottom: 270px;
+}
+
+.ability-damage-text {
+  position: relative;
+  font-size: 16px;
+  color: #fb5858;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.5;
+  left: 502px;
+  user-select: text !important;
+  bottom: 333px;
+}
+
+.ability-damage-value {
+  position: relative;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-left: 2px;
+  left: 502px;
+  line-height: 1.5;
+  user-select: 1.5;
+  user-select: text !important;
+  bottom: 333px;
+}
+
+.ability-damage-icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 480px;
+  bottom: 310px;
+  mask-image: url(../Resources/Ability_Damage_Icon.svg);
+  -webkit-mask-image: url(../Resources/Ability_Damage_Icon.svg);
+  background-color: #fb5858;
+}
+
 /*Nav Bar*/
 
 .nav_bar {
@@ -1064,7 +1213,7 @@ body::-webkit-scrollbar-track {
   left: 0;
   right: 0;
   height: 2px;
-  top: -850px;
+  bottom: 922.5px;
   background-color: #0bca51;
   z-index: 2;
 }
@@ -1173,6 +1322,31 @@ body::-webkit-scrollbar-track {
   background-color: var(--background-color);
   bottom: 100px;
 }
+
+.piece-1-icon {
+    width: 118px;
+    height: 118px;
+    background-size: 118px auto;
+    background-repeat: no-repeat;
+    background-position: center center !important;
+    -webkit-mask-size: 118px 118px;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-size: 118px 118px;
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    position: absolute;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+    z-index: 15px;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    transform-origin: center center;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    background-image: var(--item-icon);
+  }
 
 .piece-2 {
   display: inline-block;

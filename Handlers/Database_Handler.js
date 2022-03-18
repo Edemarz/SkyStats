@@ -6,5 +6,5 @@ module.exports = () => {
         useUnifiedTopology: true
     }).catch((err) => console.log(err));
 
-    MongoDB.connection.on("connected", () => console.log("Connected to MongoDB!"))
+    MongoDB.connection.on("connected", () => console.log(require("colors").green("Connected to MongoDB!")))
 };

@@ -238,7 +238,31 @@
                     <div class="intelligence-icon"></div>
                     <span class="intelligence-text">Intelligence</span>
                     <span class="intelligence-value">
-                        <%= userData['stats']['mana']?.toLocaleString() %>%
+                        <%= userData['stats']['mana']?.toLocaleString() %>
+                    </span>
+                </div>
+
+                <div class="mf-stat">
+                    <div class="mf-icon"></div>
+                    <span class="mf-text">Magic Find</span>
+                    <span class="mf-value">
+                        <%= userData['stats']['magicFind']?.toLocaleString() %>
+                    </span>
+                </div>
+
+                <div class="ferocity-stat">
+                    <div class="ferocity-icon"></div>
+                    <span class="ferocity-text">Ferocity</span>
+                    <span class="ferocity-value">
+                        <%= userData['stats']['ferocity']?.toLocaleString() %>
+                    </span>
+                </div>
+
+                <div class="ability-damage-stat">
+                    <div class="ability-damage-icon"></div>
+                    <span class="ability-damage-text">Ability Damage</span>
+                    <span class="ability-damage-value">
+                        <%= userData['stats']['abilityDamage']?.toLocaleString() %>%
                     </span>
                 </div>
             </div>
@@ -275,9 +299,9 @@
 
                             <% if (playerArmor.equippedItems===true) { %>
                                 <% let index=1; %>
-                                    <% playerArmor.withReforge.map((item)=> { %>
+                                    <% playerArmor.noReforge.map((item)=> { %>
                                         <div tabindex="0" class="piece-<%= index %>"
-                                            style="--background-color: <%= item === null ? '' : item.split('-')[1] %>;">
+                                            style="--background-color: <%= item === null ? '' : playerArmor.withReforge[index - 1].split('-')[1] %>;">
                                             <div class="piece-<%= index %>-icon"
                                                 style="--item-icon: <%= playerArmor.noReforge[index - 1] === undefined ? 'url()' : `url('${playerArmor.noReforge[index - 1]?.itemTexture}')` %>;">
                                             </div>
