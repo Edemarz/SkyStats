@@ -301,7 +301,8 @@
                                 <% let index=1; %>
                                     <% playerArmor.noReforge.map((item)=> { %>
                                         <div tabindex="0" class="piece-<%= index %>"
-                                            style="--background-color: <%= item === null ? '' : playerArmor.withReforge[index - 1].split('-')[1] %>;">
+                                            style="--background-color: <%= item === null || item === undefined ? '' : playerArmor.withReforge[index - 1].split('-')[1] %>;"
+                                            data-tippy-content='<%= playerArmor.noReforge[index - 1] === undefined ? playerArmor.noReforge[index - 1].name : playerArmor.noReforge[index - 1].name %><br><br><%= playerArmor.noReforge[index - 1] === undefined ? playerArmor.noReforge[index - 1].itemLore : playerArmor.noReforge[index - 1].itemLore %>'>
                                             <div class="piece-<%= index %>-icon"
                                                 style="--item-icon: <%= playerArmor.noReforge[index - 1] === undefined ? 'url()' : `url('${playerArmor.noReforge[index - 1]?.itemTexture}')` %>;">
                                             </div>
@@ -433,14 +434,14 @@
         animation: 'scale',
         interactive: true,
         arrow: true,
-        delay: [200, 100],
-        placement: 'top',
+        delay: [100, 100],
+        placement: 'left',
         popperOptions: {
             modifiers: [
                 {
                     name: 'flip',
                     options: {
-                        fallbackPlacements: ['bottom', 'left', 'right']
+                        fallbackPlacements: ['right', 'top', 'bottom']
                     }
                 }
             ]

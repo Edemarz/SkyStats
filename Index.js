@@ -269,10 +269,13 @@ App.post("/", async (req, res) => {
 
                     const actualTextures = ArmorAttribute[attr];
 
+                    let lore = armor.lore.join('<br>');
+
                     itemsWithoutReforge.push({
                         name: armor.name,
                         itemType: armor.type?.toLowerCase(),
-                        itemTexture: actualTextures
+                        itemTexture: actualTextures,
+                        itemLore: lore
                     });
                 };
             } else if (armor.material?.toLowerCase() == "skull_item") {
@@ -281,10 +284,13 @@ App.post("/", async (req, res) => {
 
                     const apiLink = `https://mc-heads.net/head/${raw_texture}`;
 
+                    let lore = armor.lore.join('<br>');
+
                     itemsWithoutReforge.push({
                         name: armor.name,
                         itemType: armor.type?.toLowerCase(),
-                        itemTexture: apiLink
+                        itemTexture: apiLink,
+                        itemLore: lore
                     });
                 };
             };
@@ -313,7 +319,7 @@ App.post("/", async (req, res) => {
 
         //Rendering page.
 
-        console.log(PlayerInventory.data.armor);
+        console.log(itemsWithoutReforge);
 
         res.render('stats', {
             data: SkySimData.data,
