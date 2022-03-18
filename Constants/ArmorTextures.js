@@ -29,6 +29,14 @@ const attributes = {
     old_dragon_boots: "../Resources/Textures/Armor/Old_Dragon_Armor/old_dragon_boots.png",
     protector_dragon_chestplate: "../Resources/Textures/Armor/Protector_Dragon_Armor/protector_dragon_chestplate.png",
     protector_dragon_leggings: "../Resources/Textures/Armor/Protector_Dragon_Armor/protector_dragon_leggings.png",
-    protector_dragon_boots: "../Resources/Textures/Armor/Protector_Dragon_Armor/protector_dragon_boots.png"
+    protector_dragon_boots: "../Resources/Textures/Armor/Protector_Dragon_Armor/protector_dragon_boots.png",
+    miner_helmet: "../Resources/Textures/Armor/Miner_Armor/miner_helmet.png",
+    miner_chestplate: "../Resources/Textures/Armor/Miner_Armor/miner_chestplate.png",
+    miner_leggings: "../Resources/Textures/Armor/Miner_Armor/miner_leggings.png",
+    miner_boots: "../Resources/Textures/Armor/Miner_Armor/miner_boots.png",
+    hardened_diamond_helmet: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_helmet.png",
+    hardened_diamond_chestplate: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_chestplate.png",
+    hardened_diamond_leggings: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_leggings.png",
+    hardened_diamond_boots: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_boots.png"
 };
 module.exports = attributes;

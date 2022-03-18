@@ -1213,7 +1213,7 @@ body::-webkit-scrollbar-track {
   left: 0;
   right: 0;
   height: 2px;
-  bottom: 922.5px;
+  bottom: var(--bottom-value);
   background-color: #0bca51;
   z-index: 2;
 }

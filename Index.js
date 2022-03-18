@@ -281,22 +281,6 @@ App.post("/", async (req, res) => {
 
                     const apiLink = `https://mc-heads.net/head/${raw_texture}`;
 
-                    //downloading texture
-                    // var fs = require('fs'),
-                    //     request = require('request');
-
-                    // var download = function (uri, filename, callback) {
-                    //     request.head(uri, function (err, res, body) {
-                    //         console.log('content-type:', res.headers['content-type']);
-
-                    //         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-                    //     });
-                    // };
-
-                    // await download(apiLink, `texture-${armor.type}.png`, function () {
-                    //     console.log('done');
-                    // });
-
                     itemsWithoutReforge.push({
                         name: armor.name,
                         itemType: armor.type?.toLowerCase(),
@@ -343,7 +327,8 @@ App.post("/", async (req, res) => {
             playerArmor: {
                 equippedItems: items.filter((item) => item !== null).length > 0 ? true : false,
                 withReforge: items,
-                noReforge: itemsWithoutReforge
+                noReforge: itemsWithoutReforge,
+                
             }
         });
 
