@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en" class="style-scrollbar">
+
+<head>
+    <title>SkyStats</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/Stats.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <img src="/Resources/slyso234.png" class="skystats-img">&amp;
+            <a class="navbar-brand" href="/"><strong>SkyStats</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <button class="header-button expander info-button" id="info-button" aria-expanded="false">
+                        About
+                    </button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <main class="wrapper"> -->
+    <div class="blur-box" data-sticky>
+        <div class="player_profile">
+            <span class="text-stats-for">Stats for</span>&ThickSpace;&ThickSpace;<span tabindex="0"
+                class="stats_for_player">
+                <%= username %>
+            </span>&ThickSpace;&ThickSpace;<span class="text-on">on</span>&ThickSpace;&ThickSpace;<span
+                class="text-skysim">SkySim</span>
+        </div>
+        <div class="player_socials">
+            <a href="https://auctions.craftlink.xyz/players/<%= uuidData.raw_id %>" target="_blank" rel="noreferrer"
+                class="additional-player-stat player-hyauction">HyAuctions</a>
+            <a href="https://plancke.io/hypixel/player/stats/<%= username %>" target="_blank" rel="noreferrer"
+                class="additional-player-stat player-plancke">Plancke</a>
+        </div>
+        <!--Skill Section-->
+        <div class="skills">
+            <!--Combat Section-->
+            <div class="combat-skill">
+                <div class="skill-icon-combat"
+                    style="--skill_color: <%= userData['skills'].combat.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Combat_Sword.webp" alt="" class="combat-sword">
+                </div>
+                <div class="skill-name-combat">
+                    <strong>Combat </strong><span class="skill-level">
+                        <%= userData['skills'].combat.level===null ? 0 : userData['skills'].combat.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-combat"
+                    style="--left_side_bar: <%= userData['skills'].combat.skill_progression_percentage + 1.1 %>%; --width_bar: <%= userData['skills'].combat.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-combat"
+                    style="--progress_bar_color: <%= userData['skills'].combat.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].combat.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-combat"
+                    style="--left_side: <%= ((userData['skills'].combat.skill_progression_percentage + userData['skills'].combat.greyPercentage) + 0.3) / 2 %>%;
+                        --min-text: <%= (userData['skills'].combat.level>= 60 ? `${userData['skills'].combat.abbrev} XP`.length :
+                        `${userData['skills'].combat.abbrev}/${userData['skills'].combat.nextLevelXP} XP`.length) %>px;">
+                    <%= userData['skills'].combat.level>= 60 ? `${userData['skills'].combat.abbrev} XP` :
+                        `${userData['skills'].combat.currentSkillXP.abbrev}/${userData['skills'].combat.currentSkillXP.nextXPAbbrev}
+                        XP` %>
+                </div>
+            </div>
+            <!--Mining Section-->
+            <div class="mining-skill">
+                <div class="skill-icon-mining"
+                    style="--skill_color: <%= userData['skills'].mining.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Stone_Pickaxe.png" alt="" class="mining-sword">
+                </div>
+                <div class="skill-name-mining">
+                    <strong>Mining </strong><span class="skill-level">
+                        <%= userData['skills'].mining.level===null ? 0 : userData['skills'].mining.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-mining"
+                    style="--left_side_bar: <%= userData['skills'].mining.skill_progression_percentage + 1.1 %>%; --width_bar: <%= userData['skills'].mining.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-mining"
+                    style="--progress_bar_color: <%= userData['skills'].mining.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].mining.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-mining"
+                    style="--left_side: <%= ((userData['skills'].mining.skill_progression_percentage + userData['skills'].mining.greyPercentage) + 0.3) / 2 %>%;
+                        --min-text: <%= (userData['skills'].mining.level>= 60 ? `${userData['skills'].mining.abbrev} XP`.length :
+                        `${userData['skills'].mining.abbrev}/${userData['skills'].mining.nextLevelXP} XP`.length) %>px;">
+                    <%= userData['skills'].mining.level>= 60 ? `${userData['skills'].mining.abbrev} XP` :
+                        `${userData['skills'].mining.currentSkillXP.abbrev}/${userData['skills'].mining.currentSkillXP.nextXPAbbrev}
+                        XP` %>
+                </div>
+            </div>
+            <!--Enchanting Skill-->
+            <div class="enchanting-skill">
+                <div class="skill-icon-enchanting"
+                    style="--skill_color: <%= userData['skills'].enchanting.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Enchanting_Table.png" alt="" class="enchanting-sword">
+                </div>
+                <div class="skill-name-enchanting">
+                    <strong>Enchanting </strong><span class="skill-enchanting">
+                        <%= userData['skills'].enchanting.level===null ? 0 : userData['skills'].enchanting.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-enchanting"
+                    style="--left_side_bar: <%= userData['skills'].enchanting.skill_progression_percentage + 1.1 %>%; --width_bar: <%= userData['skills'].enchanting.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-enchanting"
+                    style="--progress_bar_color: <%= userData['skills'].enchanting.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].enchanting.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-enchanting"
+                    style="--left_side: <%= ((userData['skills'].enchanting.skill_progression_percentage + userData['skills'].enchanting.greyPercentage) + 0.3) / 2 %>%;
+                        --min-text: <%= (userData['skills'].enchanting.level>= 60 ? `${userData['skills'].enchanting.abbrev} XP`.length :
+                        `${userData['skills'].enchanting.abbrev}/${userData['skills'].enchanting.nextLevelXP} XP`.length) %>px;">
+                    <%= userData['skills'].enchanting.level>= 60 ? `${userData['skills'].enchanting.abbrev} XP` :
+                        `${userData['skills'].enchanting.currentSkillXP.abbrev}/${userData['skills'].enchanting.currentSkillXP.nextXPAbbrev}
+                        XP`
+                        %>
+                </div>
+            </div>
+            <!--Farming Skill-->
+            <div class="farming-skill">
+                <div class="skill-icon-farming"
+                    style="--skill_color: <%= userData['skills'].farming.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Minecraft-goldenhoe.webp" alt="" class="farming-sword">
+                </div>
+                <div class="skill-name-farming">
+                    <strong>Farming </strong><span class="skill-farming">
+                        <%= userData['skills'].farming.level===null ? 0 : userData['skills'].farming.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-farming"
+                    style="--left_side_bar: <%= userData['skills'].farming.skill_progression_percentage + 1.1 %>%; --width_bar: <%= userData['skills'].farming.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-farming"
+                    style="--progress_bar_color: <%= userData['skills'].farming.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].farming.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-farming"
+                    style="--left_side: <%= ((userData['skills'].farming.skill_progression_percentage + userData['skills'].farming.greyPercentage) + 0.3) / 2 %>%; --min-text: <%= (userData['skills'].farming.level>= 60 ? `${userData['skills'].farming.abbrev} XP`.length :
+                        `${userData['skills'].farming.abbrev}/${userData['skills'].farming.nextLevelXP} XP`.length) %>px;">
+                    <%= userData['skills'].farming.level>= 60 ? `${userData['skills'].farming.abbrev} XP` :
+                        `${userData['skills'].farming.currentSkillXP.abbrev}/${userData['skills'].farming.currentSkillXP.nextXPAbbrev}
+                        XP` %>
+                </div>
+            </div>
+            <!--Foraging Section-->
+            <div class="foraging-skill">
+                <div class="skill-icon-foraging"
+                    style="--skill_color: <%= userData['skills'].foraging.hypermaxed ? '#dd980e' : '#0bca51' %>;">
+                    <img src="/Resources/Foraging_Icon_Sapling.webp" alt="" class="foraging-sword">
+                </div>
+                <div class="skill-name-foraging">
+                    <strong>Foraging </strong><span class="skill-foraging">
+                        <%= userData['skills'].foraging.level===null ? 0 : userData['skills'].foraging.level %>
+                    </span>
+                </div>
+                <div class="skill-progress-bar-grey-foraging"
+                    style="--left_side_bar: <%= userData['skills'].foraging.skill_progression_percentage + 1.1 %>%; --width_bar: <%= userData['skills'].foraging.greyPercentage + 0.3 %>%;">
+                </div>
+                <div class="skill-progress-bar-foraging"
+                    style="--progress_bar_color: <%= userData['skills'].foraging.hypermaxed ? '#ce8f12' : '#0baa51' %>; --progress: <%= userData['skills'].foraging.skill_progression_percentage %>%;">
+                </div>
+                <div class="skill-progress-text-foraging"
+                    style="--left_side: <%= (((userData['skills'].foraging.skill_progression_percentage + userData['skills'].foraging.greyPercentage) + 0.3) / 2) %>%; --min-text: <%= (userData['skills'].foraging.level>= 60 ? `${userData['skills'].foraging.abbrev} XP`.length :
+                        `${userData['skills'].foraging.abbrev}/${userData['skills'].foraging.nextLevelXP} XP`.length) %>px;">
+                    <%= userData['skills'].foraging.level>= 60 ? `${userData['skills'].foraging.abbrev} XP` :
+                        `${userData['skills'].foraging.currentSkillXP.abbrev}/${userData['skills'].foraging.currentSkillXP.nextXPAbbrev}
+                        XP` %>
+                </div>
+            </div>
+            <!--Player Stats-->
+            <div class="player-stats">
+                <div class="health-stat">
+                    <div class="heart-icon"></div>
+                    <span class="health-text">Health</span>
+                    <span class="health-value">
+                        <%= userData['stats'].health?.toLocaleString() %>
+                    </span>
+                </div>
+                <div class="defense-stat">
+                    <div class="defense-icon"></div>
+                    <span class="defense-text"
+                        data-tippy-content="Effective Health: <%= Math.round(userData['stats'].effectiveHP.hp)?.toLocaleString() %>">Defense</span>
+                    <span class="defense-value">
+                        <%= userData['stats'].defense?.toLocaleString() %>
+                    </span>
+                </div>
+                <div class="strength-stat">
+                    <div class="strength-icon"></div>
+                    <span class="strength-text">Strength</span>
+                    <span class="strength-value">
+                        <%= userData['stats'].strength?.toLocaleString() %>
+                    </span>
+                </div>
+                <div class="speed-stat">
+                    <div class="speed-icon"></div>
+                    <span class="speed-text">Speed</span>
+                    <span class="speed-value">
+                        <%= userData['stats'].speed?.toLocaleString() %>%
+                    </span>
+                </div>
+
+                <div class="crit-chance-stat">
+                    <div class="crit-chance-icon"></div>
+                    <span class="crit-chance-text">Crit Chance</span>
+                    <span class="crit-chance-value">
+                        <%= userData['stats']['crit']['chance']?.toLocaleString() %>%
+                    </span>
+                </div>
+
+                <div class="crit-damage-stat">
+                    <div class="crit-damage-icon"></div>
+                    <span class="crit-damage-text">Crit Damage</span>
+                    <span class="crit-damage-value">
+                        <%= userData['stats']['crit']['damage']?.toLocaleString() %>%
+                    </span>
+                </div>
+
+                <div class="attack-speed-stat">
+                    <div class="attack-speed-icon"></div>
+                    <span class="attack-speed-text">Attack Speed</span>
+                    <span class="attack-speed-value">
+                        <%= userData['stats']['attackSpeed']?.toLocaleString() %>%
+                    </span>
+                </div>
+
+                <div class="intelligence-stat">
+                    <div class="intelligence-icon"></div>
+                    <span class="intelligence-text">Intelligence</span>
+                    <span class="intelligence-value">
+                        <%= userData['stats']['mana']?.toLocaleString() %>
+                    </span>
+                </div>
+
+                <div class="mf-stat">
+                    <div class="mf-icon"></div>
+                    <span class="mf-text">Magic Find</span>
+                    <span class="mf-value">
+                        <%= userData['stats']['magicFind']?.toLocaleString() %>
+                    </span>
+                </div>
+
+                <div class="ferocity-stat">
+                    <div class="ferocity-icon"></div>
+                    <span class="ferocity-text">Ferocity</span>
+                    <span class="ferocity-value">
+                        <%= userData['stats']['ferocity']?.toLocaleString() %>
+                    </span>
+                </div>
+
+                <div class="ability-damage-stat">
+                    <div class="ability-damage-icon"></div>
+                    <span class="ability-damage-text">Ability Damage</span>
+                    <span class="ability-damage-value">
+                        <%= userData['stats']['abilityDamage']?.toLocaleString() %>%
+                    </span>
+                </div>
+            </div>
+            <!--Purse, Bank, Bits Section etc-->
+            <div class="player-statistics-misc">
+                <span class="text-purse">Purse:</span>
+                <span class="purse-value">
+                    <%= userData['coins'].abbrev %> Coins
+                </span>
+                <span class="text-bank">Bank:</span>
+                <span class="bank-value">
+                    <%= userData['coins'].bank.abbrev %> Coins
+                </span>
+                <span class="text-bits">Bits:</span>
+                <span class="bits-value">
+                    <%= userData['bits'].abbrev %> Bits
+                </span>
+                <span class="text-weight">Weight:</span>
+                <span class="weight-value">
+                    <%= userData['weight'].weightAbbrev %> (<%=
+                            Math.round(userData['weight'].totalWeight)?.toLocaleString() %>)
+                </span>
+            </div>
+
+            <!--Armor Section-->
+            <div class="armors" id="Armor">
+                <div class="text-armor">Armor</div>
+                <div class="armor-inventory" style="color: white;">
+                    <% if (playerArmor.equippedItems===false) { %>
+                        <span class="text-not-equip-armor">
+                            <%= username %> doesn't have any armor equipped.
+                        </span>
+                        <% }; %>
+
+                            <% if (playerArmor.equippedItems===true) { %>
+                                <% let index=1; %>
+                                    <% playerArmor.noReforge.map((item)=> { %>
+                                        <div tabindex="0" class="piece-<%= index %>"
+                                            style="--background-color: <%= item === null ? '' : playerArmor.withReforge[index - 1].split('-')[1] %>;">
+                                            <div class="piece-<%= index %>-icon"
+                                                style="--item-icon: <%= playerArmor.noReforge[index - 1] === undefined ? 'url()' : `url('${playerArmor.noReforge[index - 1]?.itemTexture}')` %>;">
+                                            </div>
+                                        </div>
+                                        <% index++; %>
+                                            <% }); %>
+                                                <% }; %>
+                </div>
+            </div>
+            <!--Slayer Section-->
+            <div id="Slayers" class="slayers">
+                <div class="text-slayer">Slayer</div>
+                <div class="revenant-slayer-boxing">
+                    <div class="revenant-header">
+                        <div class="revenant-icon"></div>
+                        <span class="revenant-header-text">Revenant Horror</span>
+                    </div>
+                    <div class="text-revenant"
+                        style="--color-bg: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? '#dd980e' : 'rgba(255, 255, 255, 0.6)' %>;">
+                        Revenant Level <span class="revenant-value"
+                            style="--color-bg: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? '#fdbb3c' : 'rgba(255, 255, 255, 0.6)' %>;">
+                            <%= userData['slayers']['revenant']['slayerLevel'] %>
+                        </span>
+                    </div>
+                </div>
+                <!--Green Bar-->
+                <div class="revenant-green-bar"
+                    style="--progression: <%= userData['slayers']['revenant']['progression'] %>%; --border-bottom-right: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? 10 : 0 %>px;
+                    --background-bg: <%= userData['slayers']['revenant']['slayerLevel'] >= 9 ? '#ce8f12' : '#0baa50' %>;">
+                </div>
+                <!--Grey Bar-->
+                <div class="revenant-grey-bar"
+                    style="--progression: <%= userData['slayers']['revenant']['greyProgression'] %>%;
+            --left-side: <%= (((userData['slayers']['revenant']['progression'] + userData['slayers']['revenant']['greyProgression']) + 48.5) / 2) %>%;
+            --offset: <%= (userData['slayers']['revenant']['offset'])%>%; --border-bottom-left: <%= userData['slayers']['revenant']['slayerXP'] <= 0 ? 10 : 0 %>px;">
+                </div>
+                <!--Slayer Text-->
+                <div class="revenant-slayer-skill-text"
+                    style="--min-text: <%= (userData['slayers']['revenant']['slayerLevel'] >= 9 ? `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()} XP`.length :
+                `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()}/${userData['slayers']['revenant']['xp']['next']?.toLocaleString()}`.length) + 470 %>px;">
+                    <%= (userData['slayers']['revenant']['slayerLevel']>= 9 ?
+                        `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()} XP` :
+                        `${userData['slayers']['revenant']['slayerXP']?.toLocaleString()}/${userData['slayers']['revenant']['xp']['next']?.toLocaleString()}`)
+                        %>
+                </div>
+                <!--Tarantula-->
+                <!-- <div class="tarantula-slayer-boxing">
+                    <div class="tarantula-header">
+                        <div class="tarantula-icon"></div>
+                        <span class="tarantula-header-text">Tarantula Broodfather</span>
+                    </div>
+                    <div class="text-tarantula"
+                        style="--color-bg: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? '#dd980e' : 'rgba(255, 255, 255, 0.6)' %>;">
+                        Tarantula Level <span class="tarantula-value"
+                            style="--color-bg: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? '#fdbb3c' : 'rgba(255, 255, 255, 0.6)' %>;">
+                            <%= userData['slayers']['tarantula']['slayerLevel'] %>
+                        </span>
+                    </div>
+                </div> -->
+
+                <!--Green bar-->
+                <!-- <div class="tarantula-green-bar"
+                    style="--progression: <%= userData['slayers']['tarantula']['progression'] %>%; --border-bottom-right: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? 10 : 0 %>px;
+                    --background-bg: <%= userData['slayers']['tarantula']['slayerLevel'] >= 9 ? '#ce8f12' : '#0baa50' %>;">
+                </div> -->
+                <!--Grey Bar-->
+                <!-- <div class="tarantula-grey-bar"
+                    style="--progression: <%= userData['slayers']['tarantula']['greyProgression'] %>%;
+            --left-side: <%= (((userData['slayers']['tarantula']['progression'] + userData['slayers']['tarantula']['greyProgression']) + 48.5) / 2) %>%;
+            --offset: <%= (userData['slayers']['tarantula']['offset'])%>%; --border-bottom-left: <%= userData['slayers']['tarantula']['slayerXP'] <= 0 ? 10 : 0 %>px;">
+                </div> -->
+                <!--Text-->
+                <!-- <div class="tarantula-slayer-skill-text"
+                    style="--min-text: <%= (userData['slayers']['tarantula']['slayerLevel'] >= 9 ? `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()} XP`.length :
+                `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()}/${userData['slayers']['tarantula']['xp']['next']?.toLocaleString()}`.length) + 470 %>px;">
+                    <%= (userData['slayers']['tarantula']['slayerLevel']>= 9 ?
+                        `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()} XP` :
+                        `${userData['slayers']['tarantula']['slayerXP']?.toLocaleString()}/${userData['slayers']['tarantula']['xp']['next']?.toLocaleString()}`)
+                        %>
+                </div> -->
+                <!--End-->
+            </div>
+            <!--Navbar Section-->
+            <div class="nav_bar">
+                <div class="nav_bar_line" style="--bottom-value: <%= playerArmor.equippedItems===true ? 922.5 : 866.5 %>px;">
+                    <div class="nav_bar_background">
+                        <!-- <div class="nav_items_container">
+                            <a class="nav-item" href="#Slayers">Slayers</a>
+                            <a class="nav-item" href="#Armor">Armor</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </main> -->
+        <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+            </script>
+
+        <!-- Development -->
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+</body>
+
+<script>
+    tippy('.info-button', {
+        allowHTML: true,
+        animation: 'scale',
+        interactive: true,
+        arrow: true,
+        content: '<a style="color: white;" href="https://stats.skysim.sbs/">SkyStats</a> is a free stats-viewer for SkySim, a remake of Hypixel SkyBlock.<br><br>You can join the Discord <a href="https://discord.skysim.sbs/" style="color: white;">here</a> to suggest features, report bugs and issues. It will be appreciated since it will help SkyStats grow!<br><br>Credits: Uhut: Weight Calculation, EHP Calculation, and Slayer Calculation.<br>Aragorn: Icons, Armor Textures.<br>Renegade450: SkyStats Background.<br>KP56: SkySim API.<br>GiaKhanhVN: Resources, Skills Formula.',
+        delay: [200, 100],
+        placement: 'bottom',
+        popperOptions: {
+            modifiers: [
+                {
+                    name: 'flip',
+                    options: {
+                        fallbackPlacements: ['bottom']
+                    }
+                }
+            ]
+        },
+        role: 'tooltip'
+    });
+
+    tippy('[data-tippy-content]', {
+        allowHTML: true,
+        animation: 'scale',
+        interactive: true,
+        arrow: true,
+        delay: [200, 100],
+        placement: 'top',
+        popperOptions: {
+            modifiers: [
+                {
+                    name: 'flip',
+                    options: {
+                        fallbackPlacements: ['bottom', 'left', 'right']
+                    }
+                }
+            ]
+        },
+        role: 'tooltip'
+    });
+</script>
+
+</html>
