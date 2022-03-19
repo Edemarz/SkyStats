@@ -63,16 +63,15 @@ App.get("/usernotfound/:username/:type", (req, res) => {
     res.status(200).send(object);
 });
 
-//Instantiating Express Post
-App.post("/", async (req, res) => {
-    if (!req.body.SkySim_Username || typeof req.body.SkySim_Username !== 'string' || req.body.SkySim_Username.length > 16 || req.body.SkySim_Username.length < 3) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/invalid`);
+App.get("/user/:username", async (req, res) => {
+    if (!req.params.username || typeof req.params.username !== 'string' || req.params.username.length > 16 || req.params.username.length < 3) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/invalid`);
 
     const UUID = await axios({
         method: 'get',
-        url: `https://playerdb.co/api/player/minecraft/${req.body.SkySim_Username}`
+        url: `https://playerdb.co/api/player/minecraft/${req.params.username}`
     }).catch((err) => null);
 
-    if (!UUID || !UUID.data || UUID.data.success === false) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/notfound`);
+    if (!UUID || !UUID.data || UUID.data.success === false) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/notfound`);
 
     if (UUID && UUID.data && UUID.data.code == "player.found") {
         const SkySimData = await axios({
@@ -85,12 +84,12 @@ App.post("/", async (req, res) => {
             url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_ITEMS&param=${UUID.data?.data?.player?.id}`
         }).catch((err) => null);
 
-        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/neverjoined`), console.log(SkySimData.data.error || PlayerInventory.data.error);
+        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/neverjoined`), console.log(SkySimData.data.error || PlayerInventory.data.error);
 
         //Setting User Data
         let userData = {
             profile: {
-                username: req.body.SkySim_Username,
+                username: req.params.username,
                 uuid: UUID.data?.data?.player
             },
             coins: {
@@ -438,7 +437,7 @@ App.post("/", async (req, res) => {
 
         res.render('stats', {
             data: SkySimData.data,
-            username: req.body.SkySim_Username,
+            username: UUID.data?.data?.player?.username,
             uuidData: UUID.data?.data?.player,
             constants: {
                 colorCodes: colorCodes
@@ -467,6 +466,12 @@ App.post("/", async (req, res) => {
             PlayerData: userData
         }).save();
     };
+})
+
+//Instantiating Express Post
+App.post("/", async (req, res) => {
+    if (!req.body.SkySim_Username || typeof req.body.SkySim_Username !== 'string' || req.body.SkySim_Username.length > 16 || req.body.SkySim_Username.length < 3) return res.redirect(`/usernotfound/${encodeURIComponent(req.body.SkySim_Username)}/invalid`);
+    return res.redirect(`/user/${encodeURIComponent(req.body.SkySim_Username)}`);
 });
 //Listening to a specific port;
 App.listen(3001, () => console.log(colors.green("SkyStats is now running!")));

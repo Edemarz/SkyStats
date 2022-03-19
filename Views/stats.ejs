@@ -12,6 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Viewing <%= username %> SkySim Statistics" />
+    <meta property="og:profile:username" content="<%= username %>">
+    <meta property="og:site_name" content="SkyStats">
+    <meta property="og:description" content="Purse: <%= userData['coins'].abbrev %>
+    Bank: <%= userData['coins'].bank.abbrev %>
+    Weight: <%= userData['weight'].weightAbbrev %> (<%= Math.round(userData['weight'].totalWeight)?.toLocaleString() %>)
+    Bits: <%= userData['bits'].abbrev %>" />
+    <link rel="icon" href="https://crafatar.com/avatars/<%= uuidData?.raw_id %>?size=32&overlay" sizes="32x32" type="image/png">
 </head>
 
 <body>
