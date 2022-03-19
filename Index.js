@@ -25,7 +25,6 @@ require("dotenv").config();
 const Express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const { colorCode } = require("minecraft-color-codes");
 const axios = require("axios");
 const colors = require("colors");
 //Databases;
@@ -57,7 +56,7 @@ App.get("/", (req, res) => {
 
 App.get("/usernotfound/:username/:type", (req, res) => {
     const object = {
-        error: `${req.params.type == "invalid" ? `Invalid username: ${req.params.username}` : req.params.type == "neverjoined" ? `That player has never joined SkySim!` : `Failed to resolve username, Please make sure the player exist with the username: ${req.params.username}`}`
+        error: `${req.params.type == "invalid" ? `Invalid username: ${req.params.username}` : req.params.type == "neverjoined" ? `That player has never joined SkySim!` : req.params.type == "internal" ? `Internal Server Error, Our BackEnd API has failed to respond, please make sure the player has joined skysim.` : `Failed to resolve username, Please make sure the player exist with the username: ${req.params.username}`}`
     };
 
     res.status(200).send(object);
@@ -71,7 +70,7 @@ App.get("/user/:username", async (req, res) => {
         url: `https://playerdb.co/api/player/minecraft/${req.params.username}`
     }).catch((err) => null);
 
-    if (!UUID || !UUID.data || UUID.data.success === false) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/notfound`);
+    if (!UUID || !UUID.data || UUID.data.success === false) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/internal`);
 
     if (UUID && UUID.data && UUID.data.code == "player.found") {
         const SkySimData = await axios({
@@ -84,7 +83,9 @@ App.get("/user/:username", async (req, res) => {
             url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_ITEMS&param=${UUID.data?.data?.player?.id}`
         }).catch((err) => null);
 
-        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/neverjoined`), console.log(SkySimData.data.error || PlayerInventory.data.error);
+        console.log(SkySimData.data.error, PlayerInventory.data.error)
+
+        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/neverjoined`);
 
         //Setting User Data
         let userData = {
@@ -205,7 +206,15 @@ App.get("/user/:username", async (req, res) => {
                 },
                 catacombXP: SkySimData.data['cataXP'],
                 catacombXPAbbrev: abbreviateNumber(SkySimData.data['cataXP']),
-                catacombLevel: null
+                catacombLevel: null,
+                Floors: {
+                    Six: {
+                        runs: {
+                            total: SkySimData.data['totalfloor6run'],
+                            finished: SkySimData.data['sadancollections']
+                        }
+                    }
+                }
             }
         };
 
@@ -434,6 +443,8 @@ App.get("/user/:username", async (req, res) => {
         // const TarantulaSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 2);
 
         //Rendering page.
+
+        console.log(SkySimData.data)
 
         res.render('stats', {
             data: SkySimData.data,
