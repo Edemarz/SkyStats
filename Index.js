@@ -25,6 +25,7 @@ require("dotenv").config();
 const Express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const { colorCode } = require("minecraft-color-codes");
 const axios = require("axios");
 const colors = require("colors");
 //Databases;
@@ -269,28 +270,144 @@ App.post("/", async (req, res) => {
 
                     const actualTextures = ArmorAttribute[attr];
 
-                    let lore = armor.lore.join('<br>');
+                    console.log(armor.lore)
+
+                    //Building HTML Lores
+
+                    const ColorSigns = require("./Constants/ColorCodes").colorCodes;
+
+                    let iLore = [];
+
+                    let recombobulated = false;
+
+                    armor.lore.forEach((loreLine) => {
+                        let completeLore = [];
+                        const splittedLore = loreLine.split('§');
+
+                        splittedLore.forEach((loreColo) => {
+                            let loreColor = `§${loreColo}`;
+
+                            if (loreColor.length < 2) return;
+
+                            const color = loreColor.substring(0, 2);
+
+                            const findingHexCode = ColorSigns.findIndex((c) => c?.toLowerCase() === color?.toLowerCase());
+
+                            if (findingHexCode === -1) return;
+
+                            const hexCode = require("./Constants/ColorCodes").colorAttribute[findingHexCode];
+
+                            const loreText = loreColor.slice(2);
+
+                            if (color?.toLowerCase() == "k") recombobulated = true;
+
+                            completeLore.push(`<span style="color: ${hexCode}; font-size: 15px; font-weight: 600;"> ${loreText}`)
+                        });
+
+                        let completeLoreLength = completeLore.length;
+
+                        for (let i = 0; i < completeLoreLength; i++) {
+                            completeLore.push('</span>')
+                        };
+
+                        iLore.push(completeLore.join(''));
+                    });
+
+                    if (recombobulated === true)  iLore.push(`<br><span style="color: #999999; font-weight: 600;">(Recombobulated)</span>`);
+
+                    //Building colorName for lore;
+                    let coloredName = null;
+
+                    const armorColor = armor.name.substring(0, 2);
+
+                    const colorIndex = ColorSigns.findIndex((c) => c?.toLowerCase() === armorColor?.toLowerCase());
+
+                    if (colorIndex === -1) coloredName = null;
+                    if (colorIndex !== -1) {
+                        coloredName = `<span style="color: ${require("./Constants/ColorCodes").colorAttribute[colorIndex]}; font-weight:600; font-size: 15px;">${armor.name.slice(2)}</span>`
+                    };
+
+                    //Pushing data
 
                     itemsWithoutReforge.push({
                         name: armor.name,
                         itemType: armor.type?.toLowerCase(),
                         itemTexture: actualTextures,
-                        itemLore: lore
+                        itemLore: `${coloredName === null ? '' : coloredName}<br><br>${iLore.join('<br>')}`
                     });
                 };
             } else if (armor.material?.toLowerCase() == "skull_item") {
+                const ColorSigns = require("./Constants/ColorCodes").colorNumber;
                 if (armor !== null) {
                     const raw_texture = armor.texture?.split('/')[4];
 
                     const apiLink = `https://mc-heads.net/head/${raw_texture}`;
 
-                    let lore = armor.lore.join('<br>');
+                    //Building HTML Lores
+
+                    const ColorSigns = require("./Constants/ColorCodes").colorCodes;
+
+                    let iLore = [];
+
+                    let recombobulated = false;
+
+                    armor.lore.forEach((loreLine) => {
+                        let completeLore = [];
+                        const splittedLore = loreLine.split('§');
+
+                        splittedLore.forEach((loreColo) => {
+                            let loreColor = `§${loreColo}`;
+
+                            if (loreColor.length < 2) return;
+
+                            const color = loreColor.substring(0, 2);
+
+                            const findingHexCode = ColorSigns.findIndex((c) => c?.toLowerCase() === color?.toLowerCase());
+
+                            if (findingHexCode === -1) return;
+
+                            const regexToReplace = new RegExp(ColorSigns[findingHexCode], 'im');
+
+                            const hexCode = require("./Constants/ColorCodes").colorAttribute[findingHexCode];
+
+                            const loreText = loreColor.slice(2);
+
+                            if (color?.toLowerCase() == "k") recombobulated = true;
+
+                            completeLore.push(`<span style="color: ${hexCode}; font-size: 15px; font-weight: 600; user-select: text; visibility: visible;"> ${loreText}`)
+                        });
+
+                        let completeLoreLength = completeLore.length;
+
+                        for (let i = 0; i < completeLoreLength; i++) {
+                            completeLore.push('</span>')
+                        };
+
+                        iLore.push(completeLore.join(''));
+                    });
+
+                    if (recombobulated === true)  iLore.push(`<br><span style="color: #999999; font-weight: 600; font-size: 15px;">(Recombobulated)</span>`);
+
+                    //Building colorName for lore;
+                    let coloredName = null;
+
+                    const armorColor = armor.name.substring(0, 2);
+
+                    const colorIndex = ColorSigns.findIndex((c) => c?.toLowerCase() === armorColor?.toLowerCase());
+
+                    if (colorIndex === -1) coloredName = null;
+                    if (colorIndex !== -1) {
+                        coloredName = `<span style="color: ${require("./Constants/ColorCodes").colorAttribute[colorIndex]}; font-weight:600; font-size: 15px;">${armor.name.slice(2)}</span>`
+                    };
+
+                    //Pushing data
 
                     itemsWithoutReforge.push({
                         name: armor.name,
+                        coloredName: coloredName,
                         itemType: armor.type?.toLowerCase(),
                         itemTexture: apiLink,
-                        itemLore: lore
+                        itemLore: `${coloredName === null ? '' : coloredName}<br><br>${iLore.join('<br>')}`
                     });
                 };
             };
@@ -318,8 +435,6 @@ App.post("/", async (req, res) => {
         // const TarantulaSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 2);
 
         //Rendering page.
-
-        console.log(itemsWithoutReforge);
 
         res.render('stats', {
             data: SkySimData.data,

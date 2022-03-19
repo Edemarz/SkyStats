@@ -1578,105 +1578,37 @@ body::-webkit-scrollbar-track {
   color: #fff;
 }
 
-/*Tarantula Slayer*/
-
-/* .tarantula-slayer-boxing {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  box-sizing: border-box;
-  padding: 20px;
-  padding-top: 50px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  width: 22.5%;
-  height: 175px;
-  overflow: hidden;
-  flex: 0 0;
-}
-
-.tarantula-header {
+/* .lore-icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 35px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid #0bca51;
-  background-color: rgba(0, 0, 0, 0.2);
-  flex: 0 0;
-  color: #fff;
-}
-
-.tarantula-icon {
-  width: 28px;
-  height: 28px;
-  margin-bottom: 4px;
-  display: inline-block;
-  background-size: 28px auto;
+  left: 14px;
+  top: 50%;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  transform: scale(0.25) translateY(-50%);
+  transform-origin: top left;
+  width: 128px;
+  height: 128px;
+  background-image: var(--bg-icon);
+  background-position: -128px 0;
+  background-size: 128px auto;
   background-repeat: no-repeat;
-  background-position: center;
-  vertical-align: middle;
-  background-image: url(/Resources/Tarantula_Icon.webp);
-}
-
-.text-tarantula {
-  align-items: center;
-  margin-top: auto;
-  font-weight: bold;
-  color: var(--color-bg);
-  text-transform: capitalize;
-  line-height: 1.5;
-  text-align: center;
-  user-select: text !important;
-}
-
-.tarantula-value {
-  font-weight: 700;
-  margin-left: 2px;
-  line-height: 1.5;
-  user-select: text !important;
-  color: var(--color-bg);
-}
-
-.tarantula-green-bar {
-  width: var(--progression);
-  padding-left: 0px;
-  background: var(--background-bg);
-  right: 0px;
-  position: relative;
-  top: -14px;
-  height: 14px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: var(--border-bottom-right);
-}
-.tarantula-grey-bar {
-  width: var(--progression);
-  padding-left: 0px;
-  background: rgba(127,127,127,0.8);
-  position: relative;
-  left: var(--offset);
-  bottom: 28px;
-  height: 14px;
-  border-bottom-right-radius: 12px;
-  border-bottom-left-radius: var(--border-bottom-left);
-}
-
-.tarantula-slayer-skill-text {
-  position: relative;
-  top: -42px;
-  right: var(--min-text);
-  text-align: center;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 14px;
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-  user-select: text !important;
-  color: #fff;
+  background-position: center center !important;
+  mask-size: 128px 128px;
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  -webkit-mask-size: 128px 128px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  text-shadow: 0px 0px 7px rgb(0 0 0 / 30%);
+  text-transform: uppercase;
 } */
+
+.tippy-box[data-theme~='lore'] {
+  background-color: #0f0f0fe6;
+  opacity: 1;
+  visibility: visible;
+  transition: visibility .2s,opacity .2s,transform .2s,left .1s;
+  border-radius: 10px;
+}
 
 @media all and (max-width: 768px) and (min-height: 400px) {
   .navbar {
