@@ -1206,7 +1206,7 @@ div {
 
 .nav_bar_line {
   content: "";
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   height: 2px;
@@ -1216,14 +1216,20 @@ div {
 }
 
 .nav_bar_background {
-    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
-    bottom: 10px;
+    bottom: 414.5px;
     z-index: 1;
 }
+
+/* .nav_items_container {
+  position: relative;
+    width: 100%;
+    padding-bottom: 6px;
+    z-index: 3;
+    overflow-x: auto;
+} */
 
 .nav_items_container {
   position: relative;
@@ -1231,27 +1237,59 @@ div {
   padding-bottom: 6px;
   z-index: 3;
   overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
 }
 
 .nav-item {
   display: inline-block;
   padding: 8px;
   padding-top: 12px;
-  font-size: 18px;
   padding-bottom: 12px;
   margin-left: 8px;
   font-weight: 600;
-  transition: background-color .1s,color .1s;
+  transition: background-color 0.1s, color 0.1s;
   position: relative;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  cursor: pointer;
+}
+
+.nav-item:last-child {
+  margin-right: 8px;
+}
+
+.nav-item[aria-current] {
+  color: rgba(255, 255, 255, 1)
+}
+
+.nav-item:focus-visible {
+  outline: 1px white currentColor;
+  outline-offset: -6px;
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: 100%;
+  background-color: #0bca51;
+  border-radius: 4px;
+  transition: height 0.1s, top 0.1s;
+}
+
+.nav-item[aria-current]::after {
+  height: 8px;
+  top: calc(100% - 3px);
 }
 
 .nav-item:hover {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-item:hover::after {
+  height: 8px;
+  background-color: #0bca51;
+  top: calc(100% - 3px);
 }
 
 /*Armor Section*/
