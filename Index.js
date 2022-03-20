@@ -83,9 +83,7 @@ App.get("/user/:username", async (req, res) => {
             url: `https://api.skysim.sbs/?key=${process.env.API_KEY}&type=PLAYER_ITEMS&param=${UUID.data?.data?.player?.id}`
         }).catch((err) => null);
 
-        console.log(SkySimData.data.error, PlayerInventory.data.error)
-
-        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/neverjoined`);
+        if (SkySimData.data.error || PlayerInventory.data.error) return res.redirect(`/usernotfound/${encodeURIComponent(req.params.username)}/neverjoined`), console.log(colors.red(`Player Data Error: ${SkySimData.data.error === undefined ? "None" : SkySimData.data.error} | Player Inventory Error: ${PlayerInventory.data.error === undefined ? "None" : PlayerInventory.data.error}`));
 
         //Setting User Data
         let userData = {
@@ -270,8 +268,6 @@ App.get("/user/:username", async (req, res) => {
         });
 
         items = [items[3], items[2], items[1], items[0]];
-        
-        console.log(PlayerInventory.data.armor)
 
         PlayerInventory.data.armor.forEach(async (armor) => {
             if (armor === null) return itemsWithoutReforge.push(null);

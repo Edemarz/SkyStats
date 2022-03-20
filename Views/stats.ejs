@@ -300,7 +300,7 @@
             <!--NavBar Section-->
             <div class="nav_bar">
                 <div class="nav_bar_line"
-                    style="--bottom-value: <%= playerArmor.equippedItems===true ? 457.5 : 300.5 %>px;">
+                    style="--bottom-value: <%= playerArmor.equippedItems===true ? 457.5 : 457.5 %>px;">
                     <div class="nav_bar_background">
                         <!-- <div class="nav_items_container">
                                 <a class="nav-item" href="#Slayers">Slayers</a>
@@ -420,13 +420,25 @@
         <!--Dungeons-->
         <div class="dungeons" id="Dungeons">
             <h2 class="dungeons-text">Dungeons</h2>
-            <!--Floor 6 Upcoming-->
-            <!-- <div class="dungeons-floor-6">
-                <div class="dungeons-floor-6-header">
-                    <div class="dungeons-floor-6-icon"></div>
-                    <spanc class="text-floor-6">Floor 6</span>
+            <!--Floor 6-->
+            <div class="floor-6-box">
+                <div class="floor-6-header">
+                    <div class="floor-6-icon"></div>
+                    <span class="floor-6-text">Floor 6</span>
                 </div>
-            </div> -->
+                <span class="floor-6-drop-1">
+                    <div class="floor-6-btn-logo"></div>
+                    <button class="floor-6-floor-stats-btn extender" aria-controls="floor-6-stats" aria-expanded="false" onclick="expand('floor-stats-btn-expand')" id="floor-stats-btn-expand">Floor Stats</button>
+                    <div class="floor-6-stats pieces extendable" id="floor-6-stats">
+                        <span class="floor-6-stat-name stat-name">
+                            Runs played: 
+                        </span>
+                        <span class="floor-6-stat-value stat-value"><%= userData['catacombs']['Floors']['Six']['runs']['total'] %></span><br>
+                        <span class="floor-6-stat-name stat-name">Runs completed: </span>
+                        <span class="floor-6-stat-value stat-value"><%= userData['catacombs']['Floors']['Six']['runs']['finished'] %></span>
+                    </div>
+                </span>
+            </div>
         </div>
         <!--End Dungeons-->
     </div>
@@ -513,6 +525,12 @@
         },
         role: 'tooltip'
     });
+
+    function expand(value) {
+        const element = document.getElementById(value);
+
+        element.ariaExpanded = element.ariaExpanded === 'true' ? false : true;
+    };
 </script>
 
 </html>

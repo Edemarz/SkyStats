@@ -32,27 +32,23 @@ body::-webkit-scrollbar-track {
   background-color: rgba(127, 127, 127, .12);
 }
 
-/* @font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/montserrat/v23/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-} */
+div {
+  display: block;
+}
 
-/* .wrapper {
-  position: relative;
-  margin-left: 30vw;
-  --padding: 30px;
-  padding: var(--padding);
-  padding-top: calc(48px + env(safe-area-inset-top, 0));
-  padding-bottom: calc(var(--padding) + env(safe-area-inset-bottom));
-  min-height: 100%;
+/* button {
+  writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
   box-sizing: border-box;
-  user-select: none;
-  -webkit-tap-highlight-color: white;
-  -webkit-user-select: none;
-  backdrop-filter: blur(16px) brightness(0.5);
 } */
 
 .navbar {
@@ -212,6 +208,8 @@ body::-webkit-scrollbar-track {
   margin-left: calc(-1*30px);
   margin-right: calc(-1*30px);
   background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px) brightness(0.5);
+  -webkit-backdrop-filter: blur(16px) brightness(0.5);
 }
 
 /*Combat Section*/
@@ -1196,26 +1194,35 @@ body::-webkit-scrollbar-track {
 /*Nav Bar*/
 
 .nav_bar {
-  position: relative;
+  position: sticky;
   top: calc(48px + env(safe-area-inset-top, 0));
-  margin-left: calc(-1*30px);
-  margin-right: calc(-1*30px);
+  margin-left: calc(-1 * 30px);
+  margin-right: calc(-1 * 30px);
   text-align: center;
   padding-bottom: 6px;
   white-space: nowrap;
   z-index: 25;
-  bottom: 310px;
 }
 
 .nav_bar_line {
   content: "";
-  position: relative;
+  position: absolute;
   left: 0;
   right: 0;
   height: 2px;
   bottom: var(--bottom-value);
   background-color: #0bca51;
   z-index: 2;
+}
+
+.nav_bar_background {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    z-index: 1;
 }
 
 .nav_items_container {
@@ -1594,73 +1601,6 @@ body::-webkit-scrollbar-track {
   text-underline-position: under;
 };
 
-.dungeons-floor-6 {
-  padding-bottom: 30px;
-  position: relative;
-  box-sizing: border-box;
-  padding: 20px;
-  padding-top: 50px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.dungeons-floor-6-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 35px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.dungeons-floor-6-icon {
-  line-height: 35px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
-  background-image: url(/Resources/Floor_6_Icon.png);
-}
-
-.text-floor-6 {
-  line-height: 35px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
-}
-
-
-/* .lore-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
-  transform: scale(0.25) translateY(-50%);
-  transform-origin: top left;
-  width: 128px;
-  height: 128px;
-  background-image: var(--bg-icon);
-  background-position: -128px 0;
-  background-size: 128px auto;
-  background-repeat: no-repeat;
-  background-position: center center !important;
-  mask-size: 128px 128px;
-  mask-repeat: no-repeat;
-  mask-position: center center;
-  -webkit-mask-size: 128px 128px;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center center;
-  text-shadow: 0px 0px 7px rgb(0 0 0 / 30%);
-  text-transform: uppercase;
-} */
-
 .tippy-box[data-theme~='lore'] {
   background-color: #0f0f0fe6;
   opacity: 1;
@@ -1683,6 +1623,118 @@ body::-webkit-scrollbar-track {
   margin-bottom: 15px;
   text-decoration: underline 4px #0bca51;
   text-underline-position: under;
+}
+
+.floor-6-box {
+  padding-bottom: 30px;
+  position: relative;
+  box-sizing: border-box;
+  min-width: min(330px,100vw);
+  padding: 20px;
+  width: 25%;
+  padding-top: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  text-size-adjust: none;
+}
+
+.floor-6-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #0bca51;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-size-adjust: none;
+  color: white;
+}
+
+.floor-6-icon {
+  background-image: url(/Resources/Floor_6_Icon.png);
+  width: 28px;
+  height: 28px;
+  margin-bottom: 4px;
+  display: inline-block;
+  background-size: 28px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  text-size-adjust: none;
+}
+
+.floor-6-text {
+  line-height: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+}
+
+.extender {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  padding-left: 0;
+  padding-right: 4px;
+  border: none;
+  margin: 1em 0;
+  background: none;
+  transition: color .1s;
+}
+
+.extender::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  vertical-align: top;
+  background-color: currentColor;
+  -webkit-mask-image: url(/Resources/Expander_Logo.svg);
+  mask-image: url(/Resources/Expander_Logo.svg);
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  transform: rotate(0deg);
+  transition: transform .1s ease-in-out;
+}
+
+.extender[aria-expanded=true]::before {
+  transform: rotate(-180deg);
+}
+
+.extender[aria-expanded=false]+.extendable {
+  display: none;
+}
+
+.pieces {
+  margin-top: -12px;
+}
+
+.stat-name {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: capitalize;
+  line-height: 1.5;
+  user-select: text !important;
+}
+
+.stat-value {
+  font-weight: 700;
+  margin-left: 2px;
+  color: white;
+  line-height: 1.5;
+  user-select: text !important;
+}
+
+.floor-6-floor-stats-btn {
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @media all and (max-width: 768px) and (min-height: 400px) {
