@@ -1669,6 +1669,22 @@ body::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
+.inventory-text {
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  font-size: 24px;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding-left: 5px;
+  margin-bottom: 15px;
+  text-decoration: underline 4px #0bca51;
+  text-underline-position: under;
+}
+
 @media all and (max-width: 768px) and (min-height: 400px) {
   .navbar {
     position: fixed;
