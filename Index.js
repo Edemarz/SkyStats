@@ -255,15 +255,16 @@ App.get("/user/:username", async (req, res) => {
 
                 if (armor === null) items.push(null);
                 if (armor !== null) {
-                    if (armor.name.match(regex)) {
-                        const index = colorCodes.findIndex((code) => code === colorCode);
+                    if (armor.name.substring(0, 2).match(regex)) {
+                        console.log(armor.name)
+                            const index = colorCodes.findIndex((code) => code === colorCode);
 
-                        const colorAttribute = require("./Constants/ColorCodes").colorAttribute[index];
+                            const colorAttribute = require("./Constants/ColorCodes").colorAttribute[index];
 
-                        const replacedArmor = armor.name.replace(regex, '');
+                            const replacedArmor = armor.name.replace(regex, '');
 
-                        return items.push(`${replacedArmor}-${colorAttribute}`);
-                    }
+                            return items.push(`${replacedArmor}-${colorAttribute}`);
+                    };
                 };
             });
         });
@@ -277,8 +278,6 @@ App.get("/user/:username", async (req, res) => {
                     const attr = armor.type?.toLowerCase()
 
                     const actualTextures = ArmorAttribute[attr];
-
-                    console.log(armor.lore)
 
                     //Building HTML Lores
 
@@ -324,7 +323,9 @@ App.get("/user/:username", async (req, res) => {
                     if (recombobulated === true)  iLore.push(`<br><span style="color: #999999; font-weight: 600;">(Recombobulated)</span>`);
 
                     //Building colorName for lore;
-                    let coloredName = null;
+                    let coloredName = [];
+
+                    const starRegex = /✪/gim;
 
                     const armorColor = armor.name.substring(0, 2);
 
@@ -332,7 +333,15 @@ App.get("/user/:username", async (req, res) => {
 
                     if (colorIndex === -1) coloredName = null;
                     if (colorIndex !== -1) {
-                        coloredName = `<span style="color: ${require("./Constants/ColorCodes").colorAttribute[colorIndex]}; font-weight:600; font-size: 15px;">${armor.name.slice(2)}</span>`
+                        coloredName.push(`<span style="color: ${require("./Constants/ColorCodes").colorAttribute[colorIndex]}; font-weight:600; font-size: 15px;">${armor.name.slice(2)?.replace(/§6/gim, '')?.replace(/✪/gim, '')}</span>`);
+                    };
+
+                    if (armor.name.match(starRegex)) {
+                        const splittedName = armor.name.split('');
+
+                        splittedName.forEach((letter) => {
+                            if (letter?.toLowerCase()?.match(starRegex)) coloredName.push(`<span style="color: #FFAA00;">✪</span>`)
+                        });
                     };
 
                     //Pushing data
@@ -341,7 +350,7 @@ App.get("/user/:username", async (req, res) => {
                         name: armor.name,
                         itemType: armor.type?.toLowerCase(),
                         itemTexture: actualTextures,
-                        itemLore: `${coloredName === null ? '' : coloredName}<br><br>${iLore.join('<br>')}`
+                        itemLore: `${coloredName.length < 1 ? '' : coloredName.join('')}<br><br>${iLore.join('<br>')}`
                     });
                 };
             } else if (armor.material?.toLowerCase() == "skull_item") {
@@ -397,7 +406,9 @@ App.get("/user/:username", async (req, res) => {
                     if (recombobulated === true)  iLore.push(`<br><span style="color: #999999; font-weight: 600; font-size: 15px;">(Recombobulated)</span>`);
 
                     //Building colorName for lore;
-                    let coloredName = null;
+                    let coloredName = [];
+
+                    const starRegex = /✪/gim;
 
                     const armorColor = armor.name.substring(0, 2);
 
@@ -405,7 +416,15 @@ App.get("/user/:username", async (req, res) => {
 
                     if (colorIndex === -1) coloredName = null;
                     if (colorIndex !== -1) {
-                        coloredName = `<span style="color: ${require("./Constants/ColorCodes").colorAttribute[colorIndex]}; font-weight:600; font-size: 15px;">${armor.name.slice(2)}</span>`
+                        coloredName.push(`<span style="color: ${require("./Constants/ColorCodes").colorAttribute[colorIndex]}; font-weight:600; font-size: 15px;">${armor.name.slice(2)?.replace(/§6/gim, '')?.replace(/✪/gim, '')}</span>`);
+                    };
+
+                    if (armor.name.match(starRegex)) {
+                        const splittedName = armor.name.split('');
+
+                        splittedName.forEach((letter) => {
+                            if (letter?.toLowerCase()?.match(starRegex)) coloredName.push(`<span style="color: #FFAA00;">✪</span>`)
+                        });
                     };
 
                     //Pushing data
@@ -415,7 +434,7 @@ App.get("/user/:username", async (req, res) => {
                         coloredName: coloredName,
                         itemType: armor.type?.toLowerCase(),
                         itemTexture: apiLink,
-                        itemLore: `${coloredName === null ? '' : coloredName}<br><br>${iLore.join('<br>')}`
+                        itemLore: `${coloredName.length < 1 ? '' : coloredName.join('')}<br><br>${iLore.join('<br>')}`
                     });
                 };
             };
@@ -443,8 +462,6 @@ App.get("/user/:username", async (req, res) => {
         // const TarantulaSlayerProgression = await require("./Functions/CalculatingSlayerData")(userData, 2);
 
         //Rendering page.
-
-        console.log(SkySimData.data)
 
         res.render('stats', {
             data: SkySimData.data,
