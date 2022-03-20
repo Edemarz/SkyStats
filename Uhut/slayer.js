@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
 module.exports = (userData) => __awaiter(void 0, void 0, void 0, function* () {
     const zombiearray = [0, 5, 15, 200, 1000, 5000, 20000, 100000, 400000, 1000000];
     const spiderarray = [5, 25, 200, 1000, 5000, 20000, 100000, 400000, 1000000];

@@ -37,6 +37,9 @@ const attributes = {
     hardened_diamond_helmet: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_helmet.png",
     hardened_diamond_chestplate: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_chestplate.png",
     hardened_diamond_leggings: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_leggings.png",
-    hardened_diamond_boots: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_boots.png"
+    hardened_diamond_boots: "../Resources/Textures/Armor/Hardened_Diamond/hardened_diamond_boots.png",
+    hidden_donator_helmet: "../Resources/Textures/Vanilla/glass_yellow.png",
+    donator_helmet: "../Resources/Textures/Vanilla/glass_yellow.png",
+    vanilla_item: "../Resources/Textures/Vanilla/glass_yellow.png"
 };
 module.exports = attributes;

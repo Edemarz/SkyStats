@@ -90,7 +90,7 @@ App.get("/user/:username", async (req, res) => {
         //Setting User Data
         let userData = {
             profile: {
-                username: req.params.username,
+                username: UUID.data?.data?.player?.username,
                 uuid: UUID.data?.data?.player
             },
             coins: {
@@ -221,7 +221,7 @@ App.get("/user/:username", async (req, res) => {
         //Skill System
         const SkillData = await require("./Functions/CalculatingSkillData")(SkySimData);
 
-        if (typeof SkillData != "object") return res.status(502);
+        if (typeof SkillData != "object") return res.redirect(`/usernotfound/${encodeURIComponent(userData['profile']['username'])}/invalid`);
 
         userData['skills'].combat = SkillData.combat;
         userData['skills'].mining = SkillData.mining;
@@ -250,26 +250,28 @@ App.get("/user/:username", async (req, res) => {
         const colorCodes = require("./Constants/ColorCodes").colorCodes;
 
         await PlayerInventory.data.armor.forEach((armor) => {
-            colorCodes.forEach((colorCode) => {
-                const regex = new RegExp(colorCode, 'gim');
-
-                if (armor === null) items.push(null);
-                if (armor !== null) {
-                    if (armor.name.substring(0, 2).match(regex)) {
-                        console.log(armor.name)
+            if (armor === null) items.push(null);
+            if (armor !== null) {
+                colorCodes.forEach((colorCode) => {
+                    const regex = new RegExp(colorCode, 'gim');
+    
+                        if (armor?.name?.substring(0, 2)?.match(regex)) {
+                            console.log(armor.name)
                             const index = colorCodes.findIndex((code) => code === colorCode);
-
+    
                             const colorAttribute = require("./Constants/ColorCodes").colorAttribute[index];
-
+    
                             const replacedArmor = armor.name.replace(regex, '');
-
+    
                             return items.push(`${replacedArmor}-${colorAttribute}`);
-                    };
-                };
-            });
+                        };
+                });
+            };
         });
 
         items = [items[3], items[2], items[1], items[0]];
+        
+        console.log(PlayerInventory.data.armor)
 
         PlayerInventory.data.armor.forEach(async (armor) => {
             if (armor === null) return itemsWithoutReforge.push(null);
@@ -320,7 +322,7 @@ App.get("/user/:username", async (req, res) => {
                         iLore.push(completeLore.join(''));
                     });
 
-                    if (recombobulated === true)  iLore.push(`<br><span style="color: #999999; font-weight: 600;">(Recombobulated)</span>`);
+                    if (recombobulated === true) iLore.push(`<br><span style="color: #999999; font-weight: 600;">(Recombobulated)</span>`);
 
                     //Building colorName for lore;
                     let coloredName = [];
@@ -403,7 +405,7 @@ App.get("/user/:username", async (req, res) => {
                         iLore.push(completeLore.join(''));
                     });
 
-                    if (recombobulated === true)  iLore.push(`<br><span style="color: #999999; font-weight: 600; font-size: 15px;">(Recombobulated)</span>`);
+                    if (recombobulated === true) iLore.push(`<br><span style="color: #999999; font-weight: 600; font-size: 15px;">(Recombobulated)</span>`);
 
                     //Building colorName for lore;
                     let coloredName = [];
@@ -476,7 +478,7 @@ App.get("/user/:username", async (req, res) => {
                 equippedItems: items.filter((item) => item !== null).length > 0 ? true : false,
                 withReforge: items,
                 noReforge: itemsWithoutReforge,
-                
+
             }
         });
 
